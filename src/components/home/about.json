@@ -1,0 +1,23 @@
+[
+    {
+        "id": "p1",
+        "section": {
+            "subtitle": "Ever Story Master Has a Story",
+            "description": "Every day a writing prompt is released, you write a story and submit to enter."
+        }
+    },
+    {
+        "id": "p2",
+        "section": {
+            "subtitle": "Unleash your creativity",
+            "description": "Traditional pen and paper writing is never out of style. Show us what you've got!"
+        }
+    },
+    {
+        "id": "p3",
+        "section": {
+            "subtitle": "Vote for your favorite stories",
+            "description": "You can read other's submission and vote for your favorite one! Winners are announced daily!"
+        }
+    }
+]

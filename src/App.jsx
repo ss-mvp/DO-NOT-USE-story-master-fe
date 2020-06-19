@@ -1,10 +1,17 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom'
+
+import { Home, Submission } from './pages'
 
 
 function App() {
   return (
-    <div>
-      
+    <div className="container-sm">
+      {/* <Switch>
+        <Route exact path={[`/`,`/Login`]} component={ Home } />
+      </Switch> */}
+      <Home />
+      <Submission />
     </div>
   );
 }

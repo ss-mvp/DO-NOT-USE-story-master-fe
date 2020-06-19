@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Berkshire+Swash|Open+Sans&display=swap");
+
+//definition
+
+$ericapurple: #584CFF;
+$berkshire: "Berkshire Swash", cursive;
+
+$theme-colors: (
+  "primary": $ericapurple,
+);
+
+h1, h2 {
+    font-family: $berkshire;
+}
+
+//custom classes
+
+.custom-border {
+    border: 3px solid #584CFF;
+    overflow: hidden;
+  }
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss"
