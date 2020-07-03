@@ -1,3 +1,4 @@
 export * from './Home'
-export * from './Admin'
+export * from './AdminStoriesPage'
+export * from './AdminPromptPage'
 export * from './Submission'

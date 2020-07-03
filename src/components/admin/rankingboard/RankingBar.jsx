@@ -5,7 +5,7 @@ export function RankingBar(props) {
         <>
             <tr>
                 <td>Derp</td>
-                <td>Derp</td>
+                <td>Derp is a derp</td>
                 <td>
                     <button className="btn btn-outline-primary m-2 px-4">View</button>
                     <button className="btn btn-primary m-2 px-4">Vote</button>

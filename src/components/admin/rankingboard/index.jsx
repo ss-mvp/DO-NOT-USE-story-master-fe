@@ -2,18 +2,12 @@ import React from 'react'
 import { RankingBar } from "./RankingBar"
 import { RankingBarTopic } from "./RankingBarTopic"
 
-export function AdminBoard() {
+export function AdminStories() {
     return (
         <>
-            <div>
-                <table class="table table-striped">
-                    <thread>
-                    <tr>
-                        <th scope="col">User</th>
-                        <th>Status</th>
-                        <th>0/3 Votes</th>
-                    </tr>
-                    </thread>
+            <div className="table-container mx-auto my-5 text-center">
+                <table className="table table-striped table-hover">
+                    <RankingBarTopic />
                     <tbody>
                         <RankingBar />
                         <RankingBar />

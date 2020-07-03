@@ -1,8 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 
-import { Home, Submission, Admin } from './pages'
-
+import { Home, Submission,  AdminStoriesPage, AdminStories, AdminPromptPage } from './pages'
 
 function App() {
   return (
@@ -12,7 +11,8 @@ function App() {
       </Switch> */}
       {/* <Home /> */}
       {/* <Submission /> */}
-      <Admin />
+      <AdminStoriesPage />
+      <AdminPromptPage />
     </div>
   );
 }
