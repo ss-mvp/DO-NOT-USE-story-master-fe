@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 
-import { Home, Submission } from './pages'
+import { Home, Submission, Admin } from './pages'
 
 
 function App() {
@@ -10,8 +10,9 @@ function App() {
       {/* <Switch>
         <Route exact path={[`/`,`/Login`]} component={ Home } />
       </Switch> */}
-      <Home />
-      <Submission />
+      {/* <Home /> */}
+      {/* <Submission /> */}
+      <Admin />
     </div>
   );
 }
