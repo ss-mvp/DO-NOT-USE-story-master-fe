@@ -11,7 +11,6 @@ export function Submission() {
         .get("https://ss-mvp.herokuapp.com/upload/prompt")
         .then((response) => {
             setPrompt(response.data);
-            console.log(response.data);
         })
         .catch((err) => console.log(err));
     }, []);

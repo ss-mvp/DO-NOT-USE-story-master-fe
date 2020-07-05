@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Source+Sans+Pro:wght@400;700;900&display=swap');
+
 //definition
 
 $bostonblue: #429CB5;
@@ -18,6 +19,10 @@ $font-family-base: $sourcesans;
   font-family: $bangers;
 }
 
+.home-bg{
+  height: 100vh;
+  background: url("../assets/storysquad.svg");
+}
 
 .custom-border {
     border: 3px solid #429CB5;

@@ -2,6 +2,10 @@
 .ss-title {
   font-family: "Bangers", cursive; }
 
+.home-bg {
+  height: 100vh;
+  background: url("../assets/storysquad.svg"); }
+
 .custom-border {
   border: 3px solid #429CB5;
   overflow: hidden; }

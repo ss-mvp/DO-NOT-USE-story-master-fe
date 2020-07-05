@@ -5,12 +5,13 @@ import { Home, Submission,  AdminStoriesPage, AdminStories, AdminPromptPage } fr
 
 function App() {
   return (
-    <div className="container-sm">
+    <div className="main-app">
       {/* <Switch>
         <Route exact path={[`/`,`/Login`]} component={ Home } />
       </Switch> */}
       {/* <Home /> */}
       {/* <Submission /> */}
+      <Home />
       <AdminStoriesPage />
       <AdminPromptPage />
     </div>
