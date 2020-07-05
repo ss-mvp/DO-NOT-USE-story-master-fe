@@ -1,6 +1,6 @@
 import React from 'react'
 import plus from '../assets/plus.svg'
-import { AdminNav, AdminPrompt } from "../components"
+import { AdminNav, AdminPrompt, AddPrompt } from "../components"
 
 export function AdminPromptPage() {
     return (
