@@ -86,7 +86,7 @@ export function SignUp(props) {
         </div>
         <p>
           Already have an account? Click here to{" "}
-          <Link to={`/Login`}>sign in</Link>
+          <Link to={`/signin`}>sign in</Link>
         </p>
       </form>
     </>

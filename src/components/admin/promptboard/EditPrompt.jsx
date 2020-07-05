@@ -1,6 +1,7 @@
 import React from 'react'
+import EditPrompt from './EditPrompt'
 
-export default function EditPrompt() {
+export function EditPrompt() {
     return (
         <div>
             <form>

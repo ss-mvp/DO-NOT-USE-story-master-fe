@@ -5,14 +5,14 @@ import { StoryMasterContent, SignIn, SignUp } from '../components'
 export function Home() {
     return (
         <>
-            <div className="row align-items-center rounded-lg custom-border mt-3">
-                <div className="col-sm-12 col-md-7 custom-bg d-flex align-items-center">
+            <div className="row align-items-center mx-auto">
+                <section className="col-sm-12 col-md-8 custom-bg d-flex align-items-center">
                     <StoryMasterContent />
-                </div>
-                <div className="col-sm-12 col-md-4 m-3">
+                </section>
+                <section className="col-sm-12 col-md-3 mx-auto bg-white">
                     <Route path={`/signin`} component={ SignIn } />
                     <Route exact path={`/`} component={ SignUp } />
-                </div>
+                </section>
             </div>
         </>
     )

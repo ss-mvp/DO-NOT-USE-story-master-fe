@@ -11,7 +11,6 @@ export function Submission() {
         .get("https://ss-mvp.herokuapp.com/upload/prompt")
         .then((response) => {
             setPrompt(response.data);
-            console.log(response.data);
         })
         .catch((err) => console.log(err));
     }, []);
@@ -19,9 +18,12 @@ export function Submission() {
 
     return (
         <>
-            <div>
+            <div className="custom-bg d-flex justify-content-center align-items-center">
+                <div className="container-sm">
+                    <h2 className="text-center">Daily Writing Contest</h2>
                 <PromptComponent prompt={prompt} />
                 <SubmissionForm />
+                </div>
             </div>
             
         </>

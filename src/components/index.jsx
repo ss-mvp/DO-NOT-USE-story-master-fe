@@ -10,3 +10,5 @@ export * from './leaderboard/TopThree'
 export * from './admin/rankingboard'
 export * from './admin/promptboard'
 export * from './admin/nav'
+
+export * from './admin/promptboard/AddPrompt'

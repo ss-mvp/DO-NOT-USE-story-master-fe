@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AddPrompt() {
+export function AddPrompt() {
     return (
         <>
             <form>

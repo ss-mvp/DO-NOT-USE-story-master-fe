@@ -1,19 +1,26 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
-
-import { Home, Submission,  AdminStoriesPage, AdminStories, AdminPromptPage } from './pages'
+import { PrivateRoute } from './utils'
+import { 
+  Home,
+  Submission,
+  Leaderboard, 
+  AdminStoriesPage,
+  AdminPromptPage,
+  WinnerAnnouncement
+} from './pages'
 
 function App() {
   return (
-    <div className="container-sm">
-      {/* <Switch>
-        <Route exact path={[`/`,`/Login`]} component={ Home } />
-      </Switch> */}
-      {/* <Home /> */}
-      {/* <Submission /> */}
-      <AdminStoriesPage />
-      <AdminPromptPage />
-    </div>
+    <>
+      <Switch>
+        <Route exact path={[`/`,`/signin`]} component={ Home } />
+        <PrivateRoute path={`/submission`} component={ Submission } />
+        <PrivateRoute path={`/leaderboard`} component={ Leaderboard } />
+        <PrivateRoute path={`/announcement`} component={ WinnerAnnouncement } />
+      </Switch>
+      
+    </>
   );
 }
 

@@ -43,7 +43,7 @@ export function SubmissionForm() {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div className="upload-button">
+                <div className="upload-button d-flex justify-content-center">
                     <label className="m-3 btn btn-outline-primary pr-5 pl-5">
                         Choose a file
                         <input
