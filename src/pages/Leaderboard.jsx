@@ -17,7 +17,7 @@ export function Leaderboard() {
 
     return (
         <div className="custom-bg d-flex justify-content-center align-items-center">
-            <div className="container-sm d-flex flex-column justify-content-center align-items-center">
+            <div className="container-sm d-flex flex-column justify-content-center align-items-centerัถ">
                 <h2 className="text-center p-5">Top 3 Winners</h2>
                 <div>
                 {
