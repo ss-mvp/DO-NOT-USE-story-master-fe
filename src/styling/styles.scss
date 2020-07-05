@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Source+Sans+Pro:wght@400;700;900&display=swap');
+//definition
+
+$bostonblue: #429CB5;
+$bangers: 'Bangers', cursive;
+$sourcesans: 'Source Sans Pro', sans-serif;
+
+$theme-colors: (
+  "primary": $bostonblue,
+);
+
+$font-family-base: $sourcesans;
+
+
+//custom classes
+
+.ss-title {
+  font-family: $bangers;
+}
+
+
+.custom-border {
+    border: 3px solid #429CB5;
+    overflow: hidden;
+  }
+
+.table-container {
+  max-width: 900px;
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss"
