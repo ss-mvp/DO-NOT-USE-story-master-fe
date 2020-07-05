@@ -6,13 +6,13 @@ export function Home() {
     return (
         <>
             <div className="row align-items-center mx-auto">
-                <div className="col-sm-12 col-md-8 home-bg d-flex align-items-center">
+                <section className="col-sm-12 col-md-8 custom-bg d-flex align-items-center">
                     <StoryMasterContent />
-                </div>
-                <div className="col-sm-12 col-md-3 mx-auto">
+                </section>
+                <section className="col-sm-12 col-md-3 mx-auto bg-white">
                     <Route path={`/signin`} component={ SignIn } />
                     <Route exact path={`/`} component={ SignUp } />
-                </div>
+                </section>
             </div>
         </>
     )

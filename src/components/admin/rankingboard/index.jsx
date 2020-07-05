@@ -5,7 +5,7 @@ import { RankingBarTopic } from "./RankingBarTopic"
 export function AdminStories() {
     return (
         <>
-            <div className="table-container mx-auto my-5 text-center">
+            <section className="table-container mx-auto my-5 text-center">
                 <table className="table table-striped table-hover">
                     <RankingBarTopic />
                     <tbody>
@@ -21,7 +21,7 @@ export function AdminStories() {
                         <RankingBar />
                     </tbody>
                 </table>
-            </div>
+            </section>
         </>
     )
 }

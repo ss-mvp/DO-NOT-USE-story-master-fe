@@ -18,9 +18,12 @@ export function Submission() {
 
     return (
         <>
-            <div>
+            <div className="custom-bg d-flex justify-content-center align-items-center">
+                <div className="container-sm">
+                    <h2 className="text-center">Daily Writing Contest</h2>
                 <PromptComponent prompt={prompt} />
                 <SubmissionForm />
+                </div>
             </div>
             
         </>

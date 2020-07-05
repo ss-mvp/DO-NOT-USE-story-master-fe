@@ -19,15 +19,22 @@ $font-family-base: $sourcesans;
   font-family: $bangers;
 }
 
-.home-bg{
+.custom-bg {
   height: 100vh;
   background: url("../assets/storysquad.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .custom-border {
     border: 3px solid #429CB5;
     overflow: hidden;
   }
+
+.prompt {
+  max-width: 650px;
+}
 
 .table-container {
   max-width: 900px;

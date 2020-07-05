@@ -4,7 +4,7 @@ import PromptBar from "./PromptBar"
 export function AdminPrompt() {
     return (
         <>
-            <div className="prompts table-container mx-auto my-5 text-center">
+            <section className="prompts table-container mx-auto my-5 text-center">
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -18,7 +18,7 @@ export function AdminPrompt() {
                         }
                     </tbody>
                 </table>
-            </div>
+            </section>
         </>
     )
 }
