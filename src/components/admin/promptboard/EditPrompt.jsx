@@ -1,4 +1,5 @@
 import React from 'react'
+import EditPrompt from './EditPrompt'
 
 export function EditPrompt() {
     return (
