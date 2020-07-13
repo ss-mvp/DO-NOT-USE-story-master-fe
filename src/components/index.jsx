@@ -12,3 +12,5 @@ export * from './admin/promptboard'
 export * from './admin/nav'
 
 export * from './admin/promptboard/AddPrompt'
+
+export * from './clock/CountDownClock'

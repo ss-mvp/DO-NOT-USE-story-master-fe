@@ -5,9 +5,8 @@ import {
   Home,
   Submission,
   Leaderboard, 
-  AdminStoriesPage,
-  AdminPromptPage,
-  WinnerAnnouncement
+  WinnerAnnouncement,
+  CountDownPage
 } from './pages'
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <PrivateRoute path={`/leaderboard`} component={ Leaderboard } />
         <PrivateRoute path={`/announcement`} component={ WinnerAnnouncement } />
       </Switch>
-      
     </>
   );
 }
