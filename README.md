@@ -20,8 +20,9 @@ An mini application of a story writing application - Story Squad, where you can 
 ## Frontend Tech Stack
 
 ### React
+* React is light weight and offer great performance
 * Easier to maintain and develop the application
-* Components can be modularized which makes it easier to fix
+* Components can be modularized which makes it easier to debug
 
 ### Bootstrap Styling Library
 * Fast and easy to learn with optimal performance
