@@ -1,3 +1,37 @@
+
+# Story Squad Mini App (currently developing)
+
+An mini application of a story writing application - Story Squad, where you can compete with other writer
+----
+
+
+## Application Flow:
+
+* Users that want to participate in the story writing contest will have to sign up
+* After signing up, users will be able to access new prompt that will be release each day and upload their stories
+* The story will then be calculated using readability algorithms
+* Admin will then pick top 3 stories out of 10
+* Public audience and registered users will be able to vote for their favorite stories
+* The Winner will be announced through livestream and only registered users will be able to see who the winnter of the day is
+
+
+
+
+## Frontend Tech Stack
+
+### React
+* Easier to maintain and develop the application
+* Components can be modularized which makes it easier to fix
+
+### Bootstrap Styling Library
+* Fast and easy to learn with optimal performance
+* Easy to customizable with SASS
+* Robust documentation
+
+
+
+--------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
