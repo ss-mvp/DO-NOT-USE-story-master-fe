@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { AxiosWithAuth } from '../utils'
 import { PromptComponent, SubmissionForm } from '../components'
+import { CountDownClock } from '../components/clock/CountDownClock';
 
 export function Submission() {
 
@@ -8,9 +9,11 @@ export function Submission() {
 
     useEffect(() => {
         AxiosWithAuth()
-        .get("https://ss-mvp.herokuapp.com/upload/prompt")
+        // .get("https://ss-mvp.herokuapp.com/upload/prompt")
+        .get("upload/prompt")
         .then((response) => {
-            setPrompt(response.data);
+            console.log(response.data.prompt.prompt)
+            setPrompt(response.data.prompt.prompt);
         })
         .catch((err) => console.log(err));
     }, []);
@@ -23,6 +26,8 @@ export function Submission() {
                     <h2 className="text-center">Daily Writing Contest</h2>
                 <PromptComponent prompt={prompt} />
                 <SubmissionForm />
+                
+                <CountDownClock />
                 </div>
             </div>
             
