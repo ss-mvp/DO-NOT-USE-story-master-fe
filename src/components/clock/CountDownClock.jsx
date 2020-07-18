@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import moment from 'moment'
 import Countdown from "react-countdown";
 import { AxiosWithAuth } from '../../utils'
 
@@ -44,7 +43,8 @@ export function CountDownClock() {
     const [time, setTime] = useState();
     const [end, setEnd] = useState();
     const [newGame, setNewGame] = useState();
-    const [now, setNow] = useState(moment());
+    const [now, setNow] = useState(Date.parse(new Date()));
+    const newTime = Date.parse(new Date())
 
     useEffect(() => {
         AxiosWithAuth().get('upload/time')
@@ -59,20 +59,9 @@ export function CountDownClock() {
     
     return (
         <>
-        {/* end - moment().format() */}
-            {/* {schedule.submissionDeadline} */}
-            {/* {moment().format().isAfter(time) && moment().format().isBefore(end) */}
-            {/* {console.log(moment(now).isAfter(time))} */}
-            {/* {time
-            ? console.log('math',Number(new Date().getTime() - time))
-            : <>This is not here</>} */}
-            {/* Next line is the test line */}
-            {time
-            ? <Countdown date={Number(new Date().getTime() + time)} renderer={renderer} />
-            : null}
-            {/* {moment(now).isAfter(time) && moment(now).isBefore(end)
-            ? <Countdown date={Date.now() + 5000} renderer={renderer} />
-            : <Countdown date={newGame - moment().format()} renderer={newRenderer} />} */}
+            {time && now > time && now < end
+            ? <Countdown date={now + newTime} renderer={renderer} />
+            : <Countdown date={now + newGame} renderer={newRenderer} />}
         </>
     )
 }
