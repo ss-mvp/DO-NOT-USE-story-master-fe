@@ -20,7 +20,7 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
     } else {
         return (
             <span>
-                Game is over in {hours} hours, {minutes} minutes and {seconds} seconds.
+                <h2>Game is over in {hours} hours, {minutes} minutes and {seconds} seconds.</h2>
             </span>
         )
     }
@@ -32,7 +32,7 @@ const newRenderer = ({ hours, minutes, seconds, completed }) => {
     } else {
         return (
             <span>
-                New game starts in {hours} hours, {minutes} minutes and {seconds} seconds.
+                <h2>New game starts in {hours} hours, {minutes} minutes and {seconds} seconds.</h2>
             </span>
         )
     }
@@ -61,9 +61,9 @@ export function CountDownClock() {
             {/* {schedule.submissionDeadline} */}
             {/* {moment().format().isAfter(time) && moment().format().isBefore(end) */}
             {/* {console.log(moment(now).isBefore(end))} */}
-            {moment(now).isAfter(time) && moment(now).isBefore(end)
-            ? <Countdown date={end - moment().format()} renderer={renderer} />
-            : <Countdown date={newGame - moment().format()} renderer={newRenderer} />}
+            {/* {moment(now).isAfter(time) && moment(now).isBefore(end) */}
+            <Countdown date={Date.now() + 5000} renderer={renderer} />
+            <Countdown date={Date.now() + 5000} renderer={newRenderer} />
         </>
     )
 }
