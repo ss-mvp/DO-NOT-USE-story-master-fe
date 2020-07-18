@@ -1,7 +1,7 @@
 import React, {useState } from 'react'
 import { AxiosWithAuth } from '../../utils'
 
-export function SubmissionForm() {
+export function SubmissionForm(props) {
 
     const [image, setImage] = useState();
     const [imageURL, setImageURL] = useState("");
@@ -22,11 +22,11 @@ export function SubmissionForm() {
         // Changes to formData upload
         const formData = new FormData();
         formData.append("image", image.image[0]);
-        formData.append("promptId", prompt.id);
+        formData.append("promptId", props.promptId);
         formData.append("base64Image", base64Image);
         const config = { headers: { "Content-Type": "multipart/form-data" } };
         AxiosWithAuth()
-          .post("https://.herokuapp.com/upload", formData, config)
+          .post("http://localhost:5000/upload", formData, config)
     
           .then((url) => {
             setImageURL(url.data.imageUrl);
