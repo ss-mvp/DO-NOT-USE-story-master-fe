@@ -7,20 +7,16 @@ import {
   Leaderboard, 
   WinnerAnnouncement,
   CountDownPage,
-  AdminPromptPage,
-  AdminStoriesPage
 } from './pages'
 
 function App() {
   return (
     <>
-      {/* <AdminPromptPage />
-      <AdminStoriesPage /> */}
       <Switch>
         <Route exact path={[`/`,`/signin`]} component={ Home } />
-        <PrivateRoute path={`/submission`} component={ Submission } />
-        <PrivateRoute path={`/leaderboard`} component={ Leaderboard } />
-        <PrivateRoute path={`/announcement`} component={ WinnerAnnouncement } />
+        <Route path={`/submission`} component={ Submission } />
+        <Route path={`/leaderboard`} component={ Leaderboard } />
+        <Route path={`/announcement`} component={ WinnerAnnouncement } />
       </Switch>
     </>
   );
