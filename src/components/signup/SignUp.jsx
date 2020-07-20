@@ -6,6 +6,7 @@ export function SignUp(props) {
 
   const [newUser, setNewUser] = useState({
     email: "",
+    username: "",
     password: "",
     confirm: "",
   });
@@ -21,6 +22,7 @@ export function SignUp(props) {
     e.preventDefault();
     const sendUser = {
       email: newUser.email,
+      username: newUser.username,
       password: newUser.password,
     };
     axios
@@ -47,6 +49,17 @@ export function SignUp(props) {
               onChange={handleChanges}
             />
             <label>Email</label>
+          </div>
+          <div className="form-group">
+            <input
+              required
+              type="text"
+              name="username"
+              className="form-control"
+              value={newUser.username}
+              onChange={handleChanges}
+            />
+            <label>Username</label>
           </div>
           <div className="form-group">
             <input

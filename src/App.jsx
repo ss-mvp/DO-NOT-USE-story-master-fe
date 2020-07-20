@@ -4,10 +4,11 @@ import { PrivateRoute } from './utils'
 import { 
   Home,
   Submission,
-  Leaderboard, 
-  WinnerAnnouncement,
-  CountDownPage,
+  TopThreeWinnersPage,
+  RangkingPage,
+  WinnerAnnouncementPage,
 } from './pages'
+
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
       <Switch>
         <Route exact path={[`/`,`/signin`]} component={ Home } />
         <Route path={`/submission`} component={ Submission } />
-        <Route path={`/leaderboard`} component={ Leaderboard } />
-        <Route path={`/announcement`} component={ WinnerAnnouncement } />
+        <Route path={`/winners`} component={ TopThreeWinnersPage } />
+        <Route path={`/ranking`} component={ RangkingPage } />
+        <Route path={`/announcement`} component={ WinnerAnnouncementPage } />
       </Switch>
     </>
   );
