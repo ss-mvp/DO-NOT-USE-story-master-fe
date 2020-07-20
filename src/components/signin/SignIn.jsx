@@ -43,7 +43,7 @@ export function SignIn() {
 
   return (
     <>
-      <h2 className="text-center mb-5">Sign In</h2>
+      <h2 className="text-center mb-5 display-4">Sign In</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">
           <div className="form-group">
@@ -68,10 +68,14 @@ export function SignIn() {
             />
             <label>Password</label>
           </div>
-          <button className="btn btn-primary" type="submit">
+          <button
+            className="mb-3 btn btn-primary font-weight-bold pt-3 pb-3 mr-4 ml-4"
+            style={{ fontSize: "24px" }}
+            type="submit"
+          >
             Login
           </button>
-          <p className="text-center mt-3">
+          <p className="text-center mt-3" style={{ fontSize: "18px" }}>
             Don't have an account? <Link to="/">Sign Up Now!</Link>
           </p>
         </div>

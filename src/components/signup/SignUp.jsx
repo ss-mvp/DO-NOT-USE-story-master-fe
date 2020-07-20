@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export function SignUp(props) {
-
   const [newUser, setNewUser] = useState({
     email: "",
     username: "",
@@ -33,13 +32,24 @@ export function SignUp(props) {
       })
       .catch((err) => console.log(err));
   };
-  
+
   return (
     <>
-      <h2 className="text-center mb-5">Sign Up</h2>
+      <h2 className="text-center mb-5 display-4">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">
-          <div className="form-group">
+          <div className="form-group ">
+            <input
+              required
+              type="text"
+              name="username"
+              className="form-control"
+              value={newUser.username}
+              onChange={handleChanges}
+            />
+            <label>Username</label>
+          </div>
+          <div className="form-group ">
             <input
               required
               type="text"
@@ -91,16 +101,27 @@ export function SignUp(props) {
           ) : null}
           <button
             disabled={newUser.password !== newUser.confirm}
-            className="mb-3 btn btn-primary"
+            className=" mb-3 btn btn-primary font-weight-bold pt-3 pb-3 mr-4 ml-4"
+            style={{ fontSize: "24px" }}
             type="submit"
           >
-            Continue
+            Sign Up
           </button>
-          <button className="mb-3 btn btn-primary">Privacy Policy</button>
+          <p className="w-75 ml-4">
+            By clicking the “Sign Up” button above, you agree to the
+            <Link to={`/signin`}>Terms & Conditions</Link> and
+            <Link to={`/signin`}>Privacy Policy</Link>.
+          </p>
+          <button
+            style={{ fontSize: "24px" }}
+            className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5"
+          >
+            Just want to Vote?
+          </button>
         </div>
-        <p>
-          Already have an account? Click here to{" "}
-          <Link to={`/signin`}>sign in</Link>
+        <p className="w-80 ml-4" style={{ fontSize: "18px" }}>
+          Already have an account? Click here to
+          <Link to={`/signin`}> Sign In</Link>
         </p>
       </form>
     </>
