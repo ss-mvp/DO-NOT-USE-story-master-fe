@@ -4,23 +4,21 @@ import { PrivateRoute } from './utils'
 import { 
   Home,
   Submission,
-  Leaderboard, 
-  WinnerAnnouncement,
-  CountDownPage,
-  AdminPromptPage,
-  AdminStoriesPage
+  TopThreeWinnersPage,
+  RangkingPage,
+  WinnerAnnouncementPage,
 } from './pages'
+
 
 function App() {
   return (
     <>
-      {/* <AdminPromptPage />
-      <AdminStoriesPage /> */}
       <Switch>
         <Route exact path={[`/`,`/signin`]} component={ Home } />
-        <PrivateRoute path={`/submission`} component={ Submission } />
-        <PrivateRoute path={`/leaderboard`} component={ Leaderboard } />
-        <PrivateRoute path={`/announcement`} component={ WinnerAnnouncement } />
+        <Route path={`/submission`} component={ Submission } />
+        <Route path={`/winners`} component={ TopThreeWinnersPage } />
+        <Route path={`/ranking`} component={ RangkingPage } />
+        <Route path={`/announcement`} component={ WinnerAnnouncementPage } />
       </Switch>
     </>
   );
