@@ -34,7 +34,7 @@ export const VideoPage = () => {
     }, [])
 
     return (
-        <section style={{ width: '100%' }}>
+        <section className="custom-bg" style={{paddingTop: '7%', width: '100%' }}>
             <div className="card" style={{ margin: '0 25%', width: "opts.width", maxWidth: '40%' }}>
                 <div className="card-body">
                     <h5 className="card-title">Daily Winner Stream!</h5>
