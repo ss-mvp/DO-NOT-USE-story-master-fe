@@ -1,23 +1,14 @@
 [
-    {
-        "id": "p1",
-        "section": {
-            "subtitle": "Ever Story Master Has a Story",
-            "description": "Every day a writing prompt is released, you write a story and submit to enter."
-        }
-    },
-    {
-        "id": "p2",
-        "section": {
-            "subtitle": "Unleash your creativity",
-            "description": "Traditional pen and paper writing is never out of style. Show us what you've got!"
-        }
-    },
-    {
-        "id": "p3",
-        "section": {
-            "subtitle": "Vote for your favorite stories",
-            "description": "You can read other's submission and vote for your favorite one! Winners are announced daily!"
-        }
+  {
+    "id": "p1",
+    "section": {
+      "description": "Sign up to get new story-writing prompts every day. Then scribble down a single page story and upload it by 3PM EST."
     }
+  },
+  {
+    "id": "p2",
+    "section": {
+      "description": "Finalists announced around 3:30PM EST and the winner of the popular vote gets crowned around 6PM EST. Unleash your creativity & sign up today!"
+    }
+  }
 ]
