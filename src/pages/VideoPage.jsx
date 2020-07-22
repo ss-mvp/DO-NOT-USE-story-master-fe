@@ -6,7 +6,10 @@ import YouTube from 'react-youtube';
 
 export const VideoPage = () => {
 
-    const [video_id, setVideoId] = useState('');
+    const [video, setVideo] = useState({
+        video_id: '',
+        video_link: ''
+    });
 
     const opts = {
         height: '390',
@@ -23,22 +26,21 @@ export const VideoPage = () => {
     }
 
     useEffect(() => {
-        AxiosWithAuth().get('admin/video')
+        AxiosWithAuth().get('upload/video')
         .then(response => {
-            console.log(response.data);
+            setVideo(response.data.returnPackage)
         })
         .catch(err => console.log(err))
-    })
+    }, [])
 
     return (
         <section style={{ width: '100%' }}>
             <div className="card" style={{ margin: '0 25%', width: "opts.width", maxWidth: '40%' }}>
                 <div className="card-body">
                     <h5 className="card-title">Daily Winner Stream!</h5>
-                    <h6 className="card-subtitle mb-2"><YouTube videoId="2g811Eo7K8U" opts={opts} onReady={_onReady} /></h6>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
+                    <h6 className="card-subtitle mb-2"><YouTube videoId={video.video_id} opts={opts} onReady={_onReady} /></h6>
+                    <p className="card-text">Top Three stories picked daily!</p>
+                    <a href={video.video_link} className="card-link">Open on YouTube.com</a>
                 </div>
             </div>
         </section>
