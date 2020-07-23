@@ -9,7 +9,7 @@ export function Ranking(props) {
     const [selection, setSelection] = useState([])
 
     useEffect(()=> {
-        AxiosWithAuth().get("/ranking/")
+        AxiosWithAuth().get("/ranking")
             .then(res => { 
                 let response = res.data
                 setWinners(response)
@@ -24,9 +24,9 @@ export function Ranking(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         let requestBody = [
-            { "rank": 1, "topThreeId": parseInt(selection.rank1) },
-            { "rank": 2, "topThreeId": parseInt(selection.rank1) },
-            { "rank": 3, "topThreeId": parseInt(selection.rank1) },
+            { "rank": 1, "topthree_id": parseInt(selection.rank1) },
+            { "rank": 2, "topthree_id": parseInt(selection.rank1) },
+            { "rank": 3, "topthree_id": parseInt(selection.rank1) },
         ]
 
         AxiosWithAuth().post("ranking", requestBody)
