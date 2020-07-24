@@ -6,7 +6,7 @@ export function TopThreeWinnersPage() {
     <div className="custom-bg d-flex justify-content-center align-items-center">
       <section className="topthreewinner text-center container-sm">
         <Navbar />
-        <h2 className="text-primary m-5">Top Three Winners</h2>
+        <h2 className="text-center">Top Three Winners</h2>
         <WinnerBoard />
       </section>
     </div>
