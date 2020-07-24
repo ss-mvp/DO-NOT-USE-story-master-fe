@@ -24,7 +24,7 @@ export function Submission() {
       <div className="custom-bg d-flex justify-content-center align-items-center">
         <div className="container-sm">
           <Navbar />
-          <h2 className="text-center">Daily Writing Contest</h2>
+          <h2 className="text-center m-5">Daily Writing Contest</h2>
           <PromptComponent prompt={prompt} />
           <SubmissionForm promptId={id} />
 

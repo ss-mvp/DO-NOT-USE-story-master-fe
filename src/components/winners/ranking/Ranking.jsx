@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TopThree from './TopThreeRanking'
 import { AxiosWithAuth } from '../../../utils'
+import StoryModal from '../modals/StoryModals'
 
 export function Ranking(props) {
 
@@ -23,21 +24,30 @@ export function Ranking(props) {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        let requestBody = [
-            { "rank": 1, "topthree_id": parseInt(selection.rank1) },
-            { "rank": 2, "topthree_id": parseInt(selection.rank1) },
-            { "rank": 3, "topthree_id": parseInt(selection.rank1) },
-        ]
-
-        AxiosWithAuth().post("ranking", requestBody)
-            .then(res => {
-                props.history.push("/announcement")
-            })
-            .catch(err => setError(err))
+        let isDup = [...new Set([parseInt(selection.rank1), parseInt(selection.rank2), parseInt(selection.rank3)])]
+        console.log(isDup)
+        if (isDup.length === 3){
+            let requestBody = [
+                { "rank": 1, "topthree_id": parseInt(selection.rank1) },
+                { "rank": 2, "topthree_id": parseInt(selection.rank2) },
+                { "rank": 3, "topthree_id": parseInt(selection.rank3) },
+            ]
+            AxiosWithAuth().post("ranking", requestBody)
+                .then(res => {
+                    props.history.push("/announcement")
+                })
+                .catch(err => {
+                    console.log(err)
+                    setError(err)
+                })
+        } else {
+            setError({ message: "DUPLICATE VALUE DETECTED, please select your favorite 1, 2, 3" })
+        }
     }
 
     return (
         <div>
+            { winners && winners.map(el => <StoryModal username={el.username} image={el.image } />)}
             <form onSubmit={ handleSubmit }>
                 {console.log(winners)}
                 {!winners && <></>}
