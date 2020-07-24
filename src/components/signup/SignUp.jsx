@@ -26,7 +26,7 @@ export function SignUp(props) {
     };
     axios
       .post("https://ss-mvp.herokuapp.com/email/register", sendUser)
-//       .post("http://localhost:5000/email/register", sendUser)
+      // .post("http://localhost:5000/email/register", sendUser)
       .then(() => {
         alert("New user registered. Please activate your email.");
       })
