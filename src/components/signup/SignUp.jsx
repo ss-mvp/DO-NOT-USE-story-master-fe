@@ -35,10 +35,10 @@ export function SignUp(props) {
 
   return (
     <>
-      <h2 className="text-center mb-5 display-4">Sign Up</h2>
+      <h2 className="text-center mb-5">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">
-          <div className="form-group ">
+        <div className="form-group">
             <input
               required
               type="text"
@@ -49,27 +49,16 @@ export function SignUp(props) {
             />
             <label>Username</label>
           </div>
-          <div className="form-group ">
+          <div className="form-group">
             <input
               required
-              type="text"
+              type="email"
               name="email"
               className="form-control"
               value={newUser.email}
               onChange={handleChanges}
             />
             <label>Email</label>
-          </div>
-          <div className="form-group">
-            <input
-              required
-              type="text"
-              name="username"
-              className="form-control"
-              value={newUser.username}
-              onChange={handleChanges}
-            />
-            <label>Username</label>
           </div>
           <div className="form-group">
             <input
@@ -100,29 +89,26 @@ export function SignUp(props) {
             <p style={{ color: "red" }}>Passwords do not match</p>
           ) : null}
           <button
-            disabled={newUser.password !== newUser.confirm}
-            className=" mb-3 btn btn-primary font-weight-bold pt-3 pb-3 mr-4 ml-4"
-            style={{ fontSize: "24px" }}
-            type="submit"
-          >
-            Sign Up
-          </button>
-          <p className="w-75 ml-4">
-            By clicking the “Sign Up” button above, you agree to the
-            <Link to={`/signin`}>Terms & Conditions</Link> and
-            <Link to={`/signin`}>Privacy Policy</Link>.
-          </p>
-          <button
-            style={{ fontSize: "24px" }}
-            className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5"
-          >
-            Just want to Vote?
-          </button>
-        </div>
-        <p className="w-80 ml-4" style={{ fontSize: "18px" }}>
-          Already have an account? Click here to
-          <Link to={`/signin`}> Sign In</Link>
-        </p>
+              disabled={newUser.password !== newUser.confirm}
+              className=" mb-3 btn btn-primary font-weight-bold pt-3 pb-3 mr-4 ml-4"
+              style={{ fontSize: "24px" }}
+              type="submit"
+            >
+              Sign Up
+            </button>
+          {/* <p>
+            Already have an account? Click here to{" "}<Link to={`/Login`}>sign in</Link>
+          </p> */}
+          <div className="ml-4">
+            By clicking the “Sign Up” button above, you agree to the <Link to={`/signin`}>Terms & Conditions</Link> and <Link to={`/signin`}>Privacy Policy</Link>.  Already have an account? Click here to{" "}<Link to={`/signin`}>sign in</Link>
+          </div>
+            <button
+              style={{ fontSize: "24px" }}
+              className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5"
+            >
+              Just want to Vote?
+            </button>
+          </div>
       </form>
     </>
   );

@@ -1,4 +1,171 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Source+Sans+Pro:wght@400;700;900&display=swap");
+/* START TEST FORM CSS */
+
+/* @charset "UTF-8"; */
+/* @import url("https://fonts.googleapis.com/css?family=Berkshire+Swash|Open+Sans&display=swap"); */
+/* h1, h2 {
+  font-family: "Berkshire Swash", cursive;
+} */
+
+.custom-border {
+  border: 3px solid #584CFF;
+  overflow: hidden;
+}
+
+.prompt-border {
+  border: 3px solid #584CFF;
+  border-radius: 10px;
+}
+
+/* .custom-bg {
+  min-height: 90vh;
+  background: url("../images/storymasterbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+.form-group > label {
+  bottom: 34px;
+  left: 15px;
+  position: relative;
+  background-color: white;
+  padding: 0px 5px 0px 5px;
+  font-size: 1.1em;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.form-control:focus ~ label {
+  bottom: 55px;
+}
+
+.form-control:valid ~ label {
+  bottom: 55px;
+}
+
+@media (max-width: 767.98px) {
+  body {
+    /* background: url("../images/storymasterbg.png"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding-top: 30px;
+  }
+
+  .custom-bg {
+    background: none;
+    height: inherit;
+  }
+
+  .custom-border{
+    border: 0px
+  }
+}
+/*!
+ * Bootstrap v4.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #584CFF;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: 0 !important;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+abbr[title],
+abbr[data-original-title] {
+  text-decoration: underline;
+  text-decoration: underline dotted;
+  cursor: help;
+  border-bottom: 0;
+  text-decoration-skip-ink: none;
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+
+/* END CSS */
+
 .ss-title {
   font-family: "Bangers", cursive; }
 
