@@ -38,10 +38,21 @@ export function SignUp(props) {
       <h2 className="text-center mb-5">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">
-          <div className="form-group">
+        <div className="form-group">
             <input
               required
               type="text"
+              name="username"
+              className="form-control"
+              value={newUser.username}
+              onChange={handleChanges}
+            />
+            <label>Username</label>
+          </div>
+          <div className="form-group">
+            <input
+              required
+              type="email"
               name="email"
               className="form-control"
               value={newUser.email}

@@ -44,21 +44,21 @@ export function CountDownClock() {
     const [end, setEnd] = useState();
     const [newGame, setNewGame] = useState();
     const [now, setNow] = useState(Date.parse(new Date()));
-    const newTime = Date.parse(new Date())
+    // const newTime = Date.parse(new Date())
     
     useEffect(() => {
         AxiosWithAuth().get('upload/time')
         .then(response => {
-            setTime(Date.parse(response.data.time.start.time));
-            setEnd(Date.parse(response.data.time.end.end));
-            setNewGame(Date.parse(response.data.time.newGame.newGame));
+            setTime(response.data.time.start.time);
+            setEnd(response.data.time.end.end);
+            setNewGame(response.data.time.newGame.newGame);
         })
         .catch(err => console.log(err))
     }, [])
+
     return (
         <>
-            { !time && <></>}
-            { time && (now > time) && (now < end) && <Countdown date={end} renderer={renderer} /> }
+            {time && end && newGame ? <Countdown date={parseInt(end)} renderer={renderer} /> : null }
             {/* <Countdown date={newGame} renderer={newRenderer} /> */}
         </>
     )
