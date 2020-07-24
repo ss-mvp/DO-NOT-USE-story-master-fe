@@ -21,16 +21,16 @@ export function SignIn() {
     e.preventDefault();
     axios
       .get(
-        // `https://ss-mvp.herokuapp.com/email/activation/${credentials.email}`
-        `http://localhost:5000/email/activation/${credentials.email}`
+        `https://ss-mvp.herokuapp.com/email/activation/${credentials.email}`
+        // `http://localhost:5000/email/activation/${credentials.email}`
       )
       .then((validation) => {
         console.log(validation);
         setActivated(validation.data.validated);
         if (validation.data.validated === true) {
           axios
-            // .post("https://ss-mvp.herokuapp.com/email/login", credentials)
-            .post("http://localhost:5000/email/login", credentials)
+            .post("https://ss-mvp.herokuapp.com/email/login", credentials)
+            // .post("http://localhost:5000/email/login", credentials)
             .then((response) => {
               localStorage.setItem("token", response.data.token);
             });
