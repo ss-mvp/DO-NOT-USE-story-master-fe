@@ -12,7 +12,7 @@ An mini application of a story writing application - Story Squad, where you can 
 * The story will then be calculated using readability algorithms
 * Admin will then pick top 3 stories out of 10
 * Public audience and registered users will be able to vote for their favorite stories
-* The Winner will be announced through livestream and only registered users will be able to see who the winnter of the day is
+* The Winner will be announced through livestream and only registered users will be able to see who the winner of the day is
 
 
 
