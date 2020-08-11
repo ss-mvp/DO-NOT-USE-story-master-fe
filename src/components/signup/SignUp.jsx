@@ -10,6 +10,8 @@ export function SignUp(props) {
     confirm: "",
   });
 
+  const [error, setError] = useState('')
+
   const handleChanges = (e) => {
     setNewUser({
       ...newUser,
@@ -30,7 +32,13 @@ export function SignUp(props) {
       .then(() => {
         alert("New user registered. Please activate your email.");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log('error', err.message)
+        //if server returns a 400 error, duplicate info was submitted and that user already exists
+        if (err.message.match(/[400]/)){
+          setError('User already exists. Please sign in.')
+        }
+      });
   };
 
   return (
@@ -88,6 +96,7 @@ export function SignUp(props) {
           {newUser.password !== newUser.confirm ? (
             <p style={{ color: "red" }}>Passwords do not match</p>
           ) : null}
+          {error && <p style={{ color: "red", textAlign: 'center' }}>{error}</p>}
           <button
               disabled={newUser.password !== newUser.confirm}
               className=" mb-3 btn btn-primary font-weight-bold pt-3 pb-3 mr-4 ml-4"
