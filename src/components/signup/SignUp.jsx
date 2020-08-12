@@ -104,12 +104,13 @@ export function SignUp(props) {
           </div>
           </div>
       </form>
-      <a href={`/ranking`}><button
-              style={{ fontSize: "24px" }}
-              className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5"
-            >
-              Just want to Vote?
-            </button></a>
+      <a href={`/ranking`}>
+        <button
+          style={{ fontSize: "24px" }}
+          className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5">
+            Just want to Vote?
+        </button>
+      </a>
     </>
   );
 }
