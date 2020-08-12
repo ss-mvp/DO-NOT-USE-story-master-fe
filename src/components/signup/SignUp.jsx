@@ -42,7 +42,7 @@ export function SignUp(props) {
   };
 
   return (
-    <>
+    <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center'}}>
       <h2 className="text-center mb-5">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">
@@ -111,14 +111,15 @@ export function SignUp(props) {
           <div className="ml-4">
             By clicking the “Sign Up” button above, you agree to the <Link to={`/signin`}>Terms & Conditions</Link> and <Link to={`/signin`}>Privacy Policy</Link>.  Already have an account? Click here to{" "}<Link to={`/signin`}>sign in</Link>
           </div>
+            
+          </div>
+      </form>
             <button
-              style={{ fontSize: "24px" }}
+              style={{ fontSize: "24px"}}
               className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5"
             >
               Just want to Vote?
             </button>
-          </div>
-      </form>
-    </>
+    </div>
   );
 }
