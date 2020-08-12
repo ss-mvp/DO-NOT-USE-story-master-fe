@@ -10,6 +10,8 @@ export function SignUp(props) {
     confirm: "",
   });
 
+  const [error, setError] = useState('')
+
   const handleChanges = (e) => {
     setNewUser({
       ...newUser,
@@ -30,11 +32,17 @@ export function SignUp(props) {
       .then(() => {
         alert("New user registered. Please activate your email.");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log('error', err.message)
+        //if server returns a 400 error, duplicate info was submitted and that user already exists
+        if (err.message.match(/[400]/)){
+          setError('User already exists. Please sign in.')
+        }
+      });
   };
 
   return (
-    <>
+    <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center'}}>
       <h2 className="text-center mb-5">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">
@@ -88,6 +96,7 @@ export function SignUp(props) {
           {newUser.password !== newUser.confirm ? (
             <p style={{ color: "red" }}>Passwords do not match</p>
           ) : null}
+          {error && <p style={{ color: "red", textAlign: 'center' }}>{error}</p>}
           <button
               disabled={newUser.password !== newUser.confirm}
               className=" mb-3 btn btn-primary font-weight-bold pt-3 pb-3 mr-4 ml-4"
@@ -102,14 +111,15 @@ export function SignUp(props) {
           <div className="ml-4">
             By clicking the “Sign Up” button above, you agree to the <Link to={`/signin`}>Terms & Conditions</Link> and <Link to={`/signin`}>Privacy Policy</Link>.  Already have an account? Click here to{" "}<Link to={`/signin`}>sign in</Link>
           </div>
+            
+          </div>
+      </form>
             <button
-              style={{ fontSize: "24px" }}
+              style={{ fontSize: "24px"}}
               className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5"
             >
               Just want to Vote?
             </button>
-          </div>
-      </form>
-    </>
+    </div>
   );
 }
