@@ -26,7 +26,9 @@ export function SignUp(props) {
       username: newUser.username,
       password: newUser.password,
     };
-    axios
+    //checks if password is required length with required elements before submitting to server
+    if(validatePassword(newUser.password)){
+      axios
       .post("https://ss-mvp.herokuapp.com/email/register", sendUser)
       // .post("http://localhost:5000/email/register", sendUser)
       .then(() => {
@@ -39,7 +41,20 @@ export function SignUp(props) {
           setError('User already exists. Please sign in.')
         }
       });
+    }
   };
+
+  //validates that password contains letters and numbers, and length is between 8 and 32
+  const validatePassword = (pass) => {
+    let letterRegex = /[a-z]/gi;
+    let nums = /[0-9]/g
+    if(!pass.match(letterRegex) || !pass.match(nums) || pass.length < 8 || pass.length > 32){
+      setError("password must be between 8 and 32 characters in length and contain both letters and numbers")
+    } else{
+      setError("")
+      return pass;
+    }
+  }
 
   return (
     <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center'}}>
