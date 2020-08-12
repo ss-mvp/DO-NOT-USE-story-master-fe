@@ -25,8 +25,8 @@ export function SignUp(props) {
       password: newUser.password,
     };
     axios
-      .post("https://ss-mvp.herokuapp.com/email/register", sendUser)
-      // .post("http://localhost:5000/email/register", sendUser)
+      // .post("https://ss-mvp.herokuapp.com/email/register", sendUser)
+      .post("http://localhost:5000/email/register", sendUser)
       .then(() => {
         alert("New user registered. Please activate your email.");
       })
@@ -102,14 +102,14 @@ export function SignUp(props) {
           <div className="ml-4">
             By clicking the “Sign Up” button above, you agree to the <Link to={`/signin`}>Terms & Conditions</Link> and <Link to={`/signin`}>Privacy Policy</Link>.  Already have an account? Click here to{" "}<Link to={`/signin`}>sign in</Link>
           </div>
-            <button
+          </div>
+      </form>
+      <a href={`/ranking`}><button
               style={{ fontSize: "24px" }}
               className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5"
             >
               Just want to Vote?
-            </button>
-          </div>
-      </form>
+            </button></a>
     </>
   );
 }
