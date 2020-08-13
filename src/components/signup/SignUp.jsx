@@ -9,6 +9,7 @@ export function SignUp(props) {
     password: "",
     confirm: "",
     age: "",
+    parentEmail: "",
   });
 
   const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : 'https://ss-mvp.herokuapp.com'
@@ -27,6 +28,8 @@ export function SignUp(props) {
       email: newUser.email,
       username: newUser.username,
       password: newUser.password,
+      age: newUser.age,
+      parentEmail: newUser.parentEmail,
     };
     //checks if password is required length with required elements before submitting to server
     if(validatePassword(newUser.password)){
@@ -126,6 +129,19 @@ export function SignUp(props) {
             />
             <label>Age</label>
           </div>
+          {newUser.age && parseInt(newUser.age) < 13 && (
+            <div className="form-group">
+              <input
+                required
+                type="email"
+                name="parentEmail"
+                value={newUser.parentEmail}
+                className="form-control"
+                onChange={handleChanges}
+              />
+              <label>Parent Email</label>
+            </div>
+          )}
           {error && <p style={{ color: "red", textAlign: 'center' }}>{error}</p>}
           <button
               disabled={newUser.password !== newUser.confirm}
