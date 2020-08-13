@@ -28,7 +28,7 @@ export function SignUp(props) {
       email: newUser.email,
       username: newUser.username,
       password: newUser.password,
-      age: newUser.age,
+      age: parseInt(newUser.age),
       parentEmail: newUser.parentEmail,
     };
     //checks if password is required length with required elements before submitting to server
