@@ -7,7 +7,8 @@ import {
   TopThreeWinnersPage,
   RangkingPage,
   WinnerAnnouncementPage,
-  VideoPage
+  VideoPage,
+  Activated
 } from './pages'
 
 
@@ -16,6 +17,7 @@ function App() {
     <>
       <Switch>
         <Route exact path={[`/`,`/signin`]} component={ Home } />
+        <Route path={`/activated/:token`} component={ Activated } />
         <Route path={`/submission`} component={ Submission } />
         <Route path={`/winners`} component={ TopThreeWinnersPage } />
         <Route path={`/ranking`} component={ RangkingPage } />
