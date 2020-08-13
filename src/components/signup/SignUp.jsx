@@ -10,8 +10,9 @@ export function SignUp(props) {
     confirm: "",
   });
 
+  const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : 'https://ss-mvp.herokuapp.com'
   const [error, setError] = useState('')
-
+  console.log('baseUrl', baseUrl)
   const handleChanges = (e) => {
     setNewUser({
       ...newUser,
@@ -29,7 +30,7 @@ export function SignUp(props) {
     //checks if password is required length with required elements before submitting to server
     if(validatePassword(newUser.password)){
       axios
-      .post("https://ss-mvp.herokuapp.com/email/register", sendUser)
+      .post(`${baseUrl}/email/register`, sendUser)
       // .post("http://localhost:5000/email/register", sendUser)
       .then(() => {
         alert("New user registered. Please activate your email.");
