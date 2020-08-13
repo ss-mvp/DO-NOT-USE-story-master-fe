@@ -9,7 +9,9 @@ export function SignIn() {
   });
   const [activated, setActivated] = useState(false);
 
+  const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : 'https://ss-mvp.herokuapp.com'
   const history = useHistory();
+  console.log('baseUrl', baseUrl)
 
   const handleChanges = (e) => {
     setCredentials({
@@ -21,7 +23,8 @@ export function SignIn() {
     e.preventDefault();
     axios
       .get(
-        `https://ss-mvp.herokuapp.com/email/activation/${credentials.email}`
+        `${baseUrl}/email/activation/${credentials.email}`
+        // `https://ss-mvp.herokuapp.com/email/activation/${credentials.email}`
         // `http://localhost:5000/email/activation/${credentials.email}`
       )
       .then((validation) => {
@@ -29,7 +32,8 @@ export function SignIn() {
         setActivated(validation.data.validated);
         if (validation.data.validated === true) {
           axios
-            .post("https://ss-mvp.herokuapp.com/email/login", credentials)
+            .post(`${baseUrl}/email/login`, credentials)
+            // .post("https://ss-mvp.herokuapp.com/email/login", credentials)
             // .post("http://localhost:5000/email/login", credentials)
             .then((response) => {
               localStorage.setItem("token", response.data.token);
