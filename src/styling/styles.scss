@@ -56,4 +56,24 @@ $font-family-base: $sourcesans;
   border-radius: 0.25rem;
 }
 
+.countDiv {
+  background: white;
+  width: 80%;
+  margin: 4% auto;
+  border-radius: 0.25rem;
+  text-align: center;
+  padding: 4%;
+}
+
+.clock {
+  font-size: 2.8rem;
+  color: #429cb5;
+  margin: 0;
+}
+
+.currentInstruction {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
