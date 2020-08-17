@@ -2,16 +2,15 @@
 
 //definition
 
-$bostonblue: #429CB5;
+$bostonblue: #429cb5;
 $bangers: 'Bangers', cursive;
 $sourcesans: 'Source Sans Pro', sans-serif;
 
 $theme-colors: (
-  "primary": $bostonblue,
+  'primary': $bostonblue,
 );
 
 $font-family-base: $sourcesans;
-
 
 //custom classes
 
@@ -21,16 +20,16 @@ $font-family-base: $sourcesans;
 
 .custom-bg {
   height: 100vh;
-  background: url("../assets/storysquad.svg");
+  background: url('../assets/storysquad.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .custom-border {
-    border: 3px solid #429CB5;
-    overflow: hidden;
-  }
+  border: 3px solid #429cb5;
+  overflow: hidden;
+}
 
 .prompt {
   max-width: 650px;
@@ -40,4 +39,21 @@ $font-family-base: $sourcesans;
   max-width: 900px;
 }
 
-@import "../../node_modules/bootstrap/scss/bootstrap.scss"
+.dashboard-title {
+  text-align: center;
+  font-weight: 600;
+  margin: 4% auto;
+}
+
+.now {
+  background: #429cb5;
+  font-weight: 400;
+  font-size: 1.5rem;
+  border: none;
+  color: white;
+  padding: 4%;
+  width: 80%;
+  border-radius: 0.25rem;
+}
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
