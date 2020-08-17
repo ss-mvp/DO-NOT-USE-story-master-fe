@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { AxiosWithAuth } from "../utils";
+import { AxiosWithAuth, SEO } from "../utils";
 import { PromptComponent, SubmissionForm, Navbar } from "../components";
 import { CountDownClock } from "../components/clock/CountDownClock";
 
-export function Submission() {
+export function Submission(props) {
   const [prompt, setPrompt] = useState();
   const [id, setId] = useState();
 
@@ -21,6 +21,7 @@ export function Submission() {
 
   return (
     <>
+      <SEO title="Submission" path={props.match.path} />
       <div className="custom-bg d-flex justify-content-center align-items-center">
         <div className="container-sm">
           <Navbar />
