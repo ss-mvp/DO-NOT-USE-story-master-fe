@@ -6,6 +6,7 @@ export default function Navbar() {
   const history = useHistory();
   const location = useLocation().pathname;
 
+  const [username, setUsername] = useState('');
   const [checked, setChecked] = useState(false);
 
   const unCheck = () => {
@@ -14,9 +15,14 @@ export default function Navbar() {
 
   useEffect(() => {
     unCheck();
+    if (localStorage.getItem('username') && username === '') {
+      setUsername(localStorage.getItem('username'));
+    }
   }, [location]);
+
+  useEffect(() => {}, []);
   return (
-    <div className="navContainer" style={{ border: '1px solid red' }}>
+    <div className="mobileNavContainer">
       <input
         type="checkbox"
         className="blue"
@@ -28,7 +34,7 @@ export default function Navbar() {
       <label htmlFor="menu" className="icon">
         <div className="menu"></div>
       </label>
-      <nav>
+      <nav className="mobilenav">
         <p
           style={{
             position: 'absolute',
@@ -37,7 +43,7 @@ export default function Navbar() {
             fontSize: '25px',
           }}
         >
-          Username
+          {username}
         </p>
         <div>
           <h1 style={{ fontFamily: "'Bangers', cursive" }}>Story Squad</h1>
@@ -64,6 +70,7 @@ export default function Navbar() {
             to="/signin"
             onClick={() => {
               localStorage.clear();
+              setUsername('');
             }}
           >
             <h3>Logout</h3>

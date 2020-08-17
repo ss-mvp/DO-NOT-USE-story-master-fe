@@ -76,4 +76,16 @@ $font-family-base: $sourcesans;
   margin: 0;
 }
 
+@media (max-width: 970px) {
+  .custom-bg {
+    background-position-x: 80%;
+  }
+}
+
+@media (max-width: 430px) {
+  .mobile-padding {
+    padding-top: 150px;
+  }
+}
+
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
