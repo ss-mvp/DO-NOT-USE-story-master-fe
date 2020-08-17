@@ -2,8 +2,8 @@ import React from "react"
 import { Helmet } from "react-helmet"
 
 // update this once we have custom URL configured
-const BASE_URL = "http://localhost:3000" 
-// const BASE_URL = "https://storysquad.app"
+// const DEPLOYED_URL = "http://localhost:3000"
+const DEPLOYED_URL = "https://storysquad.app"
 
 export const SEO = ({
     title = "",
@@ -26,12 +26,12 @@ export const SEO = ({
 
             <meta name="twitter:creator" content="@story_hq" />
 
-            <meta property="og:image" content={BASE_URL + "/logo512.png"} />
-            <meta name="twitter:image" content={BASE_URL + "/logo512.png"} />
+            <meta property="og:image" content={DEPLOYED_URL + "/logo512.png"} />
+            <meta name="twitter:image" content={DEPLOYED_URL + "/logo512.png"} />
 
             {meta.map((props, i) => <meta key={i} {...props} />)}
 
-            <link rel="canonical" href={BASE_URL + path} />
+            <link rel="canonical" href={DEPLOYED_URL + path} />
         </Helmet>
     )
 }
