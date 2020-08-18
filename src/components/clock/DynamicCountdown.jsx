@@ -3,7 +3,7 @@ import Countdown from 'react-countdown';
 import moment from 'moment';
 import { AxiosWithAuth } from '../../utils/AxiosWithAuth';
 
-export default function DynamicCountdown({ setCurrent }) {
+export default function DynamicCountdown({ setCurrent, current }) {
   const [time, setTime] = useState();
   const [end, setEnd] = useState();
   const [newGame, setNewGame] = useState();
@@ -18,9 +18,9 @@ export default function DynamicCountdown({ setCurrent }) {
   //development time slots, counted backwards from the end of the game, since the server does not give timeframes for individual events
   const subEndVoteStart = moment(Number(end)).subtract({
     hours: 9,
-    minutes: 49,
+    minutes: 5,
   });
-  const voteEndTime = moment(Number(end)).subtract({ hours: 9, minutes: 34 });
+  const voteEndTime = moment(Number(end)).subtract({ hours: 9, minutes: 0 });
   const winnerTime = Number(end);
 
   useEffect(() => {
@@ -108,9 +108,14 @@ export default function DynamicCountdown({ setCurrent }) {
   };
   return (
     <>
-      {time && end && newGame ? (
-        <Countdown date={countdown} renderer={renderer} />
-      ) : null}
+      {current < 2 && (
+        <div className="countDiv d-flex justify-content-center align-items-center flex-column">
+          {time && end && newGame ? (
+            <Countdown date={Number(countdown)} renderer={renderer} />
+          ) : null}
+          <p className="currentInstruction">{routes[current].subtitle}</p>
+        </div>
+      )}
     </>
   );
 }

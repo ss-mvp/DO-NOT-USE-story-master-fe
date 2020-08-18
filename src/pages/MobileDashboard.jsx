@@ -11,12 +11,7 @@ export function MobileDashboard({ current, setCurrent, navigate, routes }) {
       <button className="now" onClick={navigate}>
         {routes[current].btnText}
       </button>
-      {current < 2 && (
-        <div className="countDiv d-flex justify-content-center align-items-center flex-column">
-          <DynamicCountdown current={current} setCurrent={setCurrent} />
-          <p className="currentInstruction">{routes[current].subtitle}</p>
-        </div>
-      )}
+      <DynamicCountdown current={current} setCurrent={setCurrent} />
       <p style={{ marginTop: '4%' }}>
         Check out the most recent winners <Link to="/winners">here.</Link>{' '}
       </p>
