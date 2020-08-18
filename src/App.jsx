@@ -12,6 +12,7 @@ import {
   MobileDashboard,
 } from './pages';
 import MobileNavbar from './components/nav/MobileNavbar';
+import DashboardContainer from './pages/DashboardContainer';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <Switch>
         <Route exact path={[`/`, `/signin`]} component={Home} />
         <Route path={`/activated/:token`} component={Activated} />
-        <Route path={`/mobiledash`} component={MobileDashboard} />
+        <Route path={`/mobiledash`} component={DashboardContainer} />
         <Route path={`/submission`} component={Submission} />
         <Route path={`/winners`} component={TopThreeWinnersPage} />
         <Route path={`/ranking`} component={RangkingPage} />

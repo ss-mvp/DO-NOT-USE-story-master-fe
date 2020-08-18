@@ -76,9 +76,23 @@ $font-family-base: $sourcesans;
   margin: 0;
 }
 
+.desktopDash {
+  display: block;
+}
+
+.mobileDash {
+  display: none;
+}
+
 @media (max-width: 970px) {
   .custom-bg {
     background-position-x: 80%;
+  }
+  .desktopDash {
+    display: none;
+  }
+  .mobileDash {
+    display: block;
   }
 }
 
