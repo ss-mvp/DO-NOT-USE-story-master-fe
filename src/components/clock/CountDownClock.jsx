@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import Countdown from "react-countdown";
-import { AxiosWithAuth } from '../../utils'
+import React, { useState, useEffect } from 'react';
+import Countdown from 'react-countdown';
+import { AxiosWithAuth } from '../../utils';
 
 // const schedule = {
 //     submissionDeadline: moment().hour(15),
@@ -10,56 +10,66 @@ import { AxiosWithAuth } from '../../utils'
 //     newPrompt: moment().hour(22).minute(30)
 // }
 
-const Completionist = () => <span>Game is over until 10:30PM.</span>
-const NewCompletionist = () => <span>Game running until 3:00PM</span>
+const Completionist = () => <span>Game is over until 10:30PM.</span>;
+const NewCompletionist = () => <span>Game running until 3:00PM</span>;
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
-    // console.log(completed)
-    if (completed) {
-        return <Completionist />;
-    } else {
-        return (
-            <span>
-                <h2>Game is over in {hours} hours, {minutes} minutes and {seconds} seconds.</h2>
-            </span>
-        )
-    }
-}
+  // console.log(completed)
+  if (completed) {
+    return <Completionist />;
+  } else {
+    return (
+      <span>
+        <h2>
+          Game is over in {hours} hours, {minutes} minutes and {seconds}{' '}
+          seconds.
+        </h2>
+      </span>
+    );
+  }
+};
 
 const newRenderer = ({ hours, minutes, seconds, completed }) => {
-    if (completed) {
-        return <NewCompletionist />;
-    } else {
-        return (
-            <span>
-                <h2>New game starts in {hours} hours, {minutes} minutes and {seconds} seconds.</h2>
-            </span>
-        )
-    }
-}
+  if (completed) {
+    return <NewCompletionist />;
+  } else {
+    return (
+      <span>
+        <h2>
+          New game starts in {hours} hours, {minutes} minutes and {seconds}{' '}
+          seconds.
+        </h2>
+      </span>
+    );
+  }
+};
 
 export function CountDownClock() {
+  const [time, setTime] = useState();
+  const [end, setEnd] = useState();
+  const [newGame, setNewGame] = useState();
+  const [now, setNow] = useState(Date.parse(new Date()));
+  // const newTime = Date.parse(new Date())
 
-    const [time, setTime] = useState();
-    const [end, setEnd] = useState();
-    const [newGame, setNewGame] = useState();
-    const [now, setNow] = useState(Date.parse(new Date()));
-    // const newTime = Date.parse(new Date())
-    
-    useEffect(() => {
-        AxiosWithAuth().get('upload/time')
-        .then(response => {
-            setTime(response.data.time.start.time);
-            setEnd(response.data.time.end.end);
-            setNewGame(response.data.time.newGame.newGame);
-        })
-        .catch(err => console.log(err))
-    }, [])
+  console.log('end', end);
 
-    return (
-        <>
-            {time && end && newGame ? <Countdown date={parseInt(end)} renderer={renderer} /> : null }
-            {/* <Countdown date={newGame} renderer={newRenderer} /> */}
-        </>
-    )
+  useEffect(() => {
+    AxiosWithAuth()
+      .get('upload/time')
+      .then((response) => {
+        setTime(response.data.time.start.time);
+        setEnd(response.data.time.end.end);
+        setNewGame(response.data.time.newGame.newGame);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <>
+      {time && end && newGame ? (
+        <Countdown date={parseInt(end)} renderer={renderer} />
+      ) : null}
+      {/* <Countdown date={newGame} renderer={newRenderer} /> */}
+    </>
+  );
 }
