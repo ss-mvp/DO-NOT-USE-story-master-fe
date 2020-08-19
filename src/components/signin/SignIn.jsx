@@ -1,19 +1,22 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 import { SEO } from "../../utils";
 
 export function SignIn(props) {
   const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [activated, setActivated] = useState(false);
 
-  const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : 'https://ss-mvp.herokuapp.com'
+  const baseUrl =
+    process.env.REACT_APP_FE_ENV === 'development'
+      ? 'http://localhost:5000'
+      : 'https://ss-mvp.herokuapp.com';
   const history = useHistory();
-  console.log('baseUrl', baseUrl)
+  console.log('baseUrl', baseUrl);
 
   const handleChanges = (e) => {
     setCredentials({
@@ -24,27 +27,23 @@ export function SignIn(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .get(
-        `${baseUrl}/email/activation/${credentials.email}`
-        // `https://ss-mvp.herokuapp.com/email/activation/${credentials.email}`
-        // `http://localhost:5000/email/activation/${credentials.email}`
-      )
+      .get(`${baseUrl}/email/activation/${credentials.email}`)
       .then((validation) => {
-        console.log(validation);
+        console.log('validation', validation);
         setActivated(validation.data.validated);
         if (validation.data.validated === true) {
-          axios
-            .post(`${baseUrl}/email/login`, credentials)
-            // .post("https://ss-mvp.herokuapp.com/email/login", credentials)
-            // .post("http://localhost:5000/email/login", credentials)
-            .then((response) => {
-              localStorage.setItem("token", response.data.token);
-            });
+          axios.post(`${baseUrl}/email/login`, credentials).then((response) => {
+            console.log('response', response);
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('username', response.data.username);
+          });
         } else {
-          alert("You need to activate your email!");
+          alert('You need to activate your email!');
         }
       });
-    history.push("/submission");
+    window.innerWidth < 970
+      ? history.push('/mobiledash')
+      : history.push('/submission');
   };
 
   return (
@@ -78,8 +77,8 @@ export function SignIn(props) {
           <button className="btn btn-primary" type="submit">
             Login
           </button>
-          <p className="text-center mt-3" style={{ fontSize: "18px" }}>
-             Don't have an account? <Link to="/">Sign Up Now!</Link>
+          <p className="text-center mt-3" style={{ fontSize: '18px' }}>
+            Don't have an account? <Link to="/">Sign Up Now!</Link>
           </p>
         </div>
       </form>
