@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet"
 
 // update this once we have custom URL configured
 // const DEPLOYED_URL = "http://localhost:3000"
-const DEPLOYED_URL = "https://storysquad.app"
+const DEPLOYED_URL = "https://daily.storysquad.app"
 
 export const SEO = ({
     title = "",
