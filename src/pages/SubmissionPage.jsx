@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AxiosWithAuth } from "../utils";
-import { PromptComponent, SubmissionForm, Navbar } from "../components";
+import { PromptComponent, SubmissionForm, Navbar, ProgressBar } from "../components";
 import { CountDownClock } from "../components/clock/CountDownClock";
 
 export function Submission() {
@@ -24,6 +24,7 @@ export function Submission() {
       <div className="custom-bg d-flex justify-content-center align-items-center">
         <div className="container-sm">
           <Navbar />
+          <ProgressBar />
           <h2 className="text-center m-5">Daily Writing Contest</h2>
           <PromptComponent prompt={prompt} />
           <SubmissionForm promptId={id} />

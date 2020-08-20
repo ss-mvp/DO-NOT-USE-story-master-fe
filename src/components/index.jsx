@@ -14,3 +14,4 @@ export * from "./winners/announcement/Announcement";
 export * from "./clock/CountDownClock";
 
 export * from "./nav/Navbar";
+export * from "./progressBar/ProgressBar";

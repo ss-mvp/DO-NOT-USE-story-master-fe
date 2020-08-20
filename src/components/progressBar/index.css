@@ -1,0 +1,39 @@
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    margin-top: 500px;
+    height: 200px;
+}
+
+.chevron {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-left: -50px;
+  }
+
+.chevron p {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 15%;
+    right: 0;
+    top: 40%; /* Adjust this value to move the positioned div up and down */
+    text-align: center;
+    width: 50%;
+    color: black;
+}
+
+  img {
+      width: 200px;
+      position: absolute;
+  }
+
+  @media(max-width:780px) {
+    .progress-container {
+        display: none;
+    }
+}

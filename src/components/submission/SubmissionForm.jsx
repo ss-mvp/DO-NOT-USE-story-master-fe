@@ -26,8 +26,8 @@ export function SubmissionForm(props) {
         formData.append("base64Image", base64Image);
         const config = { headers: { "Content-Type": "multipart/form-data" } };
         AxiosWithAuth()
-          .post("https://ss-mvp.herokuapp.com", formData, config)
-          // .post("http://localhost:5000/upload", formData, config)
+          // .post("https://ss-mvp.herokuapp.com", formData, config)
+          .post("http://localhost:5000/upload", formData, config)
     
           .then((url) => {
             setImageURL(url.data.imageUrl);
