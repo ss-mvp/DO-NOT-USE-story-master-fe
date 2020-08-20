@@ -1,0 +1,120 @@
+input#menu {
+  display: none;
+}
+
+.icon {
+  background: #fff;
+  cursor: pointer;
+  display: block;
+  height: 24px;
+  padding: 16px;
+  width: 24px;
+}
+
+label.icon {
+  position: fixed;
+  right: 25px;
+  z-index: 200;
+}
+
+.icon .menu,
+.icon .menu::before,
+.icon .menu::after {
+  background: #9fb1bd;
+  content: '';
+  display: block;
+  height: 2px;
+  position: absolute;
+  transition: background ease 0.3s, top ease 0.3s 0.3s, transform ease 0.3s;
+  width: 20px;
+}
+
+.icon:hover .menu,
+.icon:hover .menu::before,
+.icon:hover .menu::after {
+  background: #3f51b5;
+}
+
+.icon .menu {
+  left: 18px;
+  top: 27px;
+}
+
+.icon .menu::before {
+  top: -6px;
+}
+
+.icon .menu::after {
+  top: 6px;
+}
+
+#menu:checked + .icon .menu {
+  background: transparent;
+}
+
+#menu:checked + .icon .menu::before {
+  transform: rotate(45deg);
+}
+
+#menu:checked + .icon .menu::after {
+  transform: rotate(-45deg);
+}
+
+#menu:checked + .icon .menu::before,
+#menu:checked + .icon .menu::after {
+  top: 0;
+  transition: top ease 0.3s, transform ease 0.3s 0.3s;
+}
+
+.mobilenav {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 10px;
+  width: 100%;
+  padding-top: 60px;
+  position: fixed;
+  transition: height ease 0.6s;
+  z-index: 100;
+
+  overflow: hidden;
+}
+
+/*when menu selected, change the height of nav to 40vh*/
+#menu:checked ~ .mobilenav {
+  height: 50vh;
+}
+
+.mobilenav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mobilenav li {
+  cursor: pointer;
+  display: block;
+  line-height: 60px;
+  padding-left: 16px;
+  white-space: nowrap;
+}
+.mobilenav i {
+  color: #429cb5;
+  margin-right: 24px;
+  vertical-align: text-bottom;
+}
+
+.mobileNavContainer {
+  display: none;
+}
+
+.desktopNav {
+  display: block;
+}
+
+@media (max-width: 970px) {
+  .mobileNavContainer {
+    display: block;
+  }
+  .desktopNav {
+    display: none;
+  }
+}

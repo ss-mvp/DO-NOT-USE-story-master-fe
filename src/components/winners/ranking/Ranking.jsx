@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import TopThree from './TopThreeRanking'
 import { AxiosWithAuth } from '../../../utils'
 import StoryModal from '../modals/StoryModals'
@@ -8,6 +9,8 @@ export function Ranking(props) {
     const [winners, setWinners] = useState([])
     const [error, setError] = useState()
     const [selection, setSelection] = useState()
+
+    const history = useHistory()
 
     useEffect(()=> {
         AxiosWithAuth().get("/ranking")
@@ -34,7 +37,7 @@ export function Ranking(props) {
             ]
             AxiosWithAuth().post("ranking", requestBody)
                 .then(res => {
-                    props.history.push("/ranking")
+                    history.push("/dashboard")
                 })
                 .catch(err => {
                     console.log(err)
