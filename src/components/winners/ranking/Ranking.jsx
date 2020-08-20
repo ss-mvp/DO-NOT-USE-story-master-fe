@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import TopThree from './TopThreeRanking'
 import { AxiosWithAuth } from '../../../utils'
 import StoryModal from '../modals/StoryModals'
@@ -7,7 +8,9 @@ export function Ranking(props) {
 
     const [winners, setWinners] = useState([])
     const [error, setError] = useState()
-    const [selection, setSelection] = useState([])
+    const [selection, setSelection] = useState()
+
+    const history = useHistory()
 
     useEffect(()=> {
         AxiosWithAuth().get("/ranking")
@@ -15,9 +18,9 @@ export function Ranking(props) {
                 let response = res.data
                 setWinners(response)
                 setSelection({
-                    rank1: response[0].id,
-                    rank2: response[1].id,
-                    rank3: response[2].id
+                     rank1: response[0].id,
+                     rank2: response[1].id,
+                     rank3: response[2].id
                 })
             })
     }, [])
@@ -34,7 +37,7 @@ export function Ranking(props) {
             ]
             AxiosWithAuth().post("ranking", requestBody)
                 .then(res => {
-                    props.history.push("/announcement")
+                    history.push("/dashboard")
                 })
                 .catch(err => {
                     console.log(err)
@@ -46,13 +49,13 @@ export function Ranking(props) {
     }
 
     return (
-        <div>
+        <div className="bg-light custom-border p-5 rounded-lg">
             { winners && winners.map(el => <StoryModal username={el.username} image={el.image } />)}
             <form onSubmit={ handleSubmit }>
                 {console.log(winners)}
                 {!winners && <></>}
                 { winners && winners.map((el, index) => <TopThree index={index} winners={winners} winner={el} selection={ selection } setSelection={ setSelection }/>)}
-                <button type="submit" className="btn btn-primary btn-lg m-3 p-2 px-5">Rank my winners!</button>
+                <button type="submit" className="btn btn-warning btn-lg m-3 p-2 px-5">Rank my winners!</button>
                 { error && <div className="alert alert-danger" role="alert"> { error.message } </div> }
             </form>
         </div>

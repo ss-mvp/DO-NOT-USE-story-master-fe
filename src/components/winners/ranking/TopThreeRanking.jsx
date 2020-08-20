@@ -9,7 +9,7 @@ export default function TopThreeRanking({ setSelection, selection, winners, winn
     return (
         <>
 
-            <div className={`d-flex align-items-center justify-content-around ${(index%2 === 0)? "bg-light" : "bg-white"}`}>
+            <div className={`m-3 d-flex align-items-center justify-content-around rounded bg-primary text-white mx-auto`} style={{maxWidth: '600px'}}>
                 <span className="ml-5 m-2"><h2 className="ss-title">{ index === 0 ? `1st` : index === 1 ? `2nd` : `3rd` }</h2></span>
                 <span className="mr-5 m-2">
                     <select name={`rank${index+1}`} className="form-control form-control-lg" style={{width:'200px'}} onChange={(e) => handleChange(e)}>

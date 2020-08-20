@@ -1,7 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import Menu from "./Menu";
+import List from "./List.svg"
+import { Link } from 'react-router-dom'
 
 export function Navbar() {
+
   return (
     <div className="desktopNav">
       <nav className="nav justify-content-between align-items-center fixed-top p-2">
