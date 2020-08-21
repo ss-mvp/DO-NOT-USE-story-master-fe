@@ -10,18 +10,18 @@ export default function DynamicCountdown({ setCurrent, current }) {
   const [countdown, setCountdown] = useState(Date.now());
 
   // production time slots
-  // const subEndVoteStart = moment(Number(end)).subtract({ hours: 3 });
-  // const voteStartTime = moment(Number(end)).subtract({ hours: 3 });
-  // const voteEndTime = moment(Number(end)).subtract({ minutes: 30 });
-  // const winnerTime = Number(end);
+  // const subEnd = moment(Number(end)).subtract({ hours: 0, minutes: 30 });
+  // const voteStart = moment(Number(end));
+  // const voteEndTime = moment(Number(end)).add({ hours: 2, minutes: 30 });
 
   //development time slots, counted backwards from the end of the game, since the server does not give timeframes for individual events
-  const subEndVoteStart = moment(Number(end)).subtract({
-    hours: 9,
-    minutes: 5,
-  });
-  const voteEndTime = moment(Number(end)).subtract({ hours: 9, minutes: 0 });
-  const winnerTime = Number(end);
+  const subEnd = moment(Number(end)).subtract({ hours: 16, minutes: 12 });
+  const voteStart = moment(Number(end)).subtract({ hours: 16, minutes: 8 });
+  const voteEndTime = moment(Number(end)).subtract({ hours: 16, minutes: 0 });
+  // const voteEndTime = moment(Number(end)).add({ hours: 2, minutes: 30 });
+
+  const endGame = moment(Number(end)).add({ hours: 3 });
+  // const winnerTime = Number(end);
 
   useEffect(() => {
     AxiosWithAuth()
@@ -45,28 +45,34 @@ export default function DynamicCountdown({ setCurrent, current }) {
     console.log('from increment time slot');
     let currentTime = Date.now();
     //game is still going for today
-    if (currentTime < winnerTime) {
+    if (currentTime < endGame) {
       //game has already begun
       if (currentTime >= time) {
         //submission time
-        if (currentTime < subEndVoteStart) {
+        if (currentTime < subEnd) {
           console.log('submission time');
           setCurrent(0);
           setCountdown(routes[0].end);
         }
-        //voting time
-        else if (currentTime >= subEndVoteStart && currentTime < voteEndTime) {
-          console.log('voting time');
+        //deliberation
+        if (currentTime >= subEnd && currentTime < voteStart) {
           setCurrent(1);
           setCountdown(routes[1].end);
-        } else if (currentTime >= voteEndTime && currentTime < winnerTime) {
-          console.log('livestream time');
+        }
+        //voting time
+        else if (currentTime >= voteStart && currentTime < voteEndTime) {
+          console.log('voting time');
           setCurrent(2);
-          setCountdown(routes[2].start);
+          setCountdown(routes[2].end);
+          //livestream happening
+        } else if (currentTime >= voteEndTime) {
+          console.log('livestream time');
+          setCurrent(3);
+          setCountdown(routes[3].start);
         }
       }
     } else {
-      setCurrent(3);
+      setCurrent(4);
     }
   };
 
@@ -74,11 +80,16 @@ export default function DynamicCountdown({ setCurrent, current }) {
     {
       subtitle: 'left to submit!',
       start: Number(time),
-      end: subEndVoteStart,
+      end: subEnd,
+    },
+    {
+      subtitle: 'until voting starts!',
+      start: subEnd,
+      end: voteStart,
     },
     {
       subtitle: 'left to vote!',
-      start: subEndVoteStart,
+      start: voteStart,
       end: voteEndTime,
     },
     {
@@ -108,7 +119,7 @@ export default function DynamicCountdown({ setCurrent, current }) {
   };
   return (
     <>
-      {current < 2 && (
+      {current < 3 && (
         <div className="countDiv d-flex justify-content-center align-items-center flex-column">
           {time && end && newGame ? (
             <Countdown date={Number(countdown)} renderer={renderer} />

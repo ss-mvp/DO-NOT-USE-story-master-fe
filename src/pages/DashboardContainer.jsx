@@ -18,10 +18,15 @@ export default function DashboardContainer() {
       subtitle: 'left to submit!',
     },
     {
+      btnText: 'Submission Scoring',
+      route: '/announcement',
+    },
+    {
       btnText: 'Rank your favorites',
       route: '/ranking',
       subtitle: 'left to vote!',
     },
+
     {
       btnText: "Watch winners' livestream",
       route: '/announcement',
