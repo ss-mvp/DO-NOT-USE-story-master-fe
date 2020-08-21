@@ -1,17 +1,31 @@
-import React from "react";
-import { Ranking, Navbar } from "../components";
+import React from 'react';
+import { Ranking, Navbar } from '../components';
+import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
 export function RangkingPage(props) {
+  const token = localStorage.getItem('token');
+  const history = useHistory();
 
-  const token = localStorage.getItem("token")
+  const redirectToSignup = () => {
+    history.push('/dashboard');
+  };
 
   return (
     <>
       <div className="custom-bg d-flex justify-content-center align-items-center">
         <section className="topthreewinner text-center container-sm">
-          { token ? <Navbar /> : <></> }
+          {token ? <Navbar /> : <></>}
           <h2 className="text-center m-5">Rank the Stories</h2>
-          <Ranking props={props}/>
+          <Ranking props={props} />
+          {!token ? (
+            <div style={{ cursor: 'pointer' }} onClick={redirectToSignup}>
+              <p style={{ fontSize: '1.2rem' }}>
+                <span style={{ color: '#429cb5' }}>Sign up</span> to see today's
+                winners
+              </p>
+            </div>
+          ) : null}
         </section>
       </div>
     </>

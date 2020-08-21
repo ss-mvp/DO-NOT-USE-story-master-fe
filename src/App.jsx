@@ -21,7 +21,7 @@ function App() {
       <Switch>
         <Route exact path={[`/`, `/signin`]} component={Home} />
         <Route path={`/activated/:token`} component={Activated} />
-        <Route path={`/mobiledash`} component={DashboardContainer} />
+        <Route path={`/dashboard`} component={DashboardContainer} />
         <Route path={`/submission`} component={Submission} />
         <Route path={`/winners`} component={TopThreeWinnersPage} />
         <Route path={`/ranking`} component={RangkingPage} />
