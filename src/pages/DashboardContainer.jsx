@@ -28,7 +28,7 @@ export default function DashboardContainer() {
     },
     {
       btnText: 'Check back tomorrow for the next prompt!',
-      route: '/mobiledash',
+      route: '/dashboard',
     },
   ];
 
