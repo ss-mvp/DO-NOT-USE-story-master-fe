@@ -8,6 +8,8 @@ export function Ranking(props) {
   const [winners, setWinners] = useState([]);
   const [error, setError] = useState();
   const [selection, setSelection] = useState();
+  const [isDisabled, setIsDisabled] = useState(true)
+  const [btnText, setBtnText] = useState('check back later')
 
   const history = useHistory();
 
@@ -16,12 +18,17 @@ export function Ranking(props) {
       .get('/ranking')
       .then((res) => {
         let response = res.data;
-        setWinners(response);
-        setSelection({
-          rank1: response[0].id,
-          rank2: response[1].id,
-          rank3: response[2].id,
-        });
+        if(response.length > 0){
+          setIsDisabled(false)
+          setBtnText('Rank my winners!')
+          setWinners(response);
+          setSelection({
+            rank1: response[0].id,
+            rank2: response[1].id,
+            rank3: response[2].id,
+          });
+
+        }
       });
   }, []);
 
@@ -78,8 +85,8 @@ export function Ranking(props) {
               setSelection={setSelection}
             />
           ))}
-        <button type="submit" className="btn btn-warning btn-lg m-3 p-2 px-5">
-          Rank my winners!
+        <button disabled={isDisabled} type="submit" className="btn btn-warning btn-lg m-3 p-2 px-5">
+          {btnText}
         </button>
         {error && (
           <div className="alert alert-danger" role="alert">
