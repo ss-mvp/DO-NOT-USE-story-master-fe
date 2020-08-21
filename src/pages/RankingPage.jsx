@@ -8,8 +8,12 @@ export function RangkingPage(props) {
   const history = useHistory();
 
   const redirectToSignup = () => {
-    history.push('/dashboard');
+    history.push('/');
   };
+
+  const redirectToSignin = () => {
+    history.push('/signin');
+  }
 
   return (
     <>
@@ -19,9 +23,9 @@ export function RangkingPage(props) {
           <h2 className="text-center m-5">Rank the Stories</h2>
           <Ranking props={props} />
           {!token ? (
-            <div style={{ cursor: 'pointer' }} onClick={redirectToSignup}>
+            <div className="m-3" style={{ cursor: 'pointer' }}>
               <p style={{ fontSize: '1.2rem' }}>
-                <span style={{ color: '#429cb5' }}>Sign up</span> to see today's
+                <span className="text-primary" onClick={redirectToSignup}>Sign up</span> or <span className="text-primary" onClick={redirectToSignin}>Sign In</span> to see today's
                 winners
               </p>
             </div>
