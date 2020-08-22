@@ -104,6 +104,9 @@ The default port should be http://localhost:3000
 - *App.jsx*
 - *Index.jsx*
 
+## **FAQ**
+----
+Coming soon
 
 ## Installation
 
