@@ -40,12 +40,12 @@ export function SubmissionForm(props) {
           .catch((err) => console.log(err));
       };
     
-      const handleUpload = (e) => {
-        setImage({ image: e.target.files });
-      };
+      // const handleUpload = (e) => {
+      //   setImage({ image: e.target.files });
+      // };
     
 
-    const toBase64 = (file) => {
+    const toBase64 = async (file) => {
       new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
