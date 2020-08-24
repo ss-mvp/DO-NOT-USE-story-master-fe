@@ -50,7 +50,7 @@ export default function Navbar() {
         </div>
 
         <div>
-          <Link to="/mobiledash">
+          <Link to="/dashboard">
             <h3>Dashboard</h3>
           </Link>
           <Link to="/submission">

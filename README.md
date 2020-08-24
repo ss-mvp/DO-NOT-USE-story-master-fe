@@ -1,35 +1,114 @@
 
-# Story Squad Mini App (currently developing)
+# Free Daily Story Contest (currently developing)
 
-An mini application of a story writing application - Story Squad, where you can compete with other writer
-----
+An application aims to limit screentime and encourages creative writing based on daily prompt
+
+**Testing Account**
+```
+Username: 
+Password: 
+```
 
 
-## Application Flow:
+## **Application Flow**
 
 * Users that want to participate in the story writing contest will have to sign up
-* After signing up, users will be able to access new prompt that will be release each day and upload their stories
-* The story will then be calculated using readability algorithms
-* Admin will then pick top 3 stories out of 10
+* After signing up, users will be able to dashboard of the application which indicate the stage of the game and what activities they can do at the time
+* Users can participate in Story Writing Contest by submit their story based on that day's prompt
+  * *Users have to write their story on a piece of paper and upload it on the application*
+* The uploaded story will then be run through readability algorithms and the score will be calculated.
+* After the submission deadline, Admin will then pick top 3 stories out of 10 (This will be done on Admin dashboard)
+* The 3 stories will then be published on 
 * Public audience and registered users will be able to vote for their favorite stories
 * The Winner will be announced through livestream and only registered users will be able to see who the winner of the day is
 
+## **Activities Schedule**
 
+The activities in this application is run on schedule based on US Eastern time.
+
+| Time | Activities | Description |
+| ----------- | ----------- | ----------- |
+| 10:30 PM (Previous day) | New Prompt |  New prompt is being released and users can then submit their writing piece |
+| 3:00 PM  | Submission Deadline | Deadline of submissions, *Admin* will pick 3 submissions out of top 10 submissions |
+| 3:30 PM | Voting Starts | Registered users and public users pick and rank the 3 submissions |
+| 6:00 PM | Voting Ends | Deadline of submissions ranking |
+| 6:30 PM | Winner Announcement | *Admin* will drop the livestream link where the winner of the day will be announced. Winners will also be put on the leaderboard |
+
+The schedule are set based on Cron Job library in the backend. Users' access to some pages will be restricted based on the time. The access are being limited using the combination of conditional rendering and countdown clock to tell users:
+  * What activity is available at the moment
+  * How long is it until the next actitivity starts
+
+Aside from that, different types of users also have different activities that they are allowed to do.
+
+
+## **Differences between Public Users and Registered Users**
+---
+
+| Actions |Registered Users | Public Users |
+| ----------- | ----------- | ----------- |
+| Access User Dashboard |  YES | NO |
+| Submit a story | YES | NO |
+| Read top Three Strories | YES | YES |
+| Rank their favorite stories | YES | YES |
+| Access Leaderboard to see the winner of the day | YES | NO |
 
 
 ## Frontend Tech Stack
+----
 
-### React
+### **React** 
 * React is light weight and offer great performance
 * Easier to maintain and develop the application
 * Components can be modularized which makes it easier to debug
+* Documentation -> https://reactjs.org/
 
-### Bootstrap Styling Library
+### **Bootstrap Styling Library** 
 * Fast and easy to learn with optimal performance
-* Easy to customizable with SASS
-* Robust documentation
+* Easy to customize with SASS -> https://sass-lang.com/
+* Robust documentation -> https://getbootstrap.com/
+
+## **Project Installation**
+------
 
 
+1. `git clone` the project on to your local machine
+2. `cd` into the folder
+3. Type in yarn or yarn add command to add dependencies
+4. Set up `.env` file for production purpose
+
+    ```
+    // what to put in the env file
+    ```
+5. Type in `yarn start` to start the production.
+
+The default port should be http://localhost:3000
+
+## **Working with Bootstap Styling Library**
+----
+* Bootstrap has built-in class names that can be use immediately such as `d-flex` (display: flex;), `text-center` (text-align: center;), etc. (Please read Bootstrap's documentation https://getbootstrap.com/)
+* However, if you would like to customize it, please add them in `.scss` file, and compile them using SASS in `styles.scss` file
+* Once the project is ready to go live, it is highly recommend to compress the main CSS file into `[filename].min.css` file
+    * This is to reduce the file size
+    * And to optimize the application's performance
+
+## **Folder Structures**
+----
+### src
+
+- pages - contains pages available in the application
+
+- styling - contains scss and css files
+
+- components - contains all smaller components that makes up of a page
+- assets - miscellaneous assets like pictures, etc.
+- *App.jsx*
+- *Index.jsx*
+
+## **FAQ**
+----
+Coming soon
+
+## Installation
 
 --------------------
 

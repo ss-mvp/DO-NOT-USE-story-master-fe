@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { PublicVoteButton } from "../home/PublicVoteButton";
 
 import { SEO } from "../../utils";
 
@@ -65,7 +66,8 @@ export function SignUp(props) {
   }
 
   return (
-    <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center'}}>
+    <div className="signupMain d-flex flex-column align-items-center">
+
       <SEO title="Sign up" path={props.match.path} />
       <h2 className="text-center mb-5">Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -149,7 +151,7 @@ export function SignUp(props) {
           {error && <p style={{ color: "red", textAlign: 'center' }}>{error}</p>}
           <button
               disabled={newUser.password !== newUser.confirm}
-              className=" mb-3 btn btn-primary font-weight-bold pt-3 pb-3 mr-4 ml-4"
+              className="mb-3 btn btn-primary font-weight-bold"
               style={{ fontSize: "24px" }}
               type="submit"
             >
@@ -158,18 +160,13 @@ export function SignUp(props) {
           {/* <p>
             Already have an account? Click here to{" "}<Link to={`/Login`}>sign in</Link>
           </p> */}
-          <div className="ml-4">
+          <div className="tos">
             By clicking the “Sign Up” button above, you agree to the <Link to={`/signin`}>Terms & Conditions</Link> and <Link to={`/signin`}>Privacy Policy</Link>.  Already have an account? Click here to{" "}<Link to={`/signin`}>sign in</Link>
           </div>
             
           </div>
       </form>
-            <button
-              style={{ fontSize: "24px"}}
-              className="mb-3 btn btn-outline-primary font-weight-bold pt-3 pb-3 mr-4 ml-4 mt-5"
-            >
-              Just want to Vote?
-            </button>
+      <PublicVoteButton />
     </div>
   );
 }

@@ -15,8 +15,12 @@ export function WinnerBoard() {
     }, [])
 
     return (
-        <div className="winnerboard m-5">
-            { finalWinners && finalWinners.map((el, index) => <TopThreeWinnerBar key={el.id} username={el.username} index={index}/>)}
+        <div className="winnerboard m-5 bg-white p-5 custom-border rounded-lg">
+            { finalWinners ? 
+                finalWinners.map((el, index) => 
+                    <TopThreeWinnerBar key={el.id} username={el.username} index={index}/>)
+                    :
+                    <h3>Please check back later</h3>}
         </div>
     )
 }

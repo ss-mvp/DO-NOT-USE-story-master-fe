@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { PublicVoteButton } from '../home/PublicVoteButton';
 
 import { SEO } from "../../utils";
 
@@ -74,7 +75,7 @@ export function SignIn(props) {
             />
             <label>Password</label>
           </div>
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary btn-lg font-weight-bold" type="submit">
             Login
           </button>
           <p className="text-center mt-3" style={{ fontSize: '18px' }}>
@@ -82,6 +83,7 @@ export function SignIn(props) {
           </p>
         </div>
       </form>
+      <PublicVoteButton />
     </>
   );
 }

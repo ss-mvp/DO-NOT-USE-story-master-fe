@@ -28,10 +28,11 @@ export function Submission(props) {
           <h2 className="text-center m-5 mobile-padding">
             Daily Writing Contest
           </h2>
-          <PromptComponent prompt={prompt} />
-          <SubmissionForm promptId={id} />
-
-          <CountDownClock />
+          <div className="submissionMain bg-white custom-border rounded-lg p-5" id="submissionMain">
+            <PromptComponent prompt={prompt} />
+            <SubmissionForm promptId={id} />
+            <CountDownClock />
+          </div>
         </div>
       </div>
     </>

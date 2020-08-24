@@ -84,6 +84,16 @@ $font-family-base: $sourcesans;
   display: none;
 }
 
+.h4-nav {
+  font-family: $bangers;
+  
+  :hover{
+    color: white;
+    background-color: $bostonblue;
+    border-radius: 5px;
+  }
+}
+
 @media (max-width: 970px) {
   .custom-bg {
     background-position-x: 80%;
