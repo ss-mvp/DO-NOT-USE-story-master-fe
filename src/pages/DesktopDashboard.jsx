@@ -11,7 +11,7 @@ export function DesktopDashboard({ current, setCurrent, navigate, routes }) {
       <h1 className="dashboard-title">
         What's Happening <span style={{ color: '#429CB5' }}>Now</span>?
       </h1>
-      <ProgressBar/>
+      <ProgressBar current={current}/>
       <DynamicCountdown current={current} setCurrent={setCurrent} />
       <p style={{ marginTop: '4%' }}>
         Check out the most recent winners <Link to="/winners">here.</Link>{' '}
