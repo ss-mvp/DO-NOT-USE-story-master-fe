@@ -1,7 +1,7 @@
 import React from "react";
 import Menu from "./Menu";
 
-export function Navbar() {
+export function Navbar({loc}) {
 
   return (
     <div className="desktopNav">
@@ -12,7 +12,7 @@ export function Navbar() {
           </h1>
         </div>
         <div className="d-flex p-2">
-          <Menu />
+          <Menu loc={loc} />
         </div>
       </nav>
     </div>

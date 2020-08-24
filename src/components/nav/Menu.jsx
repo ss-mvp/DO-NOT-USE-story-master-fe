@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import React from 'react'
 
-export default function Menu() {
+export default function Menu({loc}) {
+  if(!loc){
     return (
       <>
+        <Link to="/dashboard" className="nav-item nav-link">
+          <h4 className="ss-title h4-nav">My Dashboard</h4>
+        </Link>
         <Link to="/submission" className="nav-item nav-link">
           <h4 className="ss-title h4-nav">Submit your story</h4>
         </Link>
@@ -27,4 +31,19 @@ export default function Menu() {
         </Link>
     </>
     )
+  } else {
+    return (
+      <>
+        <Link
+          to="/signin"
+          onClick={() => {
+            localStorage.clear();
+          }}
+          className="nav-link"
+        >
+          <h4 className="ss-title text-secondary">Logout</h4>
+        </Link>
+    </>
+    )
+  }
 }
