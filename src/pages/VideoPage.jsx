@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { AxiosWithAuth } from '../utils';
+import { AxiosWithAuth, SEO } from '../utils';
 import YouTube from 'react-youtube';
 
-export const VideoPage = () => {
+export const VideoPage = (props) => {
 
     const [video, setVideo] = useState({
         video_id: '',
@@ -35,6 +35,7 @@ export const VideoPage = () => {
 
     return (
         <section className="custom-bg" style={{paddingTop: '7%', width: '100%' }}>
+            <SEO title="Daily Winner Stream" path={props.match.path} />
             <div className="card" style={{ margin: '0 25%', width: "opts.width", maxWidth: '40%' }}>
                 <div className="card-body">
                     <h5 className="card-title">Daily Winner Stream!</h5>

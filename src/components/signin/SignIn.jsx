@@ -3,7 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { PublicVoteButton } from '../home/PublicVoteButton';
 
-export function SignIn() {
+import { SEO } from "../../utils";
+
+export function SignIn(props) {
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
@@ -47,6 +49,7 @@ export function SignIn() {
 
   return (
     <>
+      <SEO title="Sign in" path={props.match.path} />
       <h2 className="text-center mb-5">Sign In</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">

@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { PublicVoteButton } from "../home/PublicVoteButton";
 
+import { SEO } from "../../utils";
+
 export function SignUp(props) {
   const [newUser, setNewUser] = useState({
     email: "",
@@ -65,6 +67,8 @@ export function SignUp(props) {
 
   return (
     <div className="signupMain d-flex flex-column align-items-center">
+
+      <SEO title="Sign up" path={props.match.path} />
       <h2 className="text-center mb-5">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">
