@@ -23,8 +23,10 @@ export function Announcement() {
             <div className="custom-bg d-flex align-items-center">
             <div className="container-sm d-flex flex-column justify-content-center align-items-center">
                 <h2 className="text-center p-5">Winner announcement</h2>
-                <p className="text-center">Join us for our live stream winner announcement!</p>
-                <button className="btn btn-outline-primary m-5 px-5"><a href={link} target="_blank" rel="noopener noreferrer">Join Us!</a></button>
+                <div className="announcementMain bg-white custom-border rounded-lg border-lg p-5 d-flex flex-column">
+                    <h3 className="text-center m-5">Join us for our live stream winner announcement!</h3>
+                    <button id="youtubeLinkButton" className="btn btn-warning btn-lg mx-auto px-5 mt-5" href={link} target="_blank" rel="noopener noreferrer">Join Us!</button>
+                </div>
             </div>
         </div>       
         </>

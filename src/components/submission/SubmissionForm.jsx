@@ -54,7 +54,7 @@ export function SubmissionForm(props) {
           </label>
         </div>
         <div className="submit-button d-flex justify-content-center">
-          <button className="m-3 btn btn-primary pr-5 pl-5" type="submit">
+          <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit">
             Submit
           </button>
         </div>
