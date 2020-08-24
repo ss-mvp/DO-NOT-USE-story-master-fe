@@ -9,19 +9,6 @@ export default function DynamicCountdown({ setCurrent, current }) {
   const [newGame, setNewGame] = useState();
   const [countdown, setCountdown] = useState(Date.now());
 
-  // production time slots
-  // const subEnd = moment(Number(end)).subtract({ hours: 0, minutes: 30 });
-  // const voteStart = moment(Number(end));
-  // const voteEndTime = moment(Number(end)).add({ hours: 2, minutes: 30 });
-
-  //development time slots, counted backwards from the end of the game, since the server does not give timeframes for individual events
-  const subEnd = moment(Number(end)).subtract({ hours: 16, minutes: 12 });
-  const voteStart = moment(Number(end)).subtract({ hours: 16, minutes: 8 });
-  const voteEndTime = moment(Number(end)).subtract({ hours: 16, minutes: 0 });
-  // const voteEndTime = moment(Number(end)).add({ hours: 2, minutes: 30 });
-
-  const endGame = moment(Number(end)).add({ hours: 3 });
-  // const winnerTime = Number(end);
 
   useEffect(() => {
     AxiosWithAuth()
@@ -40,32 +27,70 @@ export default function DynamicCountdown({ setCurrent, current }) {
     }
   }, [time, end]);
 
+
+
+  //a new prompt is chosen and submissions become open at 2:30am UTC (10:30pm EDT)
+  const startSubHr = 2
+  const startSubMin = 30
+  const subCountStart = moment.utc().hour('2').minute('30').valueOf()
+
+  //the submission deadline is 7:00pm UTC (3:00pm EDT)
+  const endSubHr = 19
+  const endSubMin = 0
+  const subCountEnd = moment.utc().hour('19').minute('0').valueOf()
+
+  //voting starts at 7:30pm UTC (3:30pm EDT)
+  const voteStartHr = 19
+  const voteStartMin = 30
+  const voteCountStart = moment.utc().hour('19').minute('30').valueOf()
+
+  //voting ends at 10:00pm UTC (6:00pm EDT)
+  const voteEndHr = 22
+  const voteEndMin = 0
+  const voteCountEnd = moment.utc().hour('22').minute('0').valueOf()
+
+  //winner livestream starts at 10:30pm UTC (6:30pm EDT)
+  const winnerStreamStartHr = 22
+  const winnerStreamStartMin = 30
+  const winnerStreamCountStart = moment.utc().hour('22').minute('30').valueOf()
+
+  //winner livestream ends at 11:00pm UTC (7:00pm EDT)
+  const winnerStreamEndHr = 23
+  const winnerStreamEndMin = 0
+  const winnerStreamCountEnd = moment.utc().hour('23').minute('0').valueOf()
+
+
   //function to change countdown clock to match current activity
   const incrementTimeSlot = () => {
-    console.log('from increment time slot');
-    let currentTime = Date.now();
-    //game is still going for today
-    if (currentTime < endGame) {
+
+    const currentHr = moment.utc(Date.now()).format('HH');
+    const currentMin = moment.utc(Date.now()).format('mm');
+
+
+    //game is still going for today (including livestream)
+    if (currentHr < winnerStreamEndHr ) {
+
       //game has already begun
-      if (currentTime >= time) {
+      if (currentHr === startSubHr && currentHr >= currentMin || currentHr > startSubHr) {
+
         //submission time
-        if (currentTime < subEnd) {
+        if (currentHr < endSubHr) {
           console.log('submission time');
           setCurrent(0);
           setCountdown(routes[0].end);
         }
         //deliberation
-        if (currentTime >= subEnd && currentTime < voteStart) {
+        if (currentHr >= endSubHr && currentHr < voteStartHr || currentHr >= endSubHr && currentHr === voteStartHr && currentMin <= voteStartMin) {
           setCurrent(1);
           setCountdown(routes[1].end);
         }
         //voting time
-        else if (currentTime >= voteStart && currentTime < voteEndTime) {
+        else if (currentHr === voteStartHr && currentMin >= voteStartMin || currentHr > voteStartHr && currentHr < voteEndHr) {
           console.log('voting time');
           setCurrent(2);
           setCountdown(routes[2].end);
           //livestream happening
-        } else if (currentTime >= voteEndTime) {
+        } else if (currentHr >= voteEndHr) {
           console.log('livestream time');
           setCurrent(3);
           setCountdown(routes[3].start);
@@ -79,22 +104,22 @@ export default function DynamicCountdown({ setCurrent, current }) {
   const routes = [
     {
       subtitle: 'left to submit!',
-      start: Number(time),
-      end: subEnd,
+      start: subCountStart,
+      end: subCountEnd,
     },
     {
       subtitle: 'until voting starts!',
-      start: subEnd,
-      end: voteStart,
+      start: subCountEnd,
+      end: voteCountStart,
     },
     {
       subtitle: 'left to vote!',
-      start: voteStart,
-      end: voteEndTime,
+      start: voteCountStart,
+      end: voteCountEnd,
     },
     {
       subtitle: '',
-      start: Number(end),
+      start: winnerStreamCountStart,
     },
     {
       subtitle: '',
