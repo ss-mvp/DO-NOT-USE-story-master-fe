@@ -9,8 +9,9 @@ import { AxiosWithAuth } from '../utils/AxiosWithAuth';
 import DynamicCountdown from '../components/clock/DynamicCountdown';
 
 export default function DashboardContainer() {
-  const [current, setCurrent] = useState(0);
   const history = useHistory();
+
+  const [current, setCurrent] = useState(0)
 
   const routes = [
     {

@@ -15,7 +15,7 @@ export function SignUp(props) {
     parentEmail: "",
   });
 
-  const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : 'https://ss-mvp.herokuapp.com'
+  const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : 'http://ec2-3-226-91-90.compute-1.amazonaws.com'
   const [error, setError] = useState('')
   console.log('baseUrl', baseUrl)
   const handleChanges = (e) => {

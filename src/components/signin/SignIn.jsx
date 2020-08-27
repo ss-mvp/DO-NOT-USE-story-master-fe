@@ -10,12 +10,12 @@ export function SignIn(props) {
     email: '',
     password: '',
   });
-  const [activated, setActivated] = useState(false);
+  // const [activated, setActivated] = useState(false);
 
   const baseUrl =
     process.env.REACT_APP_FE_ENV === 'development'
       ? 'http://localhost:5000'
-      : 'https://ss-mvp.herokuapp.com';
+      : 'http://ec2-3-226-91-90.compute-1.amazonaws.com';
   const history = useHistory();
   console.log('baseUrl', baseUrl);
 
@@ -31,7 +31,7 @@ export function SignIn(props) {
       .get(`${baseUrl}/email/activation/${credentials.email}`)
       .then((validation) => {
         console.log('validation', validation);
-        setActivated(validation.data.validated);
+        // setActivated(validation.data.validated);
         if (validation.data.validated === true) {
           axios.post(`${baseUrl}/email/login`, credentials).then((response) => {
             console.log('response', response);

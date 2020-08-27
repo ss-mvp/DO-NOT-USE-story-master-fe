@@ -8,7 +8,7 @@ export function SubmissionForm(props) {
   const url =
     process.env.REACT_APP_FE_ENV === 'development'
       ? 'http://localhost:5000/upload'
-      : 'https://ss-mvp.herokuapp.com';
+      : 'http://ec2-3-226-91-90.compute-1.amazonaws.com/upload';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,12 +29,13 @@ export function SubmissionForm(props) {
         formData.append("promptId", props.promptId);
         formData.append("base64Image", base64Image);
         const config = { headers: { "Content-Type": "multipart/form-data" } };
+        console.log('formData', formData)
         AxiosWithAuth()
-          // .post("https://ss-mvp.herokuapp.com", formData, config)
+          // .post("http://ec2-3-226-91-90.compute-1.amazonaws.com/upload", formData, config)
           .post("http://localhost:5000/upload", formData, config)
     
-          .then((url) => {
-            setImageURL(url.data.imageUrl);
+          .then((response) => {
+            setImageURL(response.data.imageUrl);
             console.log("success!");
           })
           .catch((err) => console.log(err));
@@ -62,14 +63,14 @@ export function SubmissionForm(props) {
     formData.append('base64Image', base64Image);
     const config = { headers: { 'Content-Type': 'multipart/form-data' } };
     AxiosWithAuth()
-      .post(url, formData, config)
-      // .post("http://localhost:5000/upload", formData, config)
+      // .post(url, formData, config)
+      .post("http://localhost:5000/upload", formData, config)
 
-      .then((url) => {
-        setImageURL(url.data.imageUrl);
+      .then((response) => {
+        setImageURL(response.data.imageUrl);
         console.log('success!');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
   };
 
   const handleUpload = (e) => {

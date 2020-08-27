@@ -8,7 +8,6 @@ import dark from './darkChevron.png'
 
 
 export const ProgressBar = ({current}) => {
-    console.log('current', current)
     const history = useHistory();
 
 
@@ -55,7 +54,6 @@ export const ProgressBar = ({current}) => {
             }
             return color;
         })
-        console.log(newChevColors)
         setChevColors(newChevColors)
 
     }

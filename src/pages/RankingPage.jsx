@@ -1,9 +1,8 @@
 import React from 'react';
 import { Ranking, Navbar } from '../components';
 import { useHistory } from 'react-router-dom';
-import moment from 'moment';
 
-export function RangkingPage(props) {
+export function RankingPage(props) {
   const token = localStorage.getItem('token');
   const history = useHistory();
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
 import moment from 'moment';
 import { AxiosWithAuth } from '../../utils/AxiosWithAuth';
+import {startSubHr, startSubMin, subCountStart, endSubHr, endSubMin, subCountEnd, voteStartHr, voteStartMin, voteCountStart, voteEndHr, voteEndMin, voteCountEnd, winnerStreamStartHr, winnerStreamStartMin, winnerStreamCountStart, winnerStreamEndHr, winnerStreamEndMin, winnerStreamCountEnd, currentHr, currentMin, isSubmissionTime, isDeliberationTime, isVotingTime} from '../../utils/schedule'
 
 export default function DynamicCountdown({ setCurrent, current }) {
   const [time, setTime] = useState();
@@ -28,78 +29,47 @@ export default function DynamicCountdown({ setCurrent, current }) {
   }, [time, end]);
 
 
-
-  //a new prompt is chosen and submissions become open at 2:30am UTC (10:30pm EDT)
-  const startSubHr = 2
-  const startSubMin = 30
-  const subCountStart = moment.utc().hour('2').minute('30').valueOf()
-
-  //the submission deadline is 7:00pm UTC (3:00pm EDT)
-  const endSubHr = 19
-  const endSubMin = 0
-  const subCountEnd = moment.utc().hour('19').minute('0').valueOf()
-
-  //voting starts at 7:30pm UTC (3:30pm EDT)
-  const voteStartHr = 19
-  const voteStartMin = 30
-  const voteCountStart = moment.utc().hour('19').minute('30').valueOf()
-
-  //voting ends at 10:00pm UTC (6:00pm EDT)
-  const voteEndHr = 22
-  const voteEndMin = 0
-  const voteCountEnd = moment.utc().hour('22').minute('0').valueOf()
-
-  //winner livestream starts at 10:30pm UTC (6:30pm EDT)
-  const winnerStreamStartHr = 22
-  const winnerStreamStartMin = 30
-  const winnerStreamCountStart = moment.utc().hour('22').minute('30').valueOf()
-
-  //winner livestream ends at 11:00pm UTC (7:00pm EDT)
-  const winnerStreamEndHr = 23
-  const winnerStreamEndMin = 0
-  const winnerStreamCountEnd = moment.utc().hour('23').minute('0').valueOf()
-
-
-  //function to change countdown clock to match current activity
-  const incrementTimeSlot = () => {
-
-    const currentHr = moment.utc(Date.now()).format('HH');
-    const currentMin = moment.utc(Date.now()).format('mm');
-
-
-    //game is still going for today (including livestream)
-    if (currentHr < winnerStreamEndHr ) {
-
+   //function to change countdown clock to match current activity
+   const incrementTimeSlot = () => {
+    console.log('from increment time slot');
+    let currentTime = Date.now();
+    //game is still going for today
+    // if (currentTime < endGame) {
       //game has already begun
-      if (currentHr === startSubHr && currentHr >= currentMin || currentHr > startSubHr) {
-
+      if (isSubmissionTime()) {
         //submission time
-        if (currentHr < endSubHr) {
+        // if (currentTime < subEnd) {
           console.log('submission time');
           setCurrent(0);
           setCountdown(routes[0].end);
-        }
+        // }
         //deliberation
-        if (currentHr >= endSubHr && currentHr < voteStartHr || currentHr >= endSubHr && currentHr === voteStartHr && currentMin <= voteStartMin) {
+        if (isDeliberationTime()) {
           setCurrent(1);
           setCountdown(routes[1].end);
         }
         //voting time
-        else if (currentHr === voteStartHr && currentMin >= voteStartMin || currentHr > voteStartHr && currentHr < voteEndHr) {
+        else if (isVotingTime()) {
           console.log('voting time');
           setCurrent(2);
           setCountdown(routes[2].end);
           //livestream happening
-        } else if (currentHr >= voteEndHr) {
+        } else if (currentHr >= winnerStreamStartHr) {
           console.log('livestream time');
           setCurrent(3);
           setCountdown(routes[3].start);
         }
-      }
+      // }
     } else {
       setCurrent(4);
     }
   };
+
+
+  console.log('issub', isSubmissionTime())
+  console.log('isdelib', isDeliberationTime())
+  //function to change countdown clock to match current activity
+ 
 
   const routes = [
     {
@@ -130,6 +100,7 @@ export default function DynamicCountdown({ setCurrent, current }) {
   const renderer = ({ hours, minutes, completed }) => {
     if (completed) {
       console.log('completed!');
+      // console.log(countdown)
       window.location.reload();
       return <p>reloading</p>;
     } else {
