@@ -5,7 +5,7 @@ export default function AboutContent({ subtitle, paragraph }) {
         <>
             <div>
                 {/* <h2>{subtitle}</h2> */}
-                <p>{paragraph}</p>
+                <p style={{textAlign:'center'}}>{paragraph}</p>
             </div>       
         </>
     )
