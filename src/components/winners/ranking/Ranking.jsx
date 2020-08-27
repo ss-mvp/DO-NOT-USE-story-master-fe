@@ -10,12 +10,11 @@ export function Ranking(props) {
   const [selection, setSelection] = useState();
   const [isDisabled, setIsDisabled] = useState(true)
   const [btnText, setBtnText] = useState('check back later')
-  const [classes, setClasses] = useState("bg-light custom-border p-5 rounded-lg")
 
   const history = useHistory();
 
   useEffect(() => {
-    window.innerWidth <= 500 ? setClasses("bg-light custom-border rounded-lg") : setClasses("bg-light custom-border p-5 rounded-lg")
+    
     AxiosWithAuth()
       .get('/ranking')
       .then((res) => {
@@ -69,7 +68,7 @@ export function Ranking(props) {
   };
 
   return (
-    <div className={classes}>
+    <div className={window.innerWidth <= 500 ? "bg-light custom-border rounded-lg" : "bg-light custom-border p-5 rounded-lg"}>
       {winners &&
         winners.map((el) => (
           <StoryModal username={el.username} image={el.image} id={el.id} />
