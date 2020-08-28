@@ -5,10 +5,10 @@ export function SubmissionForm(props) {
   const [image, setImage] = useState();
   const [imageURL, setImageURL] = useState('');
 
-  const url =
+  const uploadUrl =
     process.env.REACT_APP_FE_ENV === 'development'
       ? 'http://localhost:5000/upload'
-      : 'https://ss-mvp.herokuapp.com';
+      : 'https://ss-mvp.herokuapp.com/upload';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ export function SubmissionForm(props) {
     formData.append('base64Image', base64Image);
     const config = { headers: { 'Content-Type': 'multipart/form-data' } };
     AxiosWithAuth()
-      .post(url, formData, config)
+      .post(uploadUrl, formData, config)
       // .post("http://localhost:5000/upload", formData, config)
 
       .then((url) => {
