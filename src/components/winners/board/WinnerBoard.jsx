@@ -15,7 +15,7 @@ export function WinnerBoard() {
     }, [])
 
     return (
-        <div className="winnerboard m-5 bg-white p-5 custom-border rounded-lg">
+        <div className={window.innerWidth <= 500 ? "bg-light custom-border rounded-lg" : "bg-light custom-border p-5 rounded-lg"}>
             { finalWinners ? 
                 finalWinners.map((el, index) => 
                     <TopThreeWinnerBar key={el.id} username={el.username} index={index}/>)

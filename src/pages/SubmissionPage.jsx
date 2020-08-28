@@ -9,8 +9,7 @@ export function Submission(props) {
 
   useEffect(() => {
     AxiosWithAuth()
-      // .get("https://ss-mvp.herokuapp.com/upload/prompt")
-      .get('upload/prompt')
+      .get('/upload/prompt')
       .then((response) => {
         console.log(response.data);
         setPrompt(response.data.prompt.prompt);

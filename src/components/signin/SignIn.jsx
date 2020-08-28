@@ -15,7 +15,7 @@ export function SignIn(props) {
   const baseUrl =
     process.env.REACT_APP_FE_ENV === 'development'
       ? 'http://localhost:5000'
-      : 'https://ss-mvp.herokuapp.com';
+      : process.env.REACT_APP_BE;
   const history = useHistory();
   console.log('baseUrl', baseUrl);
 
@@ -42,9 +42,7 @@ export function SignIn(props) {
           alert('You need to activate your email!');
         }
       });
-    window.innerWidth < 970
-      ? history.push('/mobiledash')
-      : history.push('/submission');
+    history.push('/dashboard')
   };
 
   return (

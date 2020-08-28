@@ -14,6 +14,7 @@ export function Ranking(props) {
   const history = useHistory();
 
   useEffect(() => {
+    
     AxiosWithAuth()
       .get('/ranking')
       .then((res) => {
@@ -67,7 +68,7 @@ export function Ranking(props) {
   };
 
   return (
-    <div className="bg-light custom-border p-5 rounded-lg">
+    <div className={window.innerWidth <= 500 ? "bg-light custom-border rounded-lg" : "bg-light custom-border p-5 rounded-lg"}>
       {winners &&
         winners.map((el) => (
           <StoryModal username={el.username} image={el.image} id={el.id} />

@@ -15,7 +15,7 @@ export function SignUp(props) {
     parentEmail: "",
   });
 
-  const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : 'https://ss-mvp.herokuapp.com'
+  const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : process.env.REACT_APP_BE
   const [error, setError] = useState('')
   console.log('baseUrl', baseUrl)
   const handleChanges = (e) => {
@@ -39,7 +39,6 @@ export function SignUp(props) {
     if(validatePassword(newUser.password)){
       axios
       .post(`${baseUrl}/email/register`, sendUser)
-      // .post("http://localhost:5000/email/register", sendUser)
       .then(() => {
         alert("New user registered. Please activate your email.");
       })

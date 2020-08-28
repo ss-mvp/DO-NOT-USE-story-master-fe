@@ -28,6 +28,7 @@ export const VideoPage = (props) => {
     useEffect(() => {
         AxiosWithAuth().get('upload/video')
         .then(response => {
+            console.log('response', response.data.returnPackage)
             setVideo(response.data.returnPackage)
         })
         .catch(err => console.log(err))
