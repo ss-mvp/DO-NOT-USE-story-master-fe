@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import '../../styling/mobileNav.css';
 
-export default function Navbar() {
+export default function Navbar({username, setUsername}) {
   const history = useHistory();
   const location = useLocation().pathname;
 
-  const [username, setUsername] = useState('');
   const [checked, setChecked] = useState(false);
 
   const unCheck = () => {
@@ -15,10 +14,11 @@ export default function Navbar() {
 
   useEffect(() => {
     unCheck();
-    if (localStorage.getItem('username') && username === '') {
-      setUsername(localStorage.getItem('username'));
+    if (localStorage.getItem('username') && username === "") {
+      console.log('setting username')
+      setUsername(()=>localStorage.getItem('username'));
     }
-  }, [location]);
+  }, [location, username]);
 
   useEffect(() => {}, []);
   return (
