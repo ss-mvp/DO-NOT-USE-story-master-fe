@@ -7,7 +7,7 @@ import {
   SignUp,
 } from "../components";
 
-export function Home() {
+export function Home({setUsername}) {
   return (
     <>
       <div className="row align-items-center mx-auto">
@@ -16,7 +16,7 @@ export function Home() {
           <Route exact path={`/`} component={StoryMasterContent} />
         </section>
         <section className="col-sm-12 col-md-3 mx-auto bg-white">
-          <Route path={`/signin`} component={SignIn} />
+          <Route path={`/signin`} component={(props)=><SignIn {...props} setUsername={setUsername}/>} />
           <Route exact path={`/`} component={SignUp} />
         </section>
       </div>

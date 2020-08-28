@@ -16,8 +16,8 @@ export function SignIn(props) {
     process.env.REACT_APP_FE_ENV === 'development'
       ? 'http://localhost:5000'
       : process.env.REACT_APP_BE;
+
   const history = useHistory();
-  console.log('baseUrl', baseUrl);
 
   const handleChanges = (e) => {
     setCredentials({
@@ -35,6 +35,7 @@ export function SignIn(props) {
         if (validation.data.validated === true) {
           axios.post(`${baseUrl}/email/login`, credentials).then((response) => {
             console.log('response', response);
+            props.setUsername(response.data.username)
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', response.data.username);
           });
