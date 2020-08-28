@@ -10,10 +10,42 @@ export function SubmissionForm(props) {
       ? 'http://localhost:5000/upload'
       : 'https://ss-mvp.herokuapp.com/upload';
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const toBase64 = (file) =>
+          new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+          });
+    
+        const base64Image = await toBase64(image.image[0]);
+    
+        // Changes to formData upload
+        const formData = new FormData();
+        formData.append("image", image.image[0]);
+        formData.append("promptId", props.promptId);
+        formData.append("base64Image", base64Image);
+        const config = { headers: { "Content-Type": "multipart/form-data" } };
+        AxiosWithAuth()
+          // .post("https://ss-mvp.herokuapp.com", formData, config)
+          .post("http://localhost:5000/upload", formData, config)
+    
+          .then((url) => {
+            setImageURL(url.data.imageUrl);
+            console.log("success!");
+          })
+          .catch((err) => console.log(err));
+      };
+    
+      // const handleUpload = (e) => {
+      //   setImage({ image: e.target.files });
+      // };
+    
 
-    const toBase64 = (file) =>
+    const toBase64 = async (file) => {
       new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);

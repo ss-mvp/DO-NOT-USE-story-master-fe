@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MobileDashboard } from './MobileDashboard';
+import DesktopDashboard from './DesktopDashboard'
 import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import Countdown from 'react-countdown';
@@ -45,8 +46,12 @@ export default function DashboardContainer() {
   return (
     <>
       <div className="desktopDash">
-        {/* desktop dashboard should replace the paragraph below */}
-        <p>I am the desktop dashboard</p>
+        <DesktopDashboard
+          current={current}
+          setCurrent={setCurrent}
+          navigate={navigate}
+          routes={routes}
+        />
       </div>
       <div className="mobileDash">
         <MobileDashboard

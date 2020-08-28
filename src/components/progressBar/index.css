@@ -1,0 +1,39 @@
+.progress-container{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chevronDiv{
+    width: 20%;
+    height: 25vh;
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.chevron{
+    width: 100%;
+    width: 100%;
+}
+
+p {
+    font-weight:700;
+    font-size: 1.2rem;
+    margin-left: 5%;
+    text-align: center;
+}
+
+@media(max-width: 1400px){
+
+    .progress-container{
+        width: 80%;
+    }
+}
+
