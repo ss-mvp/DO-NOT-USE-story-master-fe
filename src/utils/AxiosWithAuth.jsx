@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export const AxiosWithAuth = () => {
-    const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000/' : 'https://ss-mvp.herokuapp.com/'
+    const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : process.env.REACT_APP_BE
     const token = localStorage.getItem('token');
     return axios.create({
-        baseURL: 'http://localhost:5000/',
+        baseURL: baseUrl,
         headers: {
             Authorization: token
         }
