@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MobileDashboard } from './MobileDashboard';
 import DesktopDashboard from './DesktopDashboard'
 import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
@@ -8,9 +8,15 @@ import moment from 'moment';
 import { AxiosWithAuth } from '../utils/AxiosWithAuth';
 import DynamicCountdown from '../components/clock/DynamicCountdown';
 
-export default function DashboardContainer() {
+export default function DashboardContainer({setUsername, username}) {
   const [current, setCurrent] = useState(0);
   const history = useHistory();
+
+  useEffect(()=>{
+    if(localStorage.getItem('username') && username === ""){
+      setUsername(localStorage.getItem('username'))
+    }
+  },[username])
 
   const routes = [
     {

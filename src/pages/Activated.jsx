@@ -14,6 +14,7 @@ export function Activated() {
                 .then(res=>{
                     console.log('res', res)
                     localStorage.setItem('token', res.data.token)
+                    localStorage.setItem('username', res.data.username)
                     setTimeout(()=>{
                         history.push('/submission')
                     }, 2000)
