@@ -5,7 +5,7 @@ export function Announcement() {
 
     const [link, setLink] = useState("")
 
-    const url = process.env.REACT_APP_FE_ENV === "development" ? 'http://localhost:5000/email/video' : 'https://ss-mvp.herokuapp.com/email/video'
+    const url = process.env.REACT_APP_FE_ENV === "development" ? 'http://localhost:5000/email/video' : `${process.env.REACT_APP_BE}/video`
 
     useEffect(()=>{
         axios.get(url)
