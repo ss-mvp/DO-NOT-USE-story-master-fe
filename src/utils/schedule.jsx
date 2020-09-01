@@ -2,23 +2,25 @@
   
   //start and end times in [hrs, min] in 24hr UTC time
   const schedule = {
-      subStart: [2, 30],
-      subEnd: [19, 0],
-      voteStart: [19, 30],
-      voteEnd: [22, 0],
-      streamStart: [22, 30],
-      streamEnd: [23, 0],
-      interimStart:[23, 1],
-      interimEnd: [2, 29]
-  }
+    subStart: [2, 30],
+    subEnd: [19, 0],
+    delibStart: [19,0],
+    delibEnd: [19,30],
+    voteStart: [19, 30],
+    voteEnd: [22, 0],
+    streamStart: [22, 30],
+    streamEnd: [23, 0],
+    interimStart:[23, 1],
+    interimEnd: [2, 29]
+}
 
   
+  export const now = Date.now()
+  
+
   export const currentHr = Number(moment.utc(Date.now()).format('HH'))
   export const currentMin = Number(moment.utc(Date.now()).format('mm'))
-  export const now = Date.now()
 
-  // console.log('currentMin', currentMin)
-  
   //a new prompt is chosen and submissions become open at 2:30am UTC (10:30pm EDT)
   export const startSubHr = schedule.subStart[0]
   export const startSubMin = schedule.subStart[1]
@@ -28,6 +30,16 @@
   export const endSubHr = schedule.subEnd[0]
   export const endSubMin = schedule.subEnd[1]
   export const subCountEnd = moment.utc().hour(endSubHr).minute(endSubMin).valueOf()
+
+  //deliberation starts at 7:00pm UTC (3:00pm EDT)
+  export const delibStartHr = schedule.delibStart[0]
+  export const delibStartMin = schedule.delibStart[1]
+  export const delibCountStart = moment.utc().hour(delibStartHr).minute(delibStartMin).valueOf()
+
+  //deliberation ends at 7:30pm UTC (3:30pm EDT)
+  export const delibEndHr = schedule.delibEnd[0]
+  export const delibEndMin = schedule.delibEnd[1]
+  export const delibCountEnd = moment.utc().hour(delibEndHr).minute(delibEndMin).valueOf()
 
   //voting starts at 7:30pm UTC (3:30pm EDT)
   export const voteStartHr = schedule.voteStart[0]
@@ -71,14 +83,14 @@
     }
   }
 
-export const isDeliberationTime = () => {
-    if(currentHr === endSubHr && currentMin < voteStartMin){
+  export const isDeliberationTime = () => {
+    if(currentHr === delibStartHr && currentMin < delibEndMin){
         return true
     } 
      else {
       return false
     }
-}
+  }
 
 export const isVotingTime = () => {
     if(currentHr === voteStartHr && currentMin >= voteStartMin){

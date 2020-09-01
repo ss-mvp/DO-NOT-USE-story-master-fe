@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
 import { AxiosWithAuth } from '../../utils/AxiosWithAuth';
-import {subCountStart, subCountEnd, voteCountStart, voteCountEnd,winnerStreamCountStart, winnerStreamCountEnd, isSubmissionTime, isDeliberationTime, isVotingTime, isStreamingTime, isInterim, interimCountStart, interimCountEnd} from '../../utils/schedule'
+import {subCountStart, subCountEnd, voteCountStart, voteCountEnd,winnerStreamCountStart, winnerStreamCountEnd, isSubmissionTime, isDeliberationTime, isVotingTime, isStreamingTime, isInterim, interimCountStart, interimCountEnd, delibCountEnd, delibCountStart}
+//comment out to use development schedule => see devSchedule to change time increment 
+from '../../utils/schedule'
+//uncomment to use dev schedule
+// from '../../utils/devSchedule'
+
 
 export default function DynamicCountdown({ setCurrent, current }) {
   const [time, setTime] = useState();
@@ -9,6 +14,7 @@ export default function DynamicCountdown({ setCurrent, current }) {
   const [newGame, setNewGame] = useState();
   const [countdown, setCountdown] = useState(Date.now());
 
+  
 
   useEffect(() => {
     AxiosWithAuth()
@@ -24,7 +30,10 @@ export default function DynamicCountdown({ setCurrent, current }) {
   useEffect(() => {
     if (time && end) {
       incrementTimeSlot();
+      console.log('actual current state', current)
     }
+
+    console.log('countdown from dyn', countdown)
   }, [time, end]);
 
 
@@ -59,11 +68,7 @@ export default function DynamicCountdown({ setCurrent, current }) {
   };
 
 
-  console.log('issub', isSubmissionTime())
-  console.log('isdelib', isDeliberationTime())
-  console.log('is vote', isVotingTime())
-  console.log('isStreamingTime', isStreamingTime())
-  console.log('isInterim', isInterim())
+
   //function to change countdown clock to match current activity
  
 
@@ -75,8 +80,8 @@ export default function DynamicCountdown({ setCurrent, current }) {
     },
     {
       subtitle: 'until voting starts!',
-      start: subCountEnd,
-      end: voteCountStart,
+      start: delibCountStart,
+      end: delibCountEnd,
     },
     {
       subtitle: 'left to vote!',
@@ -96,6 +101,7 @@ export default function DynamicCountdown({ setCurrent, current }) {
   ];
 
   //handles display of countdown clock based on whether or not countdown is at 0. If it is, it triggers a page reload which will call the incrementTimeSlot function and start a new countdown for the next activity
+
   const renderer = ({ hours, minutes, completed }) => {
     if (completed) {
       console.log('completed!');
