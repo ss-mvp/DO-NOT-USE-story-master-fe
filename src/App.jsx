@@ -15,11 +15,8 @@ import DashboardContainer from './pages/DashboardContainer';
 
 function App() {
 
-<<<<<<< HEAD
   const [username, setUsername] = useState('')
 
-=======
->>>>>>> countdown-real-time
   return (
     <>
       <MobileNavbar username={username} setUsername={setUsername}/>

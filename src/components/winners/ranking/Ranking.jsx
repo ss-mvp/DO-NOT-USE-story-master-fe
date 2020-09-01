@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import TopThree from './TopThreeRanking';
 import { AxiosWithAuth } from '../../../utils';
-import {voteCountStart, voteCountEnd, now} from '../../../utils/schedule'
-
 import StoryModal from '../modals/StoryModals';
 
 export function Ranking(props) {
@@ -69,7 +67,6 @@ export function Ranking(props) {
     }
   };
 
-<<<<<<< HEAD
   return (
     <div className={window.innerWidth <= 500 ? "bg-light custom-border rounded-lg" : "bg-light custom-border p-5 rounded-lg"}>
       {winners &&
@@ -79,47 +76,26 @@ export function Ranking(props) {
       <form onSubmit={handleSubmit}>
         {console.log(winners)}
         {!winners && <></>}
-=======
-  if(now >= voteCountStart && now < voteCountEnd){
-    return (
-      <div className="bg-light custom-border p-5 rounded-lg">
->>>>>>> countdown-real-time
         {winners &&
-          winners.map((el) => (
-            <StoryModal username={el.username} image={el.image} id={el.id} />
+          winners.map((el, index) => (
+            <TopThree
+              index={index}
+              winners={winners}
+              winner={el}
+              selection={selection}
+              setSelection={setSelection}
+            />
           ))}
-        <form onSubmit={handleSubmit}>
-          {console.log(winners)}
-          {!winners && <></>}
-          {winners &&
-            winners.map((el, index) => (
-              <TopThree
-                index={index}
-                winners={winners}
-                winner={el}
-                selection={selection}
-                setSelection={setSelection}
-              />
-            ))}
-          <button disabled={isDisabled} type="submit" className="btn btn-warning btn-lg m-3 p-2 px-5">
-            {btnText}
-          </button>
-          {error && (
-            <div className="alert alert-danger" role="alert">
-              {' '}
-              {error.message}{' '}
-            </div>
-          )}
-        </form>
-      </div>
-    );
-
-  } else{
-    return(
-      <div className="bg-light custom-border p-5 rounded-lg">
-        <h4>Voting is over for today. Check back later at 3:30pm eastern!</h4>
-      </div>
-    )
-  }
-
+        <button disabled={isDisabled} type="submit" className="btn btn-warning btn-lg m-3 p-2 px-5">
+          {btnText}
+        </button>
+        {error && (
+          <div className="alert alert-danger" role="alert">
+            {' '}
+            {error.message}{' '}
+          </div>
+        )}
+      </form>
+    </div>
+  );
 }

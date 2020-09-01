@@ -13,11 +13,7 @@ export function Submission(props) {
 
   useEffect(() => {
     AxiosWithAuth()
-<<<<<<< HEAD
       .get('/upload/prompt')
-=======
-      .get('upload/prompt')
->>>>>>> countdown-real-time
       .then((response) => {
         console.log(response.data);
         setPrompt(response.data.prompt.prompt);
