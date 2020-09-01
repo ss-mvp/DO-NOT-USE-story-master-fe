@@ -34,7 +34,7 @@ export default function DashboardContainer() {
       route: '/announcement',
     },
     {
-      btnText: 'Check back tomorrow for the next prompt!',
+      btnText: 'Check back at 10:30pm EST for the next prompt!',
       route: '/dashboard',
     },
   ];

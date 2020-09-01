@@ -7,24 +7,17 @@
       voteStart: [19, 30],
       voteEnd: [22, 0],
       streamStart: [22, 30],
-      streamEnd: [23, 0]
+      streamEnd: [23, 0],
+      interimStart:[23, 1],
+      interimEnd: [2, 29]
   }
 
-//   const schedule = {
-//     subStart: [2, 30],
-//     subEnd: [18, 45],
-//     voteStart: [19, 2],
-//     voteEnd: [19, 4],
-//     streamStart: [19, 6],
-//     streamEnd: [19, 8]
-// }
-  
-  
   
   export const currentHr = Number(moment.utc(Date.now()).format('HH'))
   export const currentMin = Number(moment.utc(Date.now()).format('mm'))
   export const now = Date.now()
-  console.log('currentMin', currentMin)
+
+  // console.log('currentMin', currentMin)
   
   //a new prompt is chosen and submissions become open at 2:30am UTC (10:30pm EDT)
   export const startSubHr = schedule.subStart[0]
@@ -56,27 +49,35 @@
   export const winnerStreamEndMin = schedule.streamEnd[1]
   export const winnerStreamCountEnd = moment.utc().hour(winnerStreamEndHr).minute(winnerStreamEndMin).valueOf()
 
+  //interim begins at 11:00pm UTC (7:00pm EDT)
+  export const interimStartHr = schedule.streamEnd[0]
+  export const interimStartMin = schedule.streamEnd[1]
+  export const interimCountStart = moment.utc().hour(winnerStreamEndHr).minute(winnerStreamEndMin).valueOf()
+
+  //interim ends at 2:30am UTC (10:30pm EDT)
+  export const interimEndHr = schedule.subStart[0]
+  export const interimEndMin = schedule.subStart[1]
+  export const interimCountEnd = moment.utc().hour(startSubHr).minute(startSubMin).valueOf()
+
 
   export const isSubmissionTime = () => {
-    console.log('currentHr', currentHr)
-    console.log('startSubHr', startSubHr)
-    if(currentHr === startSubHr && currentMin >= currentMin){
+    if(currentHr === startSubHr && currentMin >= startSubMin){
       return true
     }
-    if(currentHr > startSubHr){
+    else if(currentHr > startSubHr && currentHr < endSubHr){
       return true
+    } else{
+      return false
     }
-    return false
   }
 
 export const isDeliberationTime = () => {
-    if(currentHr >= endSubHr && currentHr < voteStartHr){
+    if(currentHr === endSubHr && currentMin < voteStartMin){
         return true
     } 
-    if (currentHr >= endSubHr && currentHr === voteStartHr && currentMin <= voteStartMin){
-        return true
+     else {
+      return false
     }
-    return false
 }
 
 export const isVotingTime = () => {
@@ -87,4 +88,24 @@ export const isVotingTime = () => {
         return true
     }
     return false
+}
+
+export const isStreamingTime = () => {
+  if(currentHr === winnerStreamStartHr){
+    return true;
+  } else {
+    return false
+  }
+}
+
+export const isInterim = () => {
+  if(currentHr === winnerStreamEndHr || currentHr < startSubHr){
+    return true
+  } else if (currentHr === startSubHr && currentMin < startSubMin){
+    return true;
+  } else {
+    return false;
+  }
+
+
 }

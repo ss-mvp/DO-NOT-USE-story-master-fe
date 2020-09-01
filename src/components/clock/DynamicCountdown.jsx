@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
-import moment from 'moment';
 import { AxiosWithAuth } from '../../utils/AxiosWithAuth';
-import {startSubHr, startSubMin, subCountStart, endSubHr, endSubMin, subCountEnd, voteStartHr, voteStartMin, voteCountStart, voteEndHr, voteEndMin, voteCountEnd, winnerStreamStartHr, winnerStreamStartMin, winnerStreamCountStart, winnerStreamEndHr, winnerStreamEndMin, winnerStreamCountEnd, currentHr, currentMin, isSubmissionTime, isDeliberationTime, isVotingTime} from '../../utils/schedule'
+import {subCountStart, subCountEnd, voteCountStart, voteCountEnd,winnerStreamCountStart, winnerStreamCountEnd, isSubmissionTime, isDeliberationTime, isVotingTime, isStreamingTime, isInterim, interimCountStart, interimCountEnd} from '../../utils/schedule'
 
 export default function DynamicCountdown({ setCurrent, current }) {
   const [time, setTime] = useState();
@@ -31,20 +30,14 @@ export default function DynamicCountdown({ setCurrent, current }) {
 
    //function to change countdown clock to match current activity
    const incrementTimeSlot = () => {
-    console.log('from increment time slot');
-    let currentTime = Date.now();
-    //game is still going for today
-    // if (currentTime < endGame) {
-      //game has already begun
-      if (isSubmissionTime()) {
-        //submission time
-        // if (currentTime < subEnd) {
-          console.log('submission time');
-          setCurrent(0);
-          setCountdown(routes[0].end);
-        // }
+        //submission
+        if (isSubmissionTime()) {
+            setCurrent(0);
+            setCountdown(routes[0].end);
+        }
         //deliberation
-        if (isDeliberationTime()) {
+        else if (isDeliberationTime()) {
+          console.log('the liberty behind deliberation')
           setCurrent(1);
           setCountdown(routes[1].end);
         }
@@ -53,21 +46,24 @@ export default function DynamicCountdown({ setCurrent, current }) {
           console.log('voting time');
           setCurrent(2);
           setCountdown(routes[2].end);
-          //livestream happening
-        } else if (currentHr >= winnerStreamStartHr) {
+        //livestream happening
+        } else if (isStreamingTime()) {
           console.log('livestream time');
           setCurrent(3);
           setCountdown(routes[3].start);
         }
-      // }
-    } else {
-      setCurrent(4);
-    }
+        //waiting for next prompt
+        else if (isInterim()){
+          setCurrent(4);
+        }
   };
 
 
   console.log('issub', isSubmissionTime())
   console.log('isdelib', isDeliberationTime())
+  console.log('is vote', isVotingTime())
+  console.log('isStreamingTime', isStreamingTime())
+  console.log('isInterim', isInterim())
   //function to change countdown clock to match current activity
  
 
@@ -90,9 +86,12 @@ export default function DynamicCountdown({ setCurrent, current }) {
     {
       subtitle: '',
       start: winnerStreamCountStart,
+      end: winnerStreamCountEnd
     },
     {
       subtitle: '',
+      start: interimCountStart,
+      end: interimCountEnd
     },
   ];
 
