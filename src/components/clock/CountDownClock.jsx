@@ -29,20 +29,20 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
   }
 };
 
-const newRenderer = ({ hours, minutes, seconds, completed }) => {
-  if (completed) {
-    return <NewCompletionist />;
-  } else {
-    return (
-      <span>
-        <h2>
-          New game starts in {hours} hours, {minutes} minutes and {seconds}{' '}
-          seconds.
-        </h2>
-      </span>
-    );
-  }
-};
+// const newRenderer = ({ hours, minutes, seconds, completed }) => {
+//   if (completed) {
+//     return <NewCompletionist />;
+//   } else {
+//     return (
+//       <span>
+//         <h2>
+//           New game starts in {hours} hours, {minutes} minutes and {seconds}{' '}
+//           seconds.
+//         </h2>
+//       </span>
+//     );
+//   }
+// };
 
 export function CountDownClock() {
   const [time, setTime] = useState();

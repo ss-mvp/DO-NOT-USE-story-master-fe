@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {useHistory, useParams, useLocation} from 'react-router-dom'
+import {useHistory, useLocation} from 'react-router-dom'
 import axios from 'axios'
 
 export function Activated() {

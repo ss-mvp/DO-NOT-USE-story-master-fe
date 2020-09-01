@@ -39,7 +39,7 @@ export default function DashboardContainer({setUsername, username}) {
       route: '/announcement',
     },
     {
-      btnText: 'Check back tomorrow for the next prompt!',
+      btnText: 'Check back at 10:30pm EST for the next prompt!',
       route: '/dashboard',
     },
   ];

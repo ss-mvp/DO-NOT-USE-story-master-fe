@@ -5,19 +5,21 @@ import {
   Home,
   Submission,
   TopThreeWinnersPage,
-  RangkingPage,
+  RankingPage,
   WinnerAnnouncementPage,
   VideoPage,
   Activated,
-  MobileDashboard,
 } from './pages';
 import MobileNavbar from './components/nav/MobileNavbar';
 import DashboardContainer from './pages/DashboardContainer';
 
 function App() {
 
+<<<<<<< HEAD
   const [username, setUsername] = useState('')
 
+=======
+>>>>>>> countdown-real-time
   return (
     <>
       <MobileNavbar username={username} setUsername={setUsername}/>
@@ -27,7 +29,7 @@ function App() {
         <Route path={`/dashboard`} component={(props)=><DashboardContainer {...props} username={username} setUsername={setUsername}/>} />
         <Route path={`/submission`} component={Submission} />
         <Route path={`/winners`} component={TopThreeWinnersPage} />
-        <Route path={`/ranking`} component={RangkingPage} />
+        <Route path={`/ranking`} component={RankingPage} />
         <Route path={`/announcement`} component={WinnerAnnouncementPage} />
         <Route path={`/video`} component={VideoPage} />
       </Switch>
