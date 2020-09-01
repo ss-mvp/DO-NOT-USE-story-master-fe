@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import {winnerStreamStartHr, winnerStreamStartMin, currentHr, currentMin } from '../../../utils/schedule'
 
 export function Announcement() {
 
@@ -16,7 +17,18 @@ export function Announcement() {
                 }
             })
             .catch(err=>console.log(err))
-    },[link])
+    },[link, url])
+
+    const isTodayWinner = () => {
+        if(currentHr === winnerStreamStartHr && currentMin >= winnerStreamStartMin){
+            return true
+        }
+        else if(currentHr > winnerStreamStartHr && currentHr <= 23){
+            return true
+        } else{
+            return false
+        }
+    }
 
     console.log('link', link)
     return (
