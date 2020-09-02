@@ -38,12 +38,13 @@ export function SignIn(props) {
             props.setUsername(response.data.username)
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', response.data.username);
+            history.push('/dashboard')
           });
         } else {
           alert('You need to activate your email!');
         }
       });
-    history.push('/dashboard')
+   
   };
 
   return (
