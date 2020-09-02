@@ -69,7 +69,8 @@ export default function Navbar({username, setUsername}) {
           <Link
             to="/signin"
             onClick={() => {
-              localStorage.clear();
+              localStorage.removeItem('username');
+              localStorage.removeItem('token');
               setUsername('');
             }}
           >
