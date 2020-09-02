@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AxiosWithAuth } from '../../utils';
 
 export function SubmissionForm(props) {
   const [image, setImage] = useState();
   const [imageURL, setImageURL] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+  const [btnText, setBtnText] = useState('Submit')
 
   const baseUrl =
     process.env.REACT_APP_FE_ENV === 'development'
@@ -11,7 +14,11 @@ export function SubmissionForm(props) {
       : process.env.REACT_APP_BE;
 
 
+  useEffect(()=>{
+    setSubmitButton()
+  },[isLoading, hasSubmitted])    
       const handleSubmit = async (e) => {
+        setIsLoading(true)
         e.preventDefault();
         const toBase64 = (file) =>
           new Promise((resolve, reject) => {
@@ -32,78 +39,38 @@ export function SubmissionForm(props) {
           .then((url) => {
             setImageURL(url.data.imageUrl);
             console.log('success!');
+            setIsLoading(false)
+            setHasSubmitted(true)
+            let date = new Date()
+            localStorage.setItem('submit', date.getDate())
           })
-          .catch((err) => console.log('upload error', err));
+          .catch((err) => {
+            console.log('upload error', err)
+            setIsLoading(false)
+            setHasSubmitted(false)
+            setBtnText('Try again')
+          });
       };
       const handleUpload = (e) => {
         setImage({ image: e.target.files });
       };
 
-
-
-      
-  //   const handleSubmit = async (e) => {
-  //       e.preventDefault();
-    
-  //       const toBase64 = (file) =>
-  //         new Promise((resolve, reject) => {
-  //           const reader = new FileReader();
-  //           reader.readAsDataURL(file);
-  //           reader.onload = () => resolve(reader.result);
-  //           reader.onerror = (error) => reject(error);
-  //         });
-    
-  //       const base64Image = await toBase64(image.image[0]);
-    
-  //       // Changes to formData upload
-  //       const formData = new FormData();
-  //       formData.append("image", image.image[0]);
-  //       formData.append("promptId", props.promptId);
-  //       formData.append("base64Image", base64Image);
-  //       const config = { headers: { "Content-Type": "multipart/form-data" } };
-  //       AxiosWithAuth()
-  //         .post(`${baseUrl}/upload`, formData, config)
-    
-  //         .then((url) => {
-  //           setImageURL(url.data.imageUrl);
-  //           console.log("success!");
-  //         })
-  //         .catch((err) => console.log(err));
-  //     };
-    
-  //     // const handleUpload = (e) => {
-  //     //   setImage({ image: e.target.files });
-  //     // };
-    
-
-  //   const toBase64 = async (file) => {
-  //     new Promise((resolve, reject) => {
-  //       const reader = new FileReader();
-  //       reader.readAsDataURL(file);
-  //       reader.onload = () => resolve(reader.result);
-  //       reader.onerror = (error) => reject(error);
-  //     });
-
-  //   const base64Image = await toBase64(image.image[0]);
-
-  //   // Changes to formData upload
-  //   const formData = new FormData();
-  //   formData.append('image', image.image[0]);
-  //   formData.append('promptId', props.promptId);
-  //   formData.append('base64Image', base64Image);
-  //   const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-  //   AxiosWithAuth()
-  //     .post(`${baseUrl}/upload`, formData, config)
-  //     .then((url) => {
-  //       setImageURL(url.data.imageUrl);
-  //       console.log('success!');
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // const handleUpload = (e) => {
-  //   setImage({ image: e.target.files });
-  // };
+  const setSubmitButton = () => {
+    if(isLoading){
+      setBtnText('Loading...')
+    }
+    if(hasSubmitted){
+      setBtnText('Submitted')
+    }
+    if(localStorage.getItem('submit')){
+      let today = new Date()
+      let day = today.getDate();
+      if(localStorage.getItem('submit') == day){
+        setBtnText('Submitted')
+        setHasSubmitted(true)
+      }
+    }
+  }
 
   return (
     <>
@@ -115,8 +82,8 @@ export function SubmissionForm(props) {
           </label>
         </div>
         <div className="submit-button d-flex justify-content-center">
-          <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit">
-            Submit
+          <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit" disabled={hasSubmitted}>
+            {btnText}
           </button>
         </div>
       </form>

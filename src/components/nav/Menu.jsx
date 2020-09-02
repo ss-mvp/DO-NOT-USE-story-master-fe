@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React from 'react'
 
-export default function Menu({loc}) {
+export default function Menu({loc, setUsername}) {
   if(!loc){
     return (
       <>
@@ -23,7 +23,9 @@ export default function Menu({loc}) {
         <Link
           to="/signin"
           onClick={() => {
-            localStorage.clear();
+            localStorage.removeItem('username');
+            window.localStorage.removeItem('token');
+            setUsername('');
           }}
           className="nav-link"
         >
@@ -37,7 +39,9 @@ export default function Menu({loc}) {
         <Link
           to="/signin"
           onClick={() => {
-            localStorage.clear();
+            localStorage.removeItem('username');
+            window.localStorage.removeItem('token')
+            setUsername('');
           }}
           className="nav-link"
         >
