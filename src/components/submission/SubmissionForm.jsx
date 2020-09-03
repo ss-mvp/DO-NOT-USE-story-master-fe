@@ -35,7 +35,7 @@ export function SubmissionForm(props) {
         formData.append('base64Image', base64Image);
         // const config = { headers: { 'Content-Type': 'multipart/form-data'} };
         AxiosWithAuth()
-          .post(`/upload`, formData, config)
+          .post(`/upload`, formData)
           .then((url) => {
             setImageURL(url.data.imageUrl);
             console.log('success!');
