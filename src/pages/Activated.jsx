@@ -6,11 +6,15 @@ export function Activated() {
     const history = useHistory()
     const token = useLocation().pathname.split('/activated/')[1]
 
+    
+
     useEffect(()=>{
+
+        const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000': process.env.REACT_APP_BE;
 
         if(token){
             console.log('in the if')
-            axios.post('http://localhost:5000/email/activatedLogin', {token: token})
+            axios.post(`${baseUrl}/email/activatedLogin`, {token: token})
                 .then(res=>{
                     console.log('res', res)
                     localStorage.setItem('token', res.data.token)
