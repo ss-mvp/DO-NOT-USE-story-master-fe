@@ -33,7 +33,7 @@ export function SubmissionForm(props) {
         formData.append('image', image.image[0]);
         formData.append('promptId', props.promptId);
         formData.append('base64Image', base64Image);
-        const config = { headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'} };
+        // const config = { headers: { 'Content-Type': 'multipart/form-data'} };
         AxiosWithAuth()
           .post(`/upload`, formData, config)
           .then((url) => {
