@@ -23,7 +23,9 @@ export default function Menu({loc}) {
         <Link
           to="/signin"
           onClick={() => {
-            localStorage.clear();
+            localStorage.removeItem('username');
+            window.localStorage.removeItem('token');
+            // setUsername('');
           }}
           className="nav-link"
         >
@@ -37,7 +39,9 @@ export default function Menu({loc}) {
         <Link
           to="/signin"
           onClick={() => {
-            localStorage.clear();
+            localStorage.removeItem('username');
+            window.localStorage.removeItem('token')
+            // setUsername('');
           }}
           className="nav-link"
         >
