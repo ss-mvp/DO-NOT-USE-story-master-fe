@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { PublicVoteButton } from "../home/PublicVoteButton";
 
 import { SEO } from "../../utils";
@@ -15,6 +15,9 @@ export function SignUp(props) {
     parentEmail: "",
   });
 
+  const history = useHistory();
+
+  // REACT_APP_BE=http://ec2-3-226-91-90.compute-1.amazonaws.com
   const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : process.env.REACT_APP_BE
   const [error, setError] = useState('')
   console.log('baseUrl', baseUrl)
@@ -26,6 +29,7 @@ export function SignUp(props) {
   };
 
   const handleSubmit = (e) => {
+    // console.log("NEW USER", newUser)
     e.preventDefault();
     const age = parseInt(newUser.age)
     const sendUser = {
@@ -47,9 +51,15 @@ export function SignUp(props) {
         //if server returns a 400 error, duplicate info was submitted and that user already exists
         if (err.message.match(/[400]/)){
           setError('User already exists. Please sign in.')
+          history.pushState(`${baseUrl}/email/register`)
         }
       });
     }
+
+    // update parental email if student age > 12 so that DB can have a quick find
+    if (newUser.age > 12) {
+      newUser.parentEmail = "User is above age 12. No parental confirmation required."
+    } 
   };
 
   //validates that password contains letters and numbers, and length is between 8 and 32
