@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { PublicVoteButton } from "../home/PublicVoteButton";
 
 import { SEO } from "../../utils";
@@ -14,6 +14,8 @@ export function SignUp(props) {
     age: "",
     parentEmail: "",
   });
+
+  const history = useHistory();
 
   // REACT_APP_BE=http://ec2-3-226-91-90.compute-1.amazonaws.com
   const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : process.env.REACT_APP_BE
@@ -49,6 +51,7 @@ export function SignUp(props) {
         //if server returns a 400 error, duplicate info was submitted and that user already exists
         if (err.message.match(/[400]/)){
           setError('User already exists. Please sign in.')
+          history.pushState(`${baseUrl}/email/register`)
         }
       });
     }
