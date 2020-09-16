@@ -27,7 +27,7 @@ export function SignUp(props) {
   };
 
   const handleSubmit = (e) => {
-    console.log("NEW USER", newUser)
+    // console.log("NEW USER", newUser)
     e.preventDefault();
     const age = parseInt(newUser.age)
     const sendUser = {
