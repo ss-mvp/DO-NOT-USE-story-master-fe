@@ -65,11 +65,15 @@ export function SubmissionForm(props) {
     if(localStorage.getItem('submit')){
       let today = new Date()
       let day = today.getDate();
-      if(localStorage.getItem('submit') == day){
+      if(localStorage.getItem('submit') === day){
         setBtnText('Submitted')
         setHasSubmitted(true)
       }
     }
+  }
+
+  const chooseFile = () => {
+    console.log("choosing")
   }
 
   return (
@@ -78,13 +82,17 @@ export function SubmissionForm(props) {
         <div className="upload-button d-flex justify-content-center">
           <label className="m-3 btn btn-outline-primary pr-5 pl-5">
             Choose a file
-            <input onChange={handleUpload} type="file" id="storyImage" hidden />
+            <input onChange={handleUpload} type="file" id="storyImage" hidden onClick={chooseFile} />
           </label>
         </div>
         <div className="submit-button d-flex justify-content-center">
-          <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit" disabled={hasSubmitted}>
-            {btnText}
-          </button>
+
+          {hasSubmitted === true ? <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit" disabled={hasSubmitted}>
+              {btnText}
+
+            </button>
+            : ""
+          }
         </div>
       </form>
     </>
