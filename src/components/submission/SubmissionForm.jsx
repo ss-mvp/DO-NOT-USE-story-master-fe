@@ -20,7 +20,9 @@ export function SubmissionForm(props) {
   },[isLoading, hasSubmitted]) 
   
       const handleSubmit = async (e) => {
+        checkIfSubmissionIsImage(image)
         setIsLoading(true)
+        console.log("IMAGE", image.image[0].type)
         e.preventDefault();
         const toBase64 = (file) =>
           new Promise((resolve, reject) => {
@@ -55,6 +57,7 @@ export function SubmissionForm(props) {
       };
       const handleUpload = (e) => {
         setImage({ image: e.target.files });
+        // prevents the user from clicking submit until a file is added \\
         setHasChosenFile(true)
       };
 
@@ -75,9 +78,14 @@ export function SubmissionForm(props) {
     }
   }
 
-  const chooseFileClicked = () => {
-    console.log("you clicked choose a file")
-
+  // check the submission to ensure it is png or jpeg
+  const checkIfSubmissionIsImage = () => {
+    console.log("checkIfSubmissionIsImage() invoked")
+    if (image.image[0].type !== "image/jpeg" || image.image[0].type !== "image/png") {
+      alert("Please submit a jpeg or png image.")
+    } else {
+      setHasChosenFile(false)
+    }
   }
 
   return (
@@ -86,7 +94,7 @@ export function SubmissionForm(props) {
         <div className="upload-button d-flex justify-content-center">
           <label className="m-3 btn btn-outline-primary pr-5 pl-5">
             Choose a file
-            <input onChange={handleUpload} type="file" id="storyImage" hidden onClick={chooseFileClicked} />
+            <input onChange={handleUpload} type="file" id="storyImage" hidden/>
           </label>
         </div>
 
