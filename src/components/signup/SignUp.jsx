@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { PublicVoteButton } from "../home/PublicVoteButton";
+import "../../styling/styles.scss";
 
 import { SEO } from "../../utils";
 
@@ -18,9 +19,12 @@ export function SignUp(props) {
   const history = useHistory();
 
   // REACT_APP_BE=http://ec2-3-226-91-90.compute-1.amazonaws.com
-  const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000' : process.env.REACT_APP_BE
-  const [error, setError] = useState('')
-  console.log('baseUrl', baseUrl)
+  const baseUrl =
+    process.env.REACT_APP_FE_ENV === "development"
+      ? "http://localhost:5000"
+      : process.env.REACT_APP_BE;
+  const [error, setError] = useState("");
+  console.log("baseUrl", baseUrl);
   const handleChanges = (e) => {
     setNewUser({
       ...newUser,
@@ -31,57 +35,64 @@ export function SignUp(props) {
   const handleSubmit = (e) => {
     // console.log("NEW USER", newUser)
     e.preventDefault();
-    const age = parseInt(newUser.age)
+    const age = parseInt(newUser.age);
     const sendUser = {
       email: newUser.email,
       username: newUser.username,
       password: newUser.password,
       age,
-      parentEmail: age < 13 ? newUser.parentEmail : '',
+      parentEmail: age < 13 ? newUser.parentEmail : "",
     };
     //checks if password is required length with required elements before submitting to server
-    if(validatePassword(newUser.password)){
+    if (validatePassword(newUser.password)) {
       axios
-      .post(`${baseUrl}/email/register`, sendUser)
-      .then(() => {
-        alert("New user registered. Please activate your email.");
-      })
-      .catch((err) => {
-        console.log('error', err.message)
-        //if server returns a 400 error, duplicate info was submitted and that user already exists
-        if (err.message.match(/[400]/)){
-          setError('User already exists. Please sign in.')
-          history.pushState(`${baseUrl}/email/register`)
-        }
-      });
+        .post(`${baseUrl}/email/register`, sendUser)
+        .then(() => {
+          alert("New user registered. Please activate your email.");
+        })
+        .catch((err) => {
+          console.log("error", err.message);
+          //if server returns a 400 error, duplicate info was submitted and that user already exists
+          if (err.message.match(/[400]/)) {
+            setError("User already exists. Please sign in.");
+            history.pushState(`${baseUrl}/email/register`);
+          }
+        });
     }
 
     // update parental email if student age > 12 so that DB can have a quick find
     if (newUser.age > 12) {
-      newUser.parentEmail = "User is above age 12. No parental confirmation required."
-    } 
+      newUser.parentEmail =
+        "User is above age 12. No parental confirmation required.";
+    }
   };
 
   //validates that password contains letters and numbers, and length is between 8 and 32
   const validatePassword = (pass) => {
     let letterRegex = /[a-z]/gi;
-    let nums = /[0-9]/g
-    if(!pass.match(letterRegex) || !pass.match(nums) || pass.length < 8 || pass.length > 32){
-      setError("password must be between 8 and 32 characters in length and contain both letters and numbers")
-    } else{
-      setError("")
+    let nums = /[0-9]/g;
+    if (
+      !pass.match(letterRegex) ||
+      !pass.match(nums) ||
+      pass.length < 8 ||
+      pass.length > 32
+    ) {
+      setError(
+        "password must be between 8 and 32 characters in length and contain both letters and numbers"
+      );
+    } else {
+      setError("");
       return pass;
     }
-  }
+  };
 
   return (
     <div className="signupMain d-flex flex-column align-items-center">
-
       <SEO title="Sign up" path={props.match.path} />
       <h2 className="text-center mb-5">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">
-        <div className="form-group">
+          <div className="form-group">
             <input
               required
               type="text"
@@ -157,23 +168,27 @@ export function SignUp(props) {
               <label>Parent Email</label>
             </div>
           )}
-          {error && <p style={{ color: "red", textAlign: 'center' }}>{error}</p>}
+          {error && (
+            <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+          )}
           <button
-              disabled={newUser.password !== newUser.confirm}
-              className="mb-3 btn btn-primary font-weight-bold"
-              style={{ fontSize: "24px" }}
-              type="submit"
-            >
-              Sign Up
-            </button>
+            disabled={newUser.password !== newUser.confirm}
+            className="mb-3 btn btn-primary font-weight-bold"
+            style={{ fontSize: "24px" }}
+            type="submit"
+          >
+            Sign Up
+          </button>
           {/* <p>
             Already have an account? Click here to{" "}<Link to={`/Login`}>sign in</Link>
           </p> */}
           <div className="tos">
-            By clicking the “Sign Up” button above, you agree to the <Link to={`/signin`}>Terms & Conditions</Link> and <Link to={`/signin`}>Privacy Policy</Link>.  Already have an account? Click here to{" "}<Link to={`/signin`}>sign in</Link>
+            By clicking the “Sign Up” button above, you agree to the{" "}
+            <Link to={`/signin`}>Terms & Conditions</Link> and{" "}
+            <Link to={`/signin`}>Privacy Policy</Link>. Already have an account?
+            Click here to <Link to={`/signin`}>sign in</Link>
           </div>
-            
-          </div>
+        </div>
       </form>
       <PublicVoteButton />
     </div>
