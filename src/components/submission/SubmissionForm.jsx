@@ -7,6 +7,7 @@ export function SubmissionForm(props) {
   const [isLoading, setIsLoading] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [btnText, setBtnText] = useState('Submit')
+  const [hasChosenFile, setHasChosenFile] = useState(false)
 
   const baseUrl =
     process.env.REACT_APP_FE_ENV === 'development'
@@ -16,7 +17,8 @@ export function SubmissionForm(props) {
 
   useEffect(()=>{
     setSubmitButton()
-  },[isLoading, hasSubmitted])    
+  },[isLoading, hasSubmitted]) 
+  
       const handleSubmit = async (e) => {
         setIsLoading(true)
         e.preventDefault();
@@ -53,6 +55,7 @@ export function SubmissionForm(props) {
       };
       const handleUpload = (e) => {
         setImage({ image: e.target.files });
+        setHasChosenFile(true)
       };
 
   const setSubmitButton = () => {
@@ -72,8 +75,9 @@ export function SubmissionForm(props) {
     }
   }
 
-  const chooseFile = () => {
-    console.log("choosing")
+  const chooseFileClicked = () => {
+    console.log("you clicked choose a file")
+
   }
 
   return (
@@ -82,18 +86,16 @@ export function SubmissionForm(props) {
         <div className="upload-button d-flex justify-content-center">
           <label className="m-3 btn btn-outline-primary pr-5 pl-5">
             Choose a file
-            <input onChange={handleUpload} type="file" id="storyImage" hidden onClick={chooseFile} />
+            <input onChange={handleUpload} type="file" id="storyImage" hidden onClick={chooseFileClicked} />
           </label>
         </div>
-        <div className="submit-button d-flex justify-content-center">
 
-          {hasSubmitted === true ? <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit" disabled={hasSubmitted}>
+        {hasChosenFile === false ? "" : <div className="submit-button d-flex justify-content-center">
+          <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit">
               {btnText}
+          </button>
+        </div>}
 
-            </button>
-            : ""
-          }
-        </div>
       </form>
     </>
   );
