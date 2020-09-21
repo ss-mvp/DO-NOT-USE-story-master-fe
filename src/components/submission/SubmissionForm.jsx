@@ -22,9 +22,11 @@ export function SubmissionForm(props) {
   
       const handleSubmit = async (e) => {
         e.preventDefault();
+
+        checkImageType()
         setIsLoading(true)
         console.log("IMAGE", image.image[0].type)
-        checkIfSubmissionIsImage(image)
+
         const toBase64 = (file) =>
           new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -79,16 +81,20 @@ export function SubmissionForm(props) {
     }
   }
 
-  // check the submission to ensure it is png or jpeg
-  const checkIfSubmissionIsImage = () => {
-    console.log("checkIfSubmissionIsImage() invoked", image.image[0].type)
-  //   let image_type = image.image[0].type
-  //   if (image_type === "image/jpeg" || image_type === "image/png") {
-  //   } else {
-  //     alert("Please submit a jpeg or png image.")
-      
-  //   }
-  }
+  // CHECK IMAGE TYPE \\
+  // ONLY ALLOW JPEG OR PNG \\
+  const checkImageType = () => {
+
+    console.log("IN CIT FUNCTION")
+    
+    if( image.image[0].type !== "image/jpeg" || image.image[0].type !== "image/png" ) {
+      setHasSubmitted(false)
+      alert("File type must be a PNG or JPEG.")
+    }
+
+
+
+  } 
 
   return (
     <>

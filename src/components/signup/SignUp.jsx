@@ -55,7 +55,6 @@ export function SignUp(props) {
           //if server returns a 400 error, duplicate info was submitted and that user already exists
           if (err.message.match(/[400]/)) {
             setError("User already exists. Please sign in.");
-            history.pushState(`${baseUrl}/email/register`);
           }
         });
     }
