@@ -42,7 +42,6 @@ export function SignIn(props) {
           });
         } else {
           alert('You need to activate your email!');
-
         }
       });
    

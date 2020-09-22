@@ -10,11 +10,13 @@ export function SubmissionForm(props) {
   // track if the user chose a file in order to activate the submit button
   const [hasChosenFile, setHasChosenFile] = useState(false)
 
+  // Prompt ID incoming from our submission page
+  const prompt_id = props.promptId;
+
   const baseUrl =
     process.env.REACT_APP_FE_ENV === 'development'
       ? 'http://localhost:5000'
       : process.env.REACT_APP_BE;
-
 
   useEffect(()=>{
     setSubmitButton()
@@ -23,9 +25,9 @@ export function SubmissionForm(props) {
       const handleSubmit = async (e) => {
         e.preventDefault();
 
-        checkImageType()
+        checkImageType(image.image[0].type)
         setIsLoading(true)
-        console.log("IMAGE", image.image[0].type)
+        // console.log("IMAGE", typeof(image.image[0].type))
 
         const toBase64 = (file) =>
           new Promise((resolve, reject) => {
@@ -83,27 +85,35 @@ export function SubmissionForm(props) {
 
   // CHECK IMAGE TYPE \\
   // ONLY ALLOW JPEG OR PNG \\
-  const checkImageType = () => {
-
-    console.log("IN CIT FUNCTION")
+  const checkImageType = (imgType) => {
     
-    if( image.image[0].type !== "image/jpeg" || image.image[0].type !== "image/png" ) {
-      setHasSubmitted(false)
+    if ( imgType !== "image/jpeg") {
       alert("File type must be a PNG or JPEG.")
     }
-
-
-
+    else if ( imgType !== "image/png" ) {
+    }
+    else if ( imgType === "image/jpeg" || imgType === "image/png" )  {
+      console.log(`Image type is OK. type: ${imgType}`)
+    } else {
+      console.log("Else in check Image Type")
+    }
   } 
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className="upload-button d-flex justify-content-center">
+
+          {prompt_id === undefined ? "" : (
+                      
           <label className="m-3 btn btn-outline-primary pr-5 pl-5">
-            Choose a file
-            <input onChange={handleUpload} type="file" id="storyImage" hidden/>
-          </label>
+          Choose a file
+          <input onChange={handleUpload} type="file" id="storyImage" hidden/>
+        </label>
+          )}
+
+
+
         </div>
 
         {hasChosenFile === false ? "" : <div className="submit-button d-flex justify-content-center">
