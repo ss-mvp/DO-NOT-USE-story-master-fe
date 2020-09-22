@@ -11,6 +11,11 @@ export function Submission(props) {
   const [id, setId] = useState();
 
 
+  if (prompt === undefined) {
+    console.log('PEEPEE POOPOO')
+  }
+
+
   useEffect(() => {
     AxiosWithAuth()
       .get('/upload/prompt')
@@ -21,7 +26,6 @@ export function Submission(props) {
       })
       .catch((err) => console.log(err));
   }, []);
-
 
   return (
     <>
