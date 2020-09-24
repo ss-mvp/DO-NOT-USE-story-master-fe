@@ -95,7 +95,7 @@ export function SubmissionForm(props) {
     else if ( imgType === "image/jpeg" || imgType === "image/png" )  {
       console.log(`Image type is OK. type: ${imgType}`)
     } else {
-      console.log("Else in check Image Type")
+      console.log("Else statement in check Image Type")
     }
   } 
 
