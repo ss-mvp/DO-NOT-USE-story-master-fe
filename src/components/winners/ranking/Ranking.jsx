@@ -67,9 +67,6 @@ export function Ranking(props) {
     }
   };
 
-  const sendToWinnersPage = () => {
-    history.push('/winners');
-  }
 
   return (
     <div className={window.innerWidth <= 500 ? "bg-light custom-border rounded-lg" : "bg-light custom-border p-5 rounded-lg"}>
@@ -94,7 +91,6 @@ export function Ranking(props) {
           {btnText}
         </button>
 
-        <button disabled={isDisabled} type="button" onClick={sendToWinnersPage} className="btn btn-warning btn-lg m-3 p-2 px-5">view top three stories</button>
             
         {error && (
           <div className="alert alert-danger" role="alert">
