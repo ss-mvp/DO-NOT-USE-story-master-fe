@@ -12,7 +12,7 @@ export default function Menu({loc}) {
           <h4 className="ss-title h4-nav">Submit your story</h4>
         </Link>
         <Link to="/winners" className="nav-item nav-link">
-          <h4 className="ss-title h4-nav">Leaderboard</h4>
+          <h4 className="ss-title h4-nav">Top 3 Stories</h4>
         </Link>
         <Link to="/ranking" className="nav-item nav-link">
           <h4 className="ss-title h4-nav">Rank your favorites</h4>
