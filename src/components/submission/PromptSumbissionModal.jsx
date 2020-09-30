@@ -8,7 +8,7 @@ export default function PromptSumbissionModal() {
         <>
         {/* MODAL TRIGGER */}
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Help
+            Writing Contest Instructions
         </button>
 
         {/* MODAL */}
@@ -21,7 +21,7 @@ export default function PromptSumbissionModal() {
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-font">
             "Write a single page handwritten story that has a beginning, middle and ending. Make sure to increase the tension as the story proceeds and include dialogue in quotation marks to bring the characters to life. Good luck!"
             </div>
             <div class="modal-footer">

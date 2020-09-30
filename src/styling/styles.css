@@ -10398,5 +10398,9 @@ a.text-dark:focus {
   }
 }
 
+.modal-font {
+  font-size: 1.4rem;
+}
+
 
 /*# sourceMappingURL=styles.css.map */
