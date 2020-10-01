@@ -29,19 +29,18 @@ export function SubmissionForm(props) {
         setIsLoading(true)
         // console.log("IMAGE", typeof(image.image[0].type))
 
-        const toBase64 = (file) =>
-          new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = (error) => reject(error);
-          });
-        const base64Image = await toBase64(image.image[0]);
+        // const toBase64 = (file) =>
+        //   new Promise((resolve, reject) => {
+        //     const reader = new FileReader();
+        //     reader.readAsDataURL(file);
+        //     reader.onload = () => resolve(reader.result);
+        //     reader.onerror = (error) => reject(error);
+        //   });
+        //const base64Image = await toBase64(image.image[0]);
         // Changes to formData upload
         const formData = new FormData();
         formData.append('image', image.image[0]);
         formData.append('promptId', props.promptId);
-        formData.append('base64Image', base64Image);
         // const config = { headers: { 'Content-Type': 'multipart/form-data'} };
         AxiosWithAuth()
           .post(`/upload`, formData)
