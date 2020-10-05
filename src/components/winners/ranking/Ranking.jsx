@@ -75,7 +75,7 @@ export function Ranking(props) {
           <StoryModal username={el.username} image={el.image} id={el.id} />
         ))}
       <form onSubmit={handleSubmit}>
-        {console.log(winners)}
+        {console.log("winners", winners)}
         {!winners && <></>}
         {winners &&
           winners.map((el, index) => (
