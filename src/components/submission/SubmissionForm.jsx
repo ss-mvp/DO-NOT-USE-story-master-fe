@@ -7,19 +7,28 @@ export function SubmissionForm(props) {
   const [isLoading, setIsLoading] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [btnText, setBtnText] = useState('Submit')
+  // track if the user chose a file in order to activate the submit button
+  const [hasChosenFile, setHasChosenFile] = useState(false)
+
+  // Prompt ID incoming from our submission page
+  const prompt_id = props.promptId;
 
   const baseUrl =
     process.env.REACT_APP_FE_ENV === 'development'
       ? 'http://localhost:5000'
       : process.env.REACT_APP_BE;
 
-
   useEffect(()=>{
     setSubmitButton()
-  },[isLoading, hasSubmitted])    
+  },[isLoading, hasSubmitted]) 
+  
       const handleSubmit = async (e) => {
-        setIsLoading(true)
         e.preventDefault();
+
+        checkImageType(image.image[0].type)
+        setIsLoading(true)
+        // console.log("IMAGE", typeof(image.image[0].type))
+
         const toBase64 = (file) =>
           new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -33,9 +42,9 @@ export function SubmissionForm(props) {
         formData.append('image', image.image[0]);
         formData.append('promptId', props.promptId);
         formData.append('base64Image', base64Image);
-        const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+        // const config = { headers: { 'Content-Type': 'multipart/form-data'} };
         AxiosWithAuth()
-          .post(`/upload`, formData, config)
+          .post(`/upload`, formData)
           .then((url) => {
             setImageURL(url.data.imageUrl);
             console.log('success!');
@@ -53,6 +62,8 @@ export function SubmissionForm(props) {
       };
       const handleUpload = (e) => {
         setImage({ image: e.target.files });
+        // prevents the user from clicking submit until a file is added \\
+        setHasChosenFile(true)
       };
 
   const setSubmitButton = () => {
@@ -65,27 +76,52 @@ export function SubmissionForm(props) {
     if(localStorage.getItem('submit')){
       let today = new Date()
       let day = today.getDate();
-      if(localStorage.getItem('submit') == day){
+      if(localStorage.getItem('submit') === day){
         setBtnText('Submitted')
         setHasSubmitted(true)
       }
     }
   }
 
+  // CHECK IMAGE TYPE \\
+  // ONLY ALLOW JPEG OR PNG \\
+  const checkImageType = (imgType) => {
+    
+    if ( imgType !== "image/jpeg") {
+      alert("File type must be a PNG or JPEG.")
+    }
+    else if ( imgType !== "image/png" ) {
+    }
+    else if ( imgType === "image/jpeg" || imgType === "image/png" )  {
+      console.log(`Image type is OK. type: ${imgType}`)
+    } else {
+      console.log("Else statement in check Image Type")
+    }
+  } 
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className="upload-button d-flex justify-content-center">
+
+          {prompt_id === undefined ? "" : (
+                      
           <label className="m-3 btn btn-outline-primary pr-5 pl-5">
-            Choose a file
-            <input onChange={handleUpload} type="file" id="storyImage" hidden />
-          </label>
+          Choose a file
+          <input onChange={handleUpload} type="file" id="storyImage" hidden/>
+        </label>
+          )}
+
+
+
         </div>
-        <div className="submit-button d-flex justify-content-center">
-          <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit" disabled={hasSubmitted}>
-            {btnText}
+
+        {hasChosenFile === false ? "" : <div className="submit-button d-flex justify-content-center">
+          <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit">
+              {btnText}
           </button>
-        </div>
+        </div>}
+
       </form>
     </>
   );

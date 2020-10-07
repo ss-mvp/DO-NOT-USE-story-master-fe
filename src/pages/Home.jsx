@@ -10,7 +10,7 @@ import {
 export function Home({setUsername}) {
   return (
     <>
-      <div className="row align-items-center mx-auto">
+      <div className="row align-items-center mx-auto homeDiv">
         <section className="col-sm-12 col-md-8 custom-bg d-flex align-items-center">
           <Route path={`/signin`} component={StoryMasterSignIn} />
           <Route exact path={`/`} component={StoryMasterContent} />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import moment from 'moment'
 import { AxiosWithAuth, SEO } from "../utils";
 import { PromptComponent, SubmissionForm, Navbar } from "../components";
+import PromptSumbissionModal from "../components/submission/PromptSumbissionModal";
 import {subCountStart, subCountEnd, now} from '../utils/schedule'
 
 
@@ -9,7 +10,6 @@ export function Submission(props) {
 
   const [prompt, setPrompt] = useState();
   const [id, setId] = useState();
-
 
   useEffect(() => {
     AxiosWithAuth()
@@ -22,7 +22,6 @@ export function Submission(props) {
       .catch((err) => console.log(err));
   }, []);
 
-
   return (
     <>
       <SEO title="Submission" path={props.match.path} />
@@ -33,6 +32,7 @@ export function Submission(props) {
             Daily Writing Contest
           </h2>
           <div className="submissionMain bg-white custom-border rounded-lg p-5" id="submissionMain">
+            <PromptSumbissionModal/>
             <PromptComponent prompt={prompt} />
             {/* {now >= subCountStart && now < subCountEnd && <SubmissionForm promptId={id} />} */}
             <SubmissionForm promptId={id} />

@@ -67,6 +67,7 @@ export function Ranking(props) {
     }
   };
 
+
   return (
     <div className={window.innerWidth <= 500 ? "bg-light custom-border rounded-lg" : "bg-light custom-border p-5 rounded-lg"}>
       {winners &&
@@ -74,7 +75,7 @@ export function Ranking(props) {
           <StoryModal username={el.username} image={el.image} id={el.id} />
         ))}
       <form onSubmit={handleSubmit}>
-        {console.log(winners)}
+        {console.log("winners", winners)}
         {!winners && <></>}
         {winners &&
           winners.map((el, index) => (
@@ -89,6 +90,8 @@ export function Ranking(props) {
         <button disabled={isDisabled} type="submit" className="btn btn-warning btn-lg m-3 p-2 px-5">
           {btnText}
         </button>
+
+            
         {error && (
           <div className="alert alert-danger" role="alert">
             {' '}
