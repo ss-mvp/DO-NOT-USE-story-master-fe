@@ -29,6 +29,7 @@ export function SubmissionForm(props) {
         setIsLoading(true)
         // console.log("IMAGE", typeof(image.image[0].type))
 
+
         const toBase64 = (file) =>
           new Promise((resolve, reject) => {
             const reader = new FileReader();
