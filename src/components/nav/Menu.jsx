@@ -21,6 +21,8 @@ export default function Menu({loc}) {
       });
   }, []);
 
+export default function Menu({loc}) {
+
   if(!loc){
     return (
       <>
