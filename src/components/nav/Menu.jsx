@@ -1,7 +1,6 @@
-import { Link, useHistory} from "react-router-dom";
+import { Link} from "react-router-dom";
 import React, {useEffect, useState} from 'react'
 import { AxiosWithAuth } from "../../utils"
-import ThreeWinnersNeededModal from "../progressBar/ThreeWinnersNeededModal";
 
 export default function Menu({loc}) {
 
