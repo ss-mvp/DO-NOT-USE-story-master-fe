@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import '../../styling/mobileNav.css';
+import { AxiosWithAuth } from "../../utils"
+
 
 export default function Navbar({username, setUsername}) {
-  const history = useHistory();
   const location = useLocation().pathname;
 
   const [checked, setChecked] = useState(false);
@@ -20,7 +21,23 @@ export default function Navbar({username, setUsername}) {
     }
   }, [location, username]);
 
-  useEffect(() => {}, []);
+    // const history = useHistory();
+    const [winners, setWinners] = useState([]);
+  
+
+    useEffect(() => {
+      
+      AxiosWithAuth()
+        .get('/ranking')
+        .then((res) => {
+          let response = res.data;
+          console.log("RESPONSE", response)
+          if(response.length > 0){
+            setWinners(response);
+          }
+        });
+    }, []);
+
   return (
     <div className="mobileNavContainer">
       <input
@@ -59,7 +76,7 @@ export default function Navbar({username, setUsername}) {
           <Link to="/winners">
             <h3>Top 3</h3>
           </Link>
-          <Link to="/ranking">
+          <Link  to={winners.length === 3 ? "/ranking" : "/submission" }>
             <h3>Rank your favorites</h3>
           </Link>
           <Link to="/announcement">

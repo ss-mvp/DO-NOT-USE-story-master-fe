@@ -19,7 +19,7 @@ export default function TopThreeRanking({ setSelection, selection, winners, winn
                         <option value={ index===0? winners[2].id : index === 1 ? winners[0].id: winners[1].id }>{ index === 0 ? winners[2].username : index === 1 ? winners[0].username: winners[1].username }</option>
                     </select>
                     
-                    {winners.length == 3 ? "" : (<select name={`rank${index+1}`} className="form-control form-control-lg" style={{width:'200px'}} onChange={(e) => handleChange(e)}>
+                    {winners.length === 3 ? "" : (<select name={`rank${index+1}`} className="form-control form-control-lg" style={{width:'200px'}} onChange={(e) => handleChange(e)}>
                         <option value={ index===0? winners[0].id : index === 1 ? winners[1].id: winners[2].id }>{ index === 0 ? winners[0].username : index === 1 ? winners[1].username: winners[2].username }</option>
                         <option value={ index===0? winners[1].id : index === 1 ? winners[2].id: winners[0].id }>{ index === 0 ? winners[1].username : index === 1 ? winners[2].username: winners[0].username }</option>
                     </select>)}
