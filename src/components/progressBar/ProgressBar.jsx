@@ -33,6 +33,7 @@ export const ProgressBar = ({current}) => {
 
     // Allow access to Rank Your Favorites only when winners === 3
     const handleAllowAccess = () => {
+        winners.length = 3
         // IF winners.length < 3 => history.push("/dashboard")
         // keep users from going to ranking page
         // present user with MODAL telling them that we are still waiting on 3 top submissions

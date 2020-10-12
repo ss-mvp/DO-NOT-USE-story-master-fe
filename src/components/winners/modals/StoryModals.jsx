@@ -7,7 +7,10 @@ export default function StoryModal({ username, image, id }) {
         className="btn btn-outline-primary m-2 px-4"
         data-toggle="modal"
         data-target={`#storyModal ${id}`}
-      >{`${username}'s Story`}</button>
+      >
+        {`${username}'s Story`}
+      </button>
+      
       <div
         className="modal fade"
         id={`storyModal ${id}`}

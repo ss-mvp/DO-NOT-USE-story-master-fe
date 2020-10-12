@@ -5897,9 +5897,16 @@ a.close.disabled {
 }
 
 .modal-body {
+  background-size: contain;
   position: relative;
   flex: 1 1 auto;
   padding: 1rem;
+}
+
+.modal-body img {
+  border: 1px solid red;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .modal-footer {
