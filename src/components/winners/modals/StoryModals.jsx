@@ -1,11 +1,14 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { AxiosWithAuth } from '../../../utils';
 
 export default function StoryModal({ username, image, id }) {
   let [SubData, sSubData] = useState();
   useEffect(() => {
-    async function GetIt(id)
+    async function GetIt(_id)
     {
-      AxiosWithAuth().get(`upload/image/${id}`, { responseType: "arraybuffer" })
+      AxiosWithAuth().get(`upload/image/${_id}`, { responseType: "arraybuffer" })
         .then((response) =>
         {
           let image = btoa(
@@ -15,7 +18,7 @@ export default function StoryModal({ username, image, id }) {
           sSubData(`data:${response.headers['content-type'].toLowerCase()};base64,${image}`);
         });
     }
-    GetIt(props.submission.id);
+    GetIt(image);
   }, []);
 
   if (!SubData)
