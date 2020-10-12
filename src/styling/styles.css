@@ -5904,7 +5904,6 @@ a.close.disabled {
 }
 
 .modal-body img {
-  border: 1px solid red;
   max-height: 100%;
   max-width: 100%;
 }
