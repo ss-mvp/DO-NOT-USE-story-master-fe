@@ -16,6 +16,10 @@ export default function StoryModal({ username, image, id }) {
               .reduce((data, byte) => data + String.fromCharCode(byte), '')
           );
           sSubData(`data:${response.headers['content-type'].toLowerCase()};base64,${image}`);
+        }).catch((err) =>
+        {
+          console.log(err);
+          return;
         });
     }
     GetIt(image);
