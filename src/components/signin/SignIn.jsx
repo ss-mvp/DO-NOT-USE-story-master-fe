@@ -25,6 +25,8 @@ export function SignIn(props) {
       [e.target.name]: e.target.value,
     });
   };
+
+  // TODO - add conditional statement to render "Your PARENT needs to verify their email"
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -40,8 +42,9 @@ export function SignIn(props) {
             localStorage.setItem('username', response.data.username);
             history.push('/dashboard')
           });
-        } else {
-          alert('You need to activate your email!');
+        } 
+         else {
+          alert('You need to activate your email! If you are under 13, please have your parent validate in their email.');
         }
       });
    
