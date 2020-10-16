@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import TopThree from './TopThreeRanking';
 import { AxiosWithAuth } from '../../../utils';
 import StoryModal from '../modals/StoryModals';
+import EmailModal from '../modals/EmailModal';
+
 
 export function Ranking(props) {
   const [winners, setWinners] = useState([]);
@@ -35,6 +37,7 @@ export function Ranking(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('PEE PEE POO POO')
     let isDup = [
       ...new Set([
         parseInt(selection.rank1),
@@ -87,9 +90,10 @@ export function Ranking(props) {
               setSelection={setSelection}
             />
           ))}
-        <button disabled={isDisabled} type="submit" className="btn btn-warning btn-lg m-3 p-2 px-5">
-          {btnText}
-        </button>
+        <EmailModal 
+        disabled={isDisabled} 
+        type={'submit'}
+        btnText={btnText} />
 
             
         {error && (
