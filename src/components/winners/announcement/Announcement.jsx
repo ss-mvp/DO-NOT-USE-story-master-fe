@@ -40,7 +40,7 @@ export function Announcement() {
                     <h3 className="text-center m-5">Join us for our live stream winner announcement!</h3>
                     <a className="btn btn-warning btn-lg mx-auto px-5 mt-5 " style={{textDeocration: 'none', color: 'black'}} href={link} target="_blank" rel="noopener noreferrer">Join Us!</a>
 
-                    <a className="btn btn-warning btn-lg mx-auto px-5 mt-5 " style={{textDeocration: 'none', color: 'black'}} href="/winners" target="_blank" rel="noopener noreferrer">View Top 3 Stories</a>
+                    <a className="btn btn-warning btn-lg mx-auto px-5 mt-5 " style={{textDeocration: 'none', color: 'black'}} href="/winners"  rel="noopener noreferrer">View Top 3 Stories</a>
 
                 </div>
             </div>
