@@ -2,13 +2,29 @@
   {
     "id": "p1",
     "section": {
-      "description": "Sign up to get new story-writing prompts every day. Then scribble down a single page story and upload it by 3PM EST."
+      "time": "Every morning (7 days a week): ",
+      "description": "sign in to get the new story-writing prompt and start scribbling"
     }
   },
   {
     "id": "p2",
     "section": {
-      "description": "Finalists announced around 3:30PM EST and the winner of the popular vote gets crowned around 6PM EST. Unleash your creativity & sign up today!"
+      "time": "3:00PM Eastern: ",
+      "description": "deadline to upload your single page story"
+    }
+  },
+  {
+    "id": "p3",
+    "section": {
+      "time": "3:30PM: ",
+      "description": "Finalists are announced & popular voting begins"
+    }
+  },
+  {
+    "id": "p4",
+    "section": {
+      "time": "6:00PM: ",
+      "description": "Winner of the popular vote gets crowned"
     }
   }
 ]

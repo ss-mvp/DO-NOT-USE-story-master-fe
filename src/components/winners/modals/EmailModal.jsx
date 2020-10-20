@@ -31,6 +31,11 @@ export default function EmailModal({ username, id, btnText, disabled, type, clas
                       email
                   </label>
                   <input type="email" className="email-modal-input"/>
+                  <button
+                  
+                  >
+                      send
+                  </button>
               </form>
             </div>
           </div>

@@ -24,7 +24,7 @@ export function SubmissionForm(props) {
   
       const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("image.image[0].type", image.image[0].type)
+        // console.log("image.image[0].type", image.image[0].type)
         checkImageType(image.image[0].type)
         setIsLoading(true)
         // console.log("IMAGE", typeof(image.image[0].type))
@@ -48,14 +48,14 @@ export function SubmissionForm(props) {
           .post(`/upload`, formData)
           .then((url) => {
             setImageURL(url.data.imageUrl);
-            console.log('success!');
+            // console.log('success!');
             setIsLoading(false)
             setHasSubmitted(true)
             let date = new Date()
             localStorage.setItem('submit', date.getDate())
           })
           .catch((err) => {
-            console.log('upload error', err)
+            // console.log('upload error', err)
             setIsLoading(false)
             setHasSubmitted(false)
             setBtnText('Try again')

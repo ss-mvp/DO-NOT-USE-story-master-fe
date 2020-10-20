@@ -37,7 +37,6 @@ export function Ranking(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('PEE PEE POO POO')
     let isDup = [
       ...new Set([
         parseInt(selection.rank1),
@@ -52,7 +51,6 @@ export function Ranking(props) {
         { rank: 2, topthree_id: parseInt(selection.rank2) },
         { rank: 3, topthree_id: parseInt(selection.rank3) },
       ];
-      console.log('requestBody', requestBody);
       AxiosWithAuth()
         .post('ranking', requestBody)
         .then((res) => {
@@ -78,7 +76,6 @@ export function Ranking(props) {
           <StoryModal username={el.username} image={el.image} id={el.id} />
         ))}
       <form onSubmit={handleSubmit}>
-        {console.log("winners", winners)}
         {!winners && <></>}
         {winners &&
           winners.map((el, index) => (

@@ -22,7 +22,7 @@ export const ProgressBar = ({current}) => {
           .get('/ranking')
           .then((res) => {
             let response = res.data;
-            console.log("RESPONSE", response)
+            // console.log("RESPONSE", response)
             if(response.length > 0){
               setIsDisabled(false)
               setWinners(response);
@@ -33,12 +33,12 @@ export const ProgressBar = ({current}) => {
 
     // Allow access to Rank Your Favorites only when winners === 3
     const handleAllowAccess = () => {
-        winners.length = 3
+        // winners.length = 3
         // IF winners.length < 3 => history.push("/dashboard")
         // keep users from going to ranking page
         // present user with MODAL telling them that we are still waiting on 3 top submissions
         if (winners.length < 3 && showModal === false) {
-            console.log("WINNERS is < 3!", winners)
+            // console.log("WINNERS is < 3!", winners)
             setShowModal(true)
             // history.push("/dashboard")
         }
@@ -46,7 +46,7 @@ export const ProgressBar = ({current}) => {
         // send users to the ranking page
         if (winners.length === 3) {
             history.push("/ranking")
-            console.log("Winners is === 3", winners)
+            // console.log("Winners is === 3", winners)
         }
 
     }
@@ -100,7 +100,7 @@ export const ProgressBar = ({current}) => {
     const closeModal = (e) => {
         e.preventDefault()
         setShowModal(false)
-        console.log("showModal", showModal)
+        // console.log("showModal", showModal)
     }
 
     return (

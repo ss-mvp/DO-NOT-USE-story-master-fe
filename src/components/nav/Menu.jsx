@@ -14,7 +14,7 @@ export default function Menu({loc}) {
       .get('/ranking')
       .then((res) => {
         let response = res.data;
-        console.log("RESPONSE", response)
+        // console.log("RESPONSE", response)
         if(response.length > 0){
           setWinners(response);
         }
