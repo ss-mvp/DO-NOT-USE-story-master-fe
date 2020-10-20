@@ -24,7 +24,7 @@ export function SubmissionForm(props) {
   
       const handleSubmit = async (e) => {
         e.preventDefault();
-
+        // console.log("image.image[0].type", image.image[0].type)
         checkImageType(image.image[0].type)
         setIsLoading(true)
         // console.log("IMAGE", typeof(image.image[0].type))
@@ -48,14 +48,14 @@ export function SubmissionForm(props) {
           .post(`/upload`, formData)
           .then((url) => {
             setImageURL(url.data.imageUrl);
-            console.log('success!');
+            // console.log('success!');
             setIsLoading(false)
             setHasSubmitted(true)
             let date = new Date()
             localStorage.setItem('submit', date.getDate())
           })
           .catch((err) => {
-            console.log('upload error', err)
+            // console.log('upload error', err)
             setIsLoading(false)
             setHasSubmitted(false)
             setBtnText('Try again')
@@ -87,13 +87,7 @@ export function SubmissionForm(props) {
   // CHECK IMAGE TYPE \\
   // ONLY ALLOW JPEG OR PNG \\
   const checkImageType = (imgType) => {
-    
-    if ( imgType !== "image/jpeg") {
-      alert("File type must be a PNG or JPEG.")
-    }
-    else if ( imgType !== "image/png" ) {
-    }
-    else if ( imgType === "image/jpeg" || imgType === "image/png" )  {
+    if ( imgType === "image/jpeg" || imgType === "image/png" || imgType === "image/jpg" || imgType === "application/octet-stream" )  {
       console.log(`Image type is OK. type: ${imgType}`)
     } else {
       console.log("Else statement in check Image Type")

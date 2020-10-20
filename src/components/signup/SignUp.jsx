@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Route, Router, Switch, useHistory } from "react-router-dom";
 import { PublicVoteButton } from "../home/PublicVoteButton";
 import "../../styling/styles.scss";
-
 import { SEO } from "../../utils";
+import ToS from "../terms_and_privacy/ToS";
+
 
 export function SignUp(props) {
   const [newUser, setNewUser] = useState({
@@ -24,7 +25,7 @@ export function SignUp(props) {
       ? "http://localhost:5000"
       : process.env.REACT_APP_BE;
   const [error, setError] = useState("");
-  console.log("baseUrl", baseUrl);
+  // console.log("baseUrl", baseUrl);
   const handleChanges = (e) => {
     setNewUser({
       ...newUser,
@@ -183,9 +184,9 @@ export function SignUp(props) {
           </p> */}
           <div className="tos">
             By clicking the “Sign Up” button above, you agree to the{" "}
-            <Link to={`/signin`}>Terms & Conditions</Link> and{" "}
-            <Link to={`/signin`}>Privacy Policy</Link>. Already have an account?
-            Click here to <Link to={`/signin`}>sign in</Link>
+              <Link to={`/tos`}>Terms & Conditions</Link> and{" "}
+              <Link to={`/tos`}>Privacy Policy</Link>. Already have an account?
+              Click here to <Link to={`/signin`}>sign in</Link>
           </div>
         </div>
       </form>

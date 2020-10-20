@@ -32,11 +32,11 @@ export function SignIn(props) {
     axios
       .get(`${baseUrl}/email/activation/${credentials.email}`)
       .then((validation) => {
-        console.log('validation', validation);
+        // console.log('validation', validation);
         // setActivated(validation.data.validated);
         if (validation.data.validated === true) {
           axios.post(`${baseUrl}/email/login`, credentials).then((response) => {
-            console.log('response', response);
+            // console.log('response', response);
             props.setUsername(response.data.username)
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', response.data.username);

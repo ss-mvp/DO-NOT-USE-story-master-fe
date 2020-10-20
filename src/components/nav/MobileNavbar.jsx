@@ -16,7 +16,7 @@ export default function Navbar({username, setUsername}) {
   useEffect(() => {
     unCheck();
     if (localStorage.getItem('username') && username === "") {
-      console.log('setting username')
+      // console.log('setting username')
       setUsername(()=>localStorage.getItem('username'));
     }
   }, [location, username]);
@@ -31,7 +31,7 @@ export default function Navbar({username, setUsername}) {
         .get('/ranking')
         .then((res) => {
           let response = res.data;
-          console.log("RESPONSE", response)
+          // console.log("RESPONSE", response)
           if(response.length > 0){
             setWinners(response);
           }

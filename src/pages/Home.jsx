@@ -6,6 +6,7 @@ import {
   SignIn,
   SignUp,
 } from "../components";
+import ToS from "../components/terms_and_privacy/ToS";
 
 export function Home({setUsername}) {
   return (

@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import TopThree from './TopThreeRanking';
 import { AxiosWithAuth } from '../../../utils';
 import StoryModal from '../modals/StoryModals';
+import EmailModal from '../modals/EmailModal';
+
 
 export function Ranking(props) {
   const [winners, setWinners] = useState([]);
@@ -49,7 +51,6 @@ export function Ranking(props) {
         { rank: 2, topthree_id: parseInt(selection.rank2) },
         { rank: 3, topthree_id: parseInt(selection.rank3) },
       ];
-      console.log('requestBody', requestBody);
       AxiosWithAuth()
         .post('ranking', requestBody)
         .then((res) => {
@@ -75,7 +76,6 @@ export function Ranking(props) {
           <StoryModal username={el.username} image={el.image} id={el.id} />
         ))}
       <form onSubmit={handleSubmit}>
-        {console.log("winners", winners)}
         {!winners && <></>}
         {winners &&
           winners.map((el, index) => (
@@ -87,9 +87,10 @@ export function Ranking(props) {
               setSelection={setSelection}
             />
           ))}
-        <button disabled={isDisabled} type="submit" className="btn btn-warning btn-lg m-3 p-2 px-5">
-          {btnText}
-        </button>
+        <EmailModal 
+        disabled={isDisabled} 
+        type={'submit'}
+        btnText={btnText} />
 
             
         {error && (

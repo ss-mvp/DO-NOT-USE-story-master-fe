@@ -178,7 +178,6 @@ const timeTravel = () => {
             current = 0;
         }
     } else{
-        console.log('in the else')
         IncrementCountdown(0)
         
     }

@@ -30,7 +30,7 @@ export function Announcement() {
         }
     }
 
-    console.log('link', link)
+    // console.log('link', link)
     return (
         <>
             <div className="custom-bg d-flex align-items-center">

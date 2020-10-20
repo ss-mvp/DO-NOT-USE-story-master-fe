@@ -12,6 +12,7 @@ import {
 } from './pages';
 import MobileNavbar from './components/nav/MobileNavbar';
 import DashboardContainer from './pages/DashboardContainer';
+import ToS from './components/terms_and_privacy/ToS';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route path={`/ranking`} component={RankingPage} />
         <Route path={`/announcement`} component={WinnerAnnouncementPage} />
         <Route path={`/video`} component={VideoPage} />
+        <Route path={`/tos`} component={ToS} />
       </Switch>
     </>
   );
