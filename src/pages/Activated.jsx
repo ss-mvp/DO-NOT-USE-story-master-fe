@@ -13,10 +13,10 @@ export function Activated() {
         const baseUrl = process.env.REACT_APP_FE_ENV === 'development' ? 'http://localhost:5000': process.env.REACT_APP_BE;
 
         if(token){
-            console.log('in the if')
+            // console.log('in the if')
             axios.post(`${baseUrl}/email/activatedLogin`, {token: token})
                 .then(res=>{
-                    console.log('res', res)
+                    // console.log('res', res)
                     localStorage.setItem('token', res.data.token)
                     localStorage.setItem('username', res.data.username)
                     setTimeout(()=>{

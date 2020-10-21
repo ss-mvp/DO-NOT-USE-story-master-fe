@@ -44,7 +44,7 @@ export function SignIn(props) {
           });
         } 
          else {
-          alert('You need to activate your email! If you are under 13, please have your parent validate in their email.');
+          alert('Validate your account in your email inbox! If you are under the age of 13, please have your parent validate in their email.');
         }
       });
    

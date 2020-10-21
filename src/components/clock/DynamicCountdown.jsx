@@ -30,10 +30,10 @@ export default function DynamicCountdown({ setCurrent, current }) {
   useEffect(() => {
     if (time && end) {
       incrementTimeSlot();
-      console.log('actual current state', current)
+      // console.log('actual current state', current)
     }
 
-    console.log('countdown from dyn', countdown)
+    // console.log('countdown from dyn', countdown)
   }, [time, end]);
 
 
