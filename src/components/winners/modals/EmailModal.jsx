@@ -15,18 +15,18 @@ export default function EmailModal({ username, id, btnText, disabled, type, clas
        {btnText}
       </button>
       
-      <div
+      {/* <div
         className="modal fade"
         id={`storyModal ${id}`}
         tabIndex="-1"
         role="dialog"
         aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered">
+      > */}
+        {/* <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="title bg-primary text-white">
-              <h4 className="p-3">Email Modal</h4>
-              <form action="" className="email-modal-form">
+              <h4 className="p-3">Email Modal</h4> */}
+              {/* <form action="" className="email-modal-form">
                   <label  className="email-modal-label">
                       email
                   </label>
@@ -36,11 +36,11 @@ export default function EmailModal({ username, id, btnText, disabled, type, clas
                   >
                       send
                   </button>
-              </form>
-            </div>
+              </form> */}
+            {/* </div>
           </div>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </>
   );
 }

@@ -3,12 +3,7 @@ import { useHistory } from 'react-router-dom';
 import TopThree from './TopThreeRanking';
 import { AxiosWithAuth } from '../../../utils';
 import StoryModal from '../modals/StoryModals';
-// TODO - replace once we are ready to take emails 
-// import EmailModal from '../modals/EmailModal';
-
-
-// TODO - replace once we are ready to take emails 
-// import EmailModal from '../modals/EmailModal';
+import EmailModal from '../modals/EmailModal';
 
 
 
@@ -93,11 +88,13 @@ export function Ranking(props) {
               setSelection={setSelection}
             />
           ))}
-        {/* <EmailModal 
+
+        <EmailModal 
           disabled={isDisabled} 
           type={'submit'}
           btnText={btnText} 
-        /> */}
+        />
+
 
             
         {error && (
