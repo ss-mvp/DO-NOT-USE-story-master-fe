@@ -94,6 +94,15 @@
 }
 
 @media (max-width: 600px) {
+  .homeDiv {
+    padding-top: 60px;
+  }
+
+  .display-2.ss-title {
+    padding-top: 30px;
+    font-size: 3.5rem;
+  }
+
   .custom-bg {
     height: auto;
     padding-bottom: 2%;
@@ -10418,6 +10427,5 @@ a.text-dark:focus {
 .modal-font {
   font-size: 1.4rem;
 }
-
 
 /*# sourceMappingURL=styles.css.map */
