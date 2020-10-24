@@ -106,17 +106,20 @@ export function SubmissionForm(props) {
           <input onChange={handleUpload} type="file" id="storyImage" hidden/>
         </label>
           )}
-
-
-
         </div>
 
         {hasChosenFile === false ? "" : <div className="submit-button d-flex justify-content-center">
-          <button className="m-3 btn btn-warning btn-lg pr-5 pl-5" type="submit">
+          {/* present a green button IF the user has submitted */}
+          <button 
+          className={
+              btnText === 'Submit' || btnText === 'Try again' ?
+              "m-3 btn btn-warning btn-lg pr-5 pl-5"
+              :
+              "m-3 btn btn-success btn-lg pr-5 pl-5"
+            } type="submit">
               {btnText}
           </button>
         </div>}
-
       </form>
     </>
   );
