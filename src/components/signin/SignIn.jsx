@@ -51,42 +51,45 @@ export function SignIn(props) {
   };
 
   return (
-    <>
-      <SEO title="Sign in" path={props.match.path} />
-      <h2 className="text-center mb-5">Sign In</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group d-flex flex-column">
-          <div className="form-group">
-            <input
-              required
-              type="email"
-              name="email"
-              className="form-control"
-              value={credentials.email}
-              onChange={handleChanges}
-            />
-            <label>Email</label>
-          </div>
-          <div className="form-group">
-            <input
-              required
-              type="password"
-              name="password"
-              value={credentials.password}
-              className="form-control"
-              onChange={handleChanges}
-            />
-            <label>Password</label>
-          </div>
-          <button className="btn btn-primary btn-lg font-weight-bold" type="submit">
-            Login
-          </button>
-          <p className="text-center mt-3" style={{ fontSize: '18px' }}>
-            Don't have an account? <Link to="/">Sign Up Now!</Link>
-          </p>
-        </div>
-      </form>
-      <PublicVoteButton />
-    </>
-  );
+		<div>
+			<SEO title="Sign in" path={props.match.path} />
+			<h2 className="text-center mb-5">Sign In</h2>
+			<form onSubmit={handleSubmit}>
+				<div className="form-group d-flex flex-column">
+					<div className="form-group">
+						<input
+							required
+							type="email"
+							name="email"
+							className="form-control"
+							value={credentials.email}
+							onChange={handleChanges}
+						/>
+						<label>Email</label>
+					</div>
+					<div className="form-group">
+						<input
+							required
+							type="password"
+							name="password"
+							value={credentials.password}
+							className="form-control"
+							onChange={handleChanges}
+						/>
+						<label>Password</label>
+					</div>
+					<button
+						className="btn btn-primary btn-lg font-weight-bold"
+						type="submit"
+					>
+						Login
+					</button>
+					<p className="text-center mt-3" style={{ fontSize: "18px" }}>
+						Don't have an account? <Link to="/">Sign Up Now!</Link>
+					</p>
+				</div>
+			</form>
+			<PublicVoteButton />
+		</div>
+	);
 }

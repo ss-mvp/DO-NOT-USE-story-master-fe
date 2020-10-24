@@ -7,7 +7,6 @@ import StoryModal from '../modals/StoryModals';
 import EmailModal from '../modals/EmailModal';
 
 
-
 export function Ranking(props) {
   const [winners, setWinners] = useState([]);
   const [error, setError] = useState();
