@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, Route, Router, Switch, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { PublicVoteButton } from "../home/PublicVoteButton";
 import "../../styling/styles.scss";
 import { SEO } from "../../utils";
-import ToS from "../terms_and_privacy/ToS";
-
 
 export function SignUp(props) {
   const [newUser, setNewUser] = useState({
@@ -49,7 +47,7 @@ export function SignUp(props) {
       axios
         .post(`${baseUrl}/email/register`, sendUser)
         .then(() => {
-          alert("New user registered. Please activate your email.");
+          alert("Successfully registered! Please activate your email to sign in.");
         })
         .catch((err) => {
           console.log("error", err.message);
