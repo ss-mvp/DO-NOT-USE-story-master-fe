@@ -1,46 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { MobileDashboard } from './MobileDashboard';
-import DesktopDashboard from './DesktopDashboard'
-import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
-import axios from 'axios';
-import Countdown from 'react-countdown';
-import moment from 'moment';
-import { AxiosWithAuth } from '../utils/AxiosWithAuth';
-import DynamicCountdown from '../components/clock/DynamicCountdown';
+import React, { useState, useEffect } from "react";
+import { MobileDashboard } from "./MobileDashboard";
+import DesktopDashboard from "./DesktopDashboard";
+import { useHistory } from "react-router-dom";
+// import axios from 'axios';
+// import Countdown from 'react-countdown';
+// import moment from 'moment';
+// import { AxiosWithAuth } from '../utils/AxiosWithAuth';
+// import DynamicCountdown from '../components/clock/DynamicCountdown';
 
-export default function DashboardContainer({setUsername, username}) {
+export function DashboardContainer({ setUsername, username }) {
   const [current, setCurrent] = useState(0);
   const history = useHistory();
 
-  useEffect(()=>{
-    if(localStorage.getItem('username') && username === ""){
-      setUsername(localStorage.getItem('username'))
+  useEffect(() => {
+    if (localStorage.getItem("username") && username === "") {
+      setUsername(localStorage.getItem("username"));
     }
-  },[username])
+  }, [username, setUsername]);
 
   const routes = [
     {
-      btnText: 'Submit your story',
-      route: '/submission',
-      subtitle: 'left to submit!',
+      btnText: "Submit your story",
+      route: "/submission",
+      subtitle: "left to submit!",
     },
     {
-      btnText: 'Submission Scoring',
-      route: '/announcement',
+      btnText: "Submission Scoring",
+      route: "/announcement",
     },
     {
-      btnText: 'Rank your favorites',
-      route: '/ranking',
-      subtitle: 'left to vote!',
+      btnText: "Rank your favorites",
+      route: "/ranking",
+      subtitle: "left to vote!",
     },
 
     {
       btnText: "Watch winners' livestream",
-      route: '/announcement',
+      route: "/announcement",
     },
     {
-      btnText: 'Check back at 10:30pm EST for the next prompt!',
-      route: '/dashboard',
+      btnText: "Check back at 10:30pm EST for the next prompt!",
+      route: "/dashboard",
     },
   ];
 
@@ -51,7 +51,7 @@ export default function DashboardContainer({setUsername, username}) {
 
   return (
     <>
-      <div className="desktopDash">
+      <div className='desktopDash'>
         <DesktopDashboard
           current={current}
           setCurrent={setCurrent}
@@ -59,7 +59,7 @@ export default function DashboardContainer({setUsername, username}) {
           routes={routes}
         />
       </div>
-      <div className="mobileDash">
+      <div className='mobileDash'>
         <MobileDashboard
           current={current}
           setCurrent={setCurrent}

@@ -7,7 +7,7 @@ export * from "./signup/SignUp";
 
 export * from "./submission/SubmissionForm";
 export * from "./submission/PromptComponent";
-export * from "./submission/PromptSumbissionModal";
+export * from "./submission/PromptSubmissionModal";
 
 export * from "./winners/board/WinnerBoard";
 export * from "./winners/ranking/Ranking";
