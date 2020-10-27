@@ -29,7 +29,7 @@ export default function StoryModal({ username, image, id }) {
         .catch(console.error);
     }
     GetIt(image);
-  }, []);
+  }, [image]);
 
   if (!SubData) return <>Loading...</>;
 
