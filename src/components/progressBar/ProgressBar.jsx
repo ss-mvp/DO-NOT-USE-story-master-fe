@@ -27,7 +27,7 @@ export const ProgressBar = ({current}) => {
               setIsDisabled(false)
               setWinners(response);
             }
-          });
+          }).catch(console.error);
       }, []);
 
 
