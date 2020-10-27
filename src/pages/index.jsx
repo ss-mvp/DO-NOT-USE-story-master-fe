@@ -7,3 +7,4 @@ export * from './TopThreeWinnersPage';
 export * from './VideoPage';
 export * from './Activated';
 export * from './MobileDashboard';
+export * from "./DashboardContainer";
