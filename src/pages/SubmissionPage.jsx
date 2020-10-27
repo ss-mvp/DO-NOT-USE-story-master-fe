@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import moment from 'moment'
+// import moment from 'moment'
 import { AxiosWithAuth, SEO } from "../utils";
 import { PromptComponent, SubmissionForm, Navbar } from "../components";
 import PromptSumbissionModal from "../components/submission/PromptSumbissionModal";
-import {subCountStart, subCountEnd, now} from '../utils/schedule'
+// import {subCountStart, subCountEnd, now} from '../utils/schedule'
 
 
 export function Submission(props) {
