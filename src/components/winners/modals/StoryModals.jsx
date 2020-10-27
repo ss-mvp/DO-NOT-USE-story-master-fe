@@ -31,10 +31,11 @@ export default function StoryModal({ username, image, id }) {
         .catch((err) => {
           console.log(err);
           return;
-        });
+        })
+        .catch(console.error);
     }
     GetIt(image);
-  }, []);
+  }, [image]);
 
   if (!SubData) return <>Loading...</>;
 

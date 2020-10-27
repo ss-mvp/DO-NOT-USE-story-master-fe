@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../../styling/mobileNav.css';
 import { AxiosWithAuth } from "../../utils"
 
@@ -19,7 +19,7 @@ export default function Navbar({username, setUsername}) {
       // console.log('setting username')
       setUsername(()=>localStorage.getItem('username'));
     }
-  }, [location, username]);
+  }, [location, username, setUsername]);
 
     // const history = useHistory();
     const [winners, setWinners] = useState([]);
@@ -35,7 +35,7 @@ export default function Navbar({username, setUsername}) {
           if(response.length > 0){
             setWinners(response);
           }
-        });
+        }).catch(console.error);
     }, []);
 
   return (
