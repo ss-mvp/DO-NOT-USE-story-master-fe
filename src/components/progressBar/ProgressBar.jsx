@@ -12,7 +12,7 @@ import ThreeWinnersNeededModal from "./ThreeWinnersNeededModal";
 export const ProgressBar = ({current}) => {
     const history = useHistory();
     const [winners, setWinners] = useState([]);
-    const [isDisabled, setIsDisabled] = useState(true)
+    // const [isDisabled, setIsDisabled] = useState(true)
     const [showModal, setShowModal] = useState(false)
 
 
@@ -24,7 +24,7 @@ export const ProgressBar = ({current}) => {
             let response = res.data;
             // console.log("RESPONSE", response)
             if(response.length > 0){
-              setIsDisabled(false)
+              // setIsDisabled(false)
               setWinners(response);
             }
           }).catch(console.error);
