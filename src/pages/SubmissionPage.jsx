@@ -15,7 +15,7 @@ export function Submission(props) {
     AxiosWithAuth()
       .get('/upload/prompt')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPrompt(response.data.prompt.prompt);
         setId(response.data.prompt.id);
       })

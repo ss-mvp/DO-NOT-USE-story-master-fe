@@ -12,7 +12,7 @@ export function Announcement() {
         axios.get(url)
             .then(res=>{
                 if(res.data){
-                    console.log('res', res.data[res.data.length-1].video_link)
+                    console.log('Announcement Video', res.data[res.data.length-1].video_link)
                     setLink(res.data[res.data.length-1].video_link)
                 }
             })

@@ -43,7 +43,7 @@ export function Ranking(props) {
         parseInt(selection.rank3),
       ]),
     ];
-    console.log(isDup);
+    // console.log(isDup);
     if (isDup.length === 3) {
       let requestBody = [
         { rank: 1, topthree_id: parseInt(selection.rank1) },
