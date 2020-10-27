@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PublicVoteButton } from "../home/PublicVoteButton";
 import "../../styling/styles.scss";
 import { SEO } from "../../utils";
@@ -14,8 +14,6 @@ export function SignUp(props) {
     age: "",
     parentEmail: "",
   });
-
-  const history = useHistory();
 
   // REACT_APP_BE=http://ec2-3-226-91-90.compute-1.amazonaws.com
   const baseUrl =
