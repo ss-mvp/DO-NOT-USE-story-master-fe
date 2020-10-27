@@ -19,7 +19,7 @@ export default function Navbar({username, setUsername}) {
       // console.log('setting username')
       setUsername(()=>localStorage.getItem('username'));
     }
-  }, [location, username]);
+  }, [location, username, setUsername]);
 
     // const history = useHistory();
     const [winners, setWinners] = useState([]);
