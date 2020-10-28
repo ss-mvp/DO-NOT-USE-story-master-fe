@@ -100,34 +100,35 @@ export function SubmissionForm(props) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className='upload-button d-flex justify-content-center'>
-          {prompt_id === undefined ? (
-            ""
-          ) : (
-            <label className='m-3 btn btn-outline-primary pr-5 pl-5'>
-              Choose a file
-              <input
-                onChange={handleUpload}
-                type='file'
-                id='storyImage'
-                hidden
-              />
-            </label>
+        <div className="upload-button d-flex justify-content-center">
+
+          {prompt_id === undefined || btnText === 'Submitted' ? "" : (
+                      
+          <label className="m-3 btn btn-outline-primary pr-5 pl-5">
+
+            Choose a file
+            <input 
+              onChange={handleUpload}
+              type="file"
+              id="storyImage" 
+              hidden
+            />
+          </label>
           )}
         </div>
 
-        {hasChosenFile === false ? (
-          ""
-        ) : (
-          <div className='submit-button d-flex justify-content-center'>
-            <button
-              className='m-3 btn btn-warning btn-lg pr-5 pl-5'
-              type='submit'
-            >
+        {hasChosenFile === false ? "" : <div className="submit-button d-flex justify-content-center">
+          {/* present a green button IF the user has submitted */}
+          <button 
+          className={
+              btnText === 'Submit' || btnText === 'Try again' ?
+              "m-3 btn btn-warning btn-lg pr-5 pl-5"
+              :
+              "m-3 btn btn-success btn-lg pr-5 pl-5"
+            } type="submit">
               {btnText}
-            </button>
-          </div>
-        )}
+          </button>
+        </div>}
       </form>
     </>
   );
