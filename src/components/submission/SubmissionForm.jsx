@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom';
 import { AxiosWithAuth } from "../../utils";
 
 export function SubmissionForm(props) {
@@ -32,11 +33,16 @@ export function SubmissionForm(props) {
         if (localStorage.getItem("submit") === day) {
           setBtnText("Submitted");
           setHasSubmitted(true);
+          setSubmitToLocalStorage()
         }
       }
     };
     setSubmitButton();
   }, [isLoading, hasSubmitted]);
+
+  const setSubmitToLocalStorage = () => {
+    localStorage.setItem("Submitted Boolean", "True")
+  }
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -133,3 +139,12 @@ export function SubmissionForm(props) {
     </>
   );
 }
+
+
+
+
+
+
+// upon submit take the state of submitted === true and set it to local storage
+// push the user to their dashboard
+// deny access to submission

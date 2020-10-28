@@ -12,7 +12,7 @@ export function PublicVoteButton() {
   return (
       <>
           <button
-            className="btn-lg mx-auto btn btn-warning font-weight-bold mt-3 px-5"
+            className="btn-lg mx-auto btn btn-warning font-weight-bold mt-3 px-5 vote-btn"
             onClick={routeToRanking}
           >
             Just want to Vote?
