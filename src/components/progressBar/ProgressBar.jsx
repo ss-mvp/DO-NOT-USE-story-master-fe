@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import "./index.css";
-import white from "./whiteChevron.png";
-import teal from "./tealChevron.png";
-import dark from "./darkChevron.png";
-import { AxiosWithAuth } from "../../utils";
-import ThreeWinnersNeededModal from "./ThreeWinnersNeededModal";
+import React, { useState, useEffect, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
+import './index.css';
+import white from './whiteChevron.png';
+import teal from './tealChevron.png';
+import dark from './darkChevron.png';
+import { AxiosWithAuth } from '../../utils';
+import ThreeWinnersNeededModal from './ThreeWinnersNeededModal';
 
 export const ProgressBar = ({ current }) => {
   const history = useHistory();
@@ -14,17 +14,24 @@ export const ProgressBar = ({ current }) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    let isSubscribed = true;
     AxiosWithAuth()
-      .get("/ranking")
-      .then(res => {
-        let response = res.data;
-        // console.log("RESPONSE", response)
-        if (response.length > 0) {
-          // setIsDisabled(false)
-          setWinners(response);
+      .get('/ranking')
+      .then((res) => {
+        if (isSubscribed) {
+          let response = res.data;
+          // console.log("RESPONSE", response)
+          if (response.length > 0) {
+            // setIsDisabled(false)
+            setWinners(response);
+          }
         }
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.log(err);
+        isSubscribed = false;
+      });
+    return () => (isSubscribed = false);
   }, []);
 
   // Allow access to Rank Your Favorites only when winners === 3
@@ -41,7 +48,7 @@ export const ProgressBar = ({ current }) => {
     // IF winners.length is 3
     // send users to the ranking page
     if (winners.length === 3) {
-      history.push("/ranking");
+      history.push('/ranking');
       // console.log("Winners is === 3", winners)
     }
   };
@@ -49,59 +56,60 @@ export const ProgressBar = ({ current }) => {
   const colors = [
     {
       chevron: white,
-      text: "black",
+      text: 'black',
     },
     {
       chevron: white,
-      text: "black",
+      text: 'black',
     },
     {
       chevron: white,
-      text: "black",
+      text: 'black',
     },
     {
       chevron: white,
-      text: "black",
+      text: 'black',
     },
     {
       chevron: white,
-      text: "black",
+      text: 'black',
     },
   ];
+  const [colorMemo] = useMemo(() => [colors], []);
 
   const [chevColors, setChevColors] = useState(colors);
 
   useEffect(() => {
     const changeColors = () => {
-      let newChevColors = colors.map((color, i) => {
+      let newChevColors = colorMemo.map((color, i) => {
         if (i < current) {
           color.chevron = dark;
-          color.text = "white";
+          color.text = 'white';
         } else if (i === current) {
           color.chevron = teal;
-          color.text = "white";
+          color.text = 'white';
         } else if (i > current) {
           color.chevron = white;
-          color.text = "black";
+          color.text = 'black';
         }
         return color;
       });
       setChevColors(newChevColors);
     };
     changeColors();
-  }, [current, colors]);
+  }, [current, colorMemo]);
 
-  const closeModal = e => {
+  const closeModal = (e) => {
     e.preventDefault();
     setShowModal(false);
     // console.log("showModal", showModal)
   };
 
   return (
-    <div className='progress-container'>
+    <div className="progress-container">
       <div
-        onClick={() => history.push("/submission")}
-        className='chevronDiv'
+        onClick={() => history.push('/submission')}
+        className="chevronDiv"
         style={{ backgroundImage: `url('${chevColors[0].chevron}')` }}
       >
         <p style={{ color: chevColors[0].text }}>
@@ -113,8 +121,8 @@ export const ProgressBar = ({ current }) => {
         </p>
       </div>
       <div
-        onClick={() => history.push("/submission")}
-        className='chevronDiv'
+        onClick={() => history.push('/submission')}
+        className="chevronDiv"
         style={{ backgroundImage: `url('${chevColors[1].chevron}')` }}
       >
         <p style={{ color: chevColors[1].text }}>
@@ -127,7 +135,7 @@ export const ProgressBar = ({ current }) => {
 
       <div
         onClick={handleAllowAccess}
-        className='chevronDiv'
+        className="chevronDiv"
         style={{ backgroundImage: `url('${chevColors[2].chevron}')` }}
       >
         {showModal ? (
@@ -146,8 +154,8 @@ export const ProgressBar = ({ current }) => {
       </div>
 
       <div
-        onClick={() => history.push("/announcement")}
-        className='chevronDiv'
+        onClick={() => history.push('/announcement')}
+        className="chevronDiv"
         style={{ backgroundImage: `url('${chevColors[3].chevron}')` }}
       >
         <p style={{ color: chevColors[3].text }}>
@@ -159,8 +167,8 @@ export const ProgressBar = ({ current }) => {
         </p>
       </div>
       <div
-        onClick={() => history.push("/winners")}
-        className='chevronDiv'
+        onClick={() => history.push('/winners')}
+        className="chevronDiv"
         style={{ backgroundImage: `url('${chevColors[4].chevron}')` }}
       >
         <p style={{ color: chevColors[4].text }}>
