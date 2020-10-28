@@ -14,7 +14,9 @@ export const ProgressBar = ({current}) => {
     const [winners, setWinners] = useState([]);
     const [isDisabled, setIsDisabled] = useState(true)
     const [showModal, setShowModal] = useState(false)
-
+    const date = new Date();
+	const today = date.getDate();
+		
 
     useEffect(() => {
     
@@ -48,9 +50,13 @@ export const ProgressBar = ({current}) => {
             history.push("/ranking")
             // console.log("Winners is === 3", winners)
         }
-
     }
 
+    const voteReroute = () => {
+        if (localStorage.getItem("submit") != today) {
+            history.push('/submission');
+        }
+    }
     const colors = [
         {
             chevron: white,
@@ -105,30 +111,30 @@ export const ProgressBar = ({current}) => {
 
     return (
         <div className="progress-container">
-        <div onClick={()=>history.push('/submission')} className="chevronDiv" style={{backgroundImage: `url('${chevColors[0].chevron}')`}}>
-            <p style={{color: chevColors[0].text}}>Submit<br/>your<br/>story</p>
-        </div>
-        <div onClick={()=>history.push('/submission')} className="chevronDiv" style={{backgroundImage: `url('${chevColors[1].chevron}')`}}>
-            <p style={{color: chevColors[1].text}}>Await<br/>top 3<br/>selection</p>
-        </div>
+            <div onClick={voteReroute()} className="chevronDiv" style={{backgroundImage: `url('${chevColors[0].chevron}')`, cursor: localStorage.getItem("submit") == today ? "not-allowed" : "pointer"}}>
+                <p style={{color: chevColors[0].text}}>Submit<br/>your<br/>story</p>
+            </div>
+            <div className="chevronDiv" style={{backgroundImage: `url('${chevColors[1].chevron}')`, cursor: "not-allowed"}}>
+                <p style={{color: chevColors[1].text}}>Await<br/>top 3<br/>selection</p>
+            </div>
 
-        <div  onClick={handleAllowAccess} className="chevronDiv" style={{backgroundImage: `url('${chevColors[2].chevron}')`}}>
-            {showModal ? (
-                <>
-                <ThreeWinnersNeededModal closeModal={closeModal} />
-                </>
-            ) : (
-            <p style={{color: chevColors[2].text}}>Rank<br/>your<br/>favorites</p>
-            )}
+            <div  onClick={handleAllowAccess} className="chevronDiv" style={{backgroundImage: `url('${chevColors[2].chevron}')`}}>
+                {showModal ? (
+                    <>
+                    <ThreeWinnersNeededModal closeModal={closeModal} />
+                    </>
+                ) : (
+                <p style={{color: chevColors[2].text}}>Rank<br/>your<br/>favorites</p>
+                )}
 
-        </div>
+            </div>
 
-        <div onClick={()=>history.push('/announcement')} className="chevronDiv" style={{backgroundImage: `url('${chevColors[3].chevron}')`}}>
-            <p style={{color: chevColors[3].text}}>Watch<br/>winners'<br/>livestream</p>
+            <div onClick={()=>history.push('/announcement')} className="chevronDiv" style={{backgroundImage: `url('${chevColors[3].chevron}')`}}>
+                <p style={{color: chevColors[3].text}}>Watch<br/>winners'<br/>livestream</p>
+            </div>
+            <div onClick={()=>history.push('/winners')} className="chevronDiv" style={{backgroundImage: `url('${chevColors[4].chevron}')`}}>
+                <p style={{color: chevColors[4].text}}>See<br/>the<br/>top 3</p>
+            </div>
         </div>
-        <div onClick={()=>history.push('/winners')} className="chevronDiv" style={{backgroundImage: `url('${chevColors[4].chevron}')`}}>
-            <p style={{color: chevColors[4].text}}>See<br/>the<br/>top 3</p>
-        </div>
-    </div>
     )
 }

@@ -22,7 +22,7 @@ export function SignUp(props) {
   // REACT_APP_BE=http://ec2-3-226-91-90.compute-1.amazonaws.com
   const baseUrl =
     process.env.REACT_APP_FE_ENV === "development"
-      ? "http://localhost:5000"
+      ? "http://localhost:5005"
       : process.env.REACT_APP_BE;
   const [error, setError] = useState("");
   // console.log("baseUrl", baseUrl);
