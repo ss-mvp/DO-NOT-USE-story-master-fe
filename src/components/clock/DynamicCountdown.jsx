@@ -103,7 +103,7 @@ export default function DynamicCountdown({ setCurrent, current }) {
     }
 
     // console.log('countdown from dyn', countdown)
-  }, [time, end, routes, setCurrent, current]);
+  }, [time, end, routes, setCurrent]);
 
   //function to change countdown clock to match current activity
 
