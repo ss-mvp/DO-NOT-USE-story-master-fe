@@ -1,0 +1,21 @@
+.histogram {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+.histogram .svg-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.histogram p {
+  text-align: left
+}
+.histogram ul {
+  font-weight: 400;
+  text-align: left;
+  display: block;
+}
+.histogram ul li {
+  list-style-position: inside;
+}
