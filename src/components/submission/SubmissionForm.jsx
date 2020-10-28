@@ -99,12 +99,18 @@ export function SubmissionForm(props) {
       <form onSubmit={handleSubmit}>
         <div className="upload-button d-flex justify-content-center">
 
-          {prompt_id === undefined ? "" : (
+          {prompt_id === undefined || btnText === 'Submitted' ? "" : (
                       
           <label className="m-3 btn btn-outline-primary pr-5 pl-5">
-          Choose a file
-          <input onChange={handleUpload} type="file" id="storyImage" hidden/>
-        </label>
+
+            Choose a file
+            <input 
+              onChange={handleUpload}
+              type="file"
+              id="storyImage" 
+              hidden
+            />
+          </label>
           )}
         </div>
 
