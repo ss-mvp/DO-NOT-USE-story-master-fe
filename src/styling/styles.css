@@ -21,6 +21,16 @@
   max-width: 650px;
 }
 
+
+.signupMain {
+  height: 100%;
+  overflow-y: scroll ;
+}
+
+.signupMain:-webkit-scrollbar {
+  display: none;
+}
+
 .table-container {
   max-width: 900px;
 }
@@ -95,7 +105,11 @@
 
 @media (max-width: 600px) {
   .homeDiv {
-    padding-top: 60px;
+    margin: auto;
+  }
+
+  .vote-btn {
+    margin-bottom: 20px;
   }
 
   .display-2.ss-title {

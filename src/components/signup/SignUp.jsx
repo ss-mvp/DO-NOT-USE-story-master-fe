@@ -89,7 +89,9 @@ export function SignUp(props) {
     <div className='signupMain d-flex flex-column align-items-center'>
       <SEO title='Sign up' path={props.match.path} />
       <h2 className='text-center mb-5'>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+      <form 
+      className='signup-form'
+      onSubmit={handleSubmit}>
         <div className='form-group d-flex flex-column'>
           <div className='form-group'>
             <input
