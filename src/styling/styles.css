@@ -104,7 +104,6 @@
   }
 
   .custom-bg {
-    height: auto;
     padding-bottom: 2%;
   }
 }
@@ -114,9 +113,10 @@
     padding-top: 150px;
   }
   .custom-bg {
-    margin-bottom: 2%;
+    margin-bottom: 4%;
   }
 }
+
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

@@ -18,7 +18,8 @@ export default function Menu({loc}) {
         if(response.length > 0){
           setWinners(response);
         }
-      });
+      })
+      .catch(console.error);
   }, []);
 
   if(!loc){

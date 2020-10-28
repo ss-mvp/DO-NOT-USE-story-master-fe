@@ -9,9 +9,9 @@ import {
   WinnerAnnouncementPage,
   VideoPage,
   Activated,
+  DashboardContainer,
 } from './pages';
 import MobileNavbar from './components/nav/MobileNavbar';
-import DashboardContainer from './pages/DashboardContainer';
 import ToS from './components/terms_and_privacy/ToS';
 
 function App() {

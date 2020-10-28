@@ -115,7 +115,6 @@ $font-family-base: $sourcesans;
 .signupMain {
   max-height: 100vh;
   overflow: auto;
-  // border: 1px solid red;
 }
 
 @media (max-height: 750px) {
@@ -123,6 +122,12 @@ $font-family-base: $sourcesans;
     padding: 3% 3% 5% 0;
   }
 }
+@media (max-height: 767px) {
+  .signupMain {
+    overflow: hidden;
+  }
+}
+
 .signupMain::-webkit-scrollbar {
   // width: 10px;
   // height: 10px;

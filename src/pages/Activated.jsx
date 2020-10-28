@@ -26,7 +26,7 @@ export function Activated() {
                 .catch(err=>console.log(err))
             
         }
-    },[])
+    },[history,token])
 
     return(
     <div className="custom-bg"> 

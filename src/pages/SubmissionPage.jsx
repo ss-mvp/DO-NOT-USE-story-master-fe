@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import moment from 'moment'
+// import moment from 'moment'
 import { AxiosWithAuth, SEO } from "../utils";
 import { PromptComponent, SubmissionForm, Navbar } from "../components";
-import PromptSumbissionModal from "../components/submission/PromptSumbissionModal";
-import {subCountStart, subCountEnd, now} from '../utils/schedule'
+import PromptSubmissionModal from "../components/submission/PromptSubmissionModal";
+// import {subCountStart, subCountEnd, now} from '../utils/schedule'
 
 
 export function Submission(props) {
@@ -15,7 +15,7 @@ export function Submission(props) {
     AxiosWithAuth()
       .get('/upload/prompt')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPrompt(response.data.prompt.prompt);
         setId(response.data.prompt.id);
       })
@@ -32,7 +32,7 @@ export function Submission(props) {
             Daily Writing Contest
           </h2>
           <div className="submissionMain bg-white custom-border rounded-lg p-5" id="submissionMain">
-            <PromptSumbissionModal/>
+            <PromptSubmissionModal/>
             <PromptComponent prompt={prompt} />
             {/* {now >= subCountStart && now < subCountEnd && <SubmissionForm promptId={id} />} */}
             <SubmissionForm promptId={id} />
