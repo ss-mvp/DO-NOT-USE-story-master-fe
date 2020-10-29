@@ -1,27 +1,32 @@
-import { Link} from "react-router-dom";
-import React, {useEffect, useState} from 'react'
-import { AxiosWithAuth } from "../../utils"
+import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { AxiosWithAuth } from '../../utils';
 
-export default function Menu({loc}) {
-
+export default function Menu({ loc }) {
   // const history = useHistory();
   const [winners, setWinners] = useState([]);
-  
 
   useEffect(() => {
-    
+    let isSubscribed = true;
     AxiosWithAuth()
       .get('/ranking')
       .then((res) => {
-        let response = res.data;
-        // console.log("RESPONSE", response)
-        if(response.length > 0){
-          setWinners(response);
+        if (isSubscribed) {
+          let response = res.data;
+          // console.log("RESPONSE", response)
+          if (response.length > 0) {
+            setWinners(response);
+          }
         }
+      })
+      .catch((err) => {
+        isSubscribed = false;
+        console.log(err);
       });
+    return () => (isSubscribed = false);
   }, []);
 
-  if(!loc){
+  if (!loc) {
     return (
       <>
         <Link to="/dashboard" className="nav-item nav-link">
@@ -35,10 +40,11 @@ export default function Menu({loc}) {
         </Link>
         {/* if winners.length === 3 allow access else Modal */}
         <Link
-          to={winners.length === 3 ? "/ranking" : "/submission" }
-          className="nav-item nav-link">
+          to={winners.length === 3 ? '/ranking' : '/submission'}
+          className="nav-item nav-link"
+        >
           <h4 className="ss-title h4-nav">Rank your favorites</h4>
-       </Link>
+        </Link>
 
         <Link to="/announcement" className="nav-item nav-link">
           <h4 className="ss-title h4-nav">Winner Announcement</h4>
@@ -54,8 +60,8 @@ export default function Menu({loc}) {
         >
           <h4 className="ss-title text-secondary">Logout</h4>
         </Link>
-    </>
-    )
+      </>
+    );
   } else {
     return (
       <>
@@ -63,14 +69,14 @@ export default function Menu({loc}) {
           to="/signin"
           onClick={() => {
             localStorage.removeItem('username');
-            window.localStorage.removeItem('token')
+            window.localStorage.removeItem('token');
             // setUsername('');
           }}
           className="nav-link"
         >
           <h4 className="ss-title text-secondary">Logout</h4>
         </Link>
-    </>
-    )
+      </>
+    );
   }
 }

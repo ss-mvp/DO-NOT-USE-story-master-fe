@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import {winnerStreamStartHr, winnerStreamStartMin, currentHr, currentMin } from '../../../utils/schedule'
+// import {winnerStreamStartHr, winnerStreamStartMin, currentHr, currentMin } from '../../../utils/schedule'
 
 export function Announcement() {
 
@@ -12,23 +12,23 @@ export function Announcement() {
         axios.get(url)
             .then(res=>{
                 if(res.data){
-                    console.log('res', res.data[res.data.length-1].video_link)
+                    console.log('Announcement Video', res.data[res.data.length-1].video_link)
                     setLink(res.data[res.data.length-1].video_link)
                 }
             })
             .catch(err=>console.log(err))
     },[link, url])
 
-    const isTodayWinner = () => {
-        if(currentHr === winnerStreamStartHr && currentMin >= winnerStreamStartMin){
-            return true
-        }
-        else if(currentHr > winnerStreamStartHr && currentHr <= 23){
-            return true
-        } else{
-            return false
-        }
-    }
+    // const isTodayWinner = () => {
+    //     if(currentHr === winnerStreamStartHr && currentMin >= winnerStreamStartMin){
+    //         return true
+    //     }
+    //     else if(currentHr > winnerStreamStartHr && currentHr <= 23){
+    //         return true
+    //     } else{
+    //         return false
+    //     }
+    // }
 
     // console.log('link', link)
     return (

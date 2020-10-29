@@ -2,7 +2,7 @@ import React from "react";
 
 // Modal 
 
-export default function PromptSumbissionModal() {
+export default function PromptSubmissionModal() {
 
     return (
         <>
