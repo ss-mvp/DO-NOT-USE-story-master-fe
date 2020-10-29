@@ -48,9 +48,10 @@
 .signupMain {
   height: 100%;
   overflow-y: scroll ;
+  
 }
 
-.signupMain:-webkit-scrollbar {
+.signupMain::-webkit-scrollbar {
   display: none;
 }
 
@@ -116,6 +117,7 @@
   .custom-bg {
     background-position-x: 80%;
   }
+
 
   .desktopDash {
     display: none;
