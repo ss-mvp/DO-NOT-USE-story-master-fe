@@ -10,8 +10,10 @@ import ThreeWinnersNeededModal from './ThreeWinnersNeededModal';
 export const ProgressBar = ({ current }) => {
   const history = useHistory();
   const [winners, setWinners] = useState([]);
-  // const [isDisabled, setIsDisabled] = useState(true)
   const [showModal, setShowModal] = useState(false);
+  const date = new Date();
+  const today = date.getDate();
+  // const [today] = useMemo(() => [new Date().getDate()])
 
   useEffect(() => {
     let isSubscribed = true;
@@ -50,6 +52,12 @@ export const ProgressBar = ({ current }) => {
     if (winners.length === 3) {
       history.push('/ranking');
       // console.log("Winners is === 3", winners)
+    }
+  };
+
+  const voteReroute = () => {
+    if (localStorage.getItem('submit') != today) {
+      history.push('/submission');
     }
   };
 
@@ -108,9 +116,13 @@ export const ProgressBar = ({ current }) => {
   return (
     <div className="progress-container">
       <div
-        onClick={() => history.push('/submission')}
+        onClick={voteReroute()}
         className="chevronDiv"
-        style={{ backgroundImage: `url('${chevColors[0].chevron}')` }}
+        style={{
+          backgroundImage: `url('${chevColors[0].chevron}')`,
+          cursor:
+            localStorage.getItem('submit') == today ? 'not-allowed' : 'pointer',
+        }}
       >
         <p style={{ color: chevColors[0].text }}>
           Submit
@@ -121,9 +133,11 @@ export const ProgressBar = ({ current }) => {
         </p>
       </div>
       <div
-        onClick={() => history.push('/submission')}
         className="chevronDiv"
-        style={{ backgroundImage: `url('${chevColors[1].chevron}')` }}
+        style={{
+          backgroundImage: `url('${chevColors[1].chevron}')`,
+          cursor: 'not-allowed',
+        }}
       >
         <p style={{ color: chevColors[1].text }}>
           Await
@@ -132,7 +146,6 @@ export const ProgressBar = ({ current }) => {
           selection
         </p>
       </div>
-
       <div
         onClick={handleAllowAccess}
         className="chevronDiv"

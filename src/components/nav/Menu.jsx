@@ -5,9 +5,18 @@ import { AxiosWithAuth } from '../../utils';
 export default function Menu({ loc }) {
   // const history = useHistory();
   const [winners, setWinners] = useState([]);
+  const [submitEnabled, setSubmitEnabled] = useState(false);
 
   useEffect(() => {
     let isSubscribed = true;
+    if (isSubscribed) {
+      if (
+        localStorage.getItem('Submitted Boolean') === 'True' ||
+        localStorage.getItem('submit') === new Date().getDate()
+      )
+        setSubmitEnabled(false);
+      else setSubmitEnabled(true);
+    }
     AxiosWithAuth()
       .get('/ranking')
       .then((res) => {
@@ -32,9 +41,11 @@ export default function Menu({ loc }) {
         <Link to="/dashboard" className="nav-item nav-link">
           <h4 className="ss-title h4-nav">My Dashboard</h4>
         </Link>
-        <Link to="/submission" className="nav-item nav-link">
-          <h4 className="ss-title h4-nav">Submit your story</h4>
-        </Link>
+        {submitEnabled && (
+          <Link to="/submission" className="nav-item nav-link">
+            <h4 className="ss-title h4-nav">Submit your story</h4>
+          </Link>
+        )}
         <Link to="/winners" className="nav-item nav-link">
           <h4 className="ss-title h4-nav">Top 3 Stories</h4>
         </Link>
