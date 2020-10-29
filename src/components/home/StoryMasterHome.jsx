@@ -1,6 +1,6 @@
 import React from "react";
 import AboutContent from "./AboutContent";
-import about from "./about.json";
+import aboutData from "./about";
 
 export function StoryMasterContent() {
   return (
@@ -26,9 +26,9 @@ export function StoryMasterContent() {
 
       <div
       >
-        {about.map((each) => (
+        {aboutData.map((each) => (
           <AboutContent
-          key={each.id}
+            key={each.id}
             time={each.section.time}
             subtitle={each.section.subtitle}
             paragraph={each.section.description}
