@@ -18,28 +18,28 @@ const convertTime = () => {
   // if tz === PST then render 12pm
   if (timeZoneAbbreviation === 'PST') {
     console.log("PST TIME ZONE")
-    submissionTime = '12:00 p.m.: '
+    submissionTime = '12:00 p.m.: ';
     votingBegintime = '12:30 p.m.: ';
     winnerTime = '3:00 p.m.: ';
   }
   // if tz === MT then render 1pm
   else if (timeZoneAbbreviation === 'MT') {
     console.log("MT TIME ZONE")
-    submissionTime = '1:00 p.m. '
+    submissionTime = '1:00 p.m.: ';
     votingBegintime = '1:30 p.m.: ';
     winnerTime = '4:00 p.m.: ';
   }
   // if tz === CST then render 2pm
   else if (timeZoneAbbreviation === 'CST') {
     console.log("CST TIME ZONE")
-    submissionTime = '2:00 p.m. '
+    submissionTime = '2:00 p.m.: ';
     votingBegintime = '2:30 p.m.: ';
     winnerTime = '5:00 p.m.: ';
   }
   // if tz === EST then render 3pm
   else if (timeZoneAbbreviation === 'EST') {
     console.log("EST TIME ZONE")
-    submissionTime = '3:00 p.m. '
+    submissionTime = '3:00 p.m.: ';
     votingBegintime = '3:30 p.m.: ';
     winnerTime = '6:00 p.m.: ';
   } 
@@ -47,6 +47,8 @@ const convertTime = () => {
     console.log('NOT A U.S. TIME ZONE')
   }
 }
+
+// probably run this in a useEffect
 convertTime();
 
 

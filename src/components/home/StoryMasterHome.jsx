@@ -28,7 +28,7 @@ export function StoryMasterContent() {
       >
         {aboutData.map((each) => (
           <AboutContent
-          key={each.id}
+            key={each.id}
             time={each.section.time}
             subtitle={each.section.subtitle}
             paragraph={each.section.description}
