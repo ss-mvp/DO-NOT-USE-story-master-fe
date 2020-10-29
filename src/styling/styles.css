@@ -149,9 +149,9 @@
 
 @media (max-width: 430px) {
   .mobile-padding {
-    padding-top: 150px;
   }
   .custom-bg {
+    height: 100vh;
     margin-bottom: 4%;
   }
 }
@@ -10157,6 +10157,7 @@ button.bg-dark:focus {
 
 .text-center {
   text-align: center !important;
+  font-size: 1rem;
 }
 
 @media (min-width: 576px) {

@@ -10,6 +10,7 @@
     "bootstrap": "^4.5.0",
     "dotenv": "^8.2.0",
     "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-countdown": "^2.2.1",
@@ -41,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/moment-timezone": "^0.5.30"
   }
 }

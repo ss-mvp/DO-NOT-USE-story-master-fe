@@ -97,6 +97,7 @@ $font-family-base: $sourcesans;
 @media (max-width: 970px) {
   .custom-bg {
     background-position-x: 80%;
+    margin-bottom: 0;
   }
   .desktopDash {
     display: none;
@@ -108,7 +109,6 @@ $font-family-base: $sourcesans;
 
 @media (max-width: 430px) {
   .mobile-padding {
-    padding-top: 150px;
   }
 }
 
